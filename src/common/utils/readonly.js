@@ -32,7 +32,7 @@ import globals from './globals'
 export default {
 	
 	getLastTokenId: async (args = [], UserState, cb = null, ecb = null) => {
-			console.log('calling get last token id')
+			//console.log('calling get last token id')
 			try {
 				
 				let result = await callReadOnlyFunction({
@@ -46,13 +46,13 @@ export default {
 				if(cb) cb( cvToJSON(result).value.value )
 
 			} catch(e) {
-				console.log('error', e)
+				//console.log('error', e)
 				if(ecb) ecb(e)
 			}
 		},
 
 	getLastPunkId: async (args = [], UserState, cb = null, ecb = null) => {
-			console.log('calling get last token id')
+			//console.log('calling get last token id')
 			try {
 				
 				let result = await callReadOnlyFunction({
@@ -66,13 +66,13 @@ export default {
 				if(cb) cb( cvToJSON(result).value.value )
 
 			} catch(e) {
-				console.log('error', e)
+				//console.log('error', e)
 				if(ecb) ecb(e)
 			}
 		},
 
 	isOpenMinting: async (args = [], UserState, cb = null, ecb = null) => {
-			console.log('calling get last token id')
+			//console.log('calling get last token id')
 			try {
 				
 				let result = await callReadOnlyFunction({
@@ -86,13 +86,13 @@ export default {
 				if(cb) cb( cvToString(result) === 'true' )
 
 			} catch(e) {
-				console.log('error', e)
+				//console.log('error', e)
 				if(ecb) ecb(e)
 			}
 		},
 
 	isCtxOwner: async (args = [], UserState, cb = null, ecb = null) => {
-			console.log('calling is owner')
+			//console.log('calling is owner')
 			try {
 				
 				let result = await callReadOnlyFunction({
@@ -106,13 +106,13 @@ export default {
 				if(cb) cb( cvToString(result) === 'true' )
 
 			} catch(e) {
-				console.log('error', e)
+				//console.log('error', e)
 				if(ecb) ecb(e)
 			}
 		},
 
 	currentMintEvent: async (args = [], UserState, cb = null, ecb = null) => {
-			console.log('calling current mint event')
+			//console.log('calling current mint event')
 			try {
 				
 				let result = await callReadOnlyFunction({
@@ -126,13 +126,13 @@ export default {
 				if(cb) cb( cvToJSON(result).value )
 
 			} catch(e) {
-				console.log('error', e)
+				//console.log('error', e)
 				if(ecb) ecb(e)
 			}
 		},
 
 	getWhiteListAddresses: async (args = [], UserState, cb = null, ecb = null) => {
-			console.log('calling whitelist')
+			//console.log('calling whitelist')
 			try {
 				
 				let result = await callReadOnlyFunction({
@@ -146,13 +146,13 @@ export default {
 				if(cb) cb( cvToJSON(result).value.value )
 
 			} catch(e) {
-				console.log('error', e)
+				//console.log('error', e)
 				if(ecb) ecb(e)
 			}
 		},
 
 	mintingResume: async (args = [], UserState, cb = null, ecb = null) => {
-			console.log('calling minting resume')
+			//console.log('calling minting resume')
 			try {
 				
 				let result = await callReadOnlyFunction({
@@ -166,7 +166,7 @@ export default {
 				if(cb) cb( cvToJSON(result).value.value )
 
 			} catch(e) {
-				console.log('error', e)
+				//console.log('error', e)
 				if(ecb) ecb(e)
 			}
 		},
@@ -186,7 +186,7 @@ export default {
 				if(cb) cb( cvToJSON(result).value.value )
 
 			} catch(e) {
-				console.log('error', e, args)
+				//console.log('error', e, args)
 				if(ecb) ecb(e)
 			}
 		},

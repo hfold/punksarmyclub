@@ -37,7 +37,7 @@ const Transactions = (props) => {
 			        },
 			        (error) => {
 			        	setLoaded(true)
-			          console.log('e', error)
+			          //console.log('e', error)
 			        }
 			      )
 			    

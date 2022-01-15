@@ -47,7 +47,7 @@ const YourPunks = (props) => {
 			      .then(
 			        (result) => {
 			          setLoaded(true)
-			          console.log('res', result)
+			          //console.log('res', result)
 			          let ids = [];
 			          result.nft_events.map(e => {
 			          	if(!e.sender && e.asset_identifier == globals.CONTRACT_ADDRESS+"."+globals.CONTRACT_NAME+"::"+globals.TOKEN_STR){
@@ -56,7 +56,7 @@ const YourPunks = (props) => {
 			          			let id = cvToJSON( value ).value
 			          			if(ids.indexOf(id) === -1) ids.push(id)
 			          		} catch(e) {
-			          			console.log('e', e)
+			          			//console.log('e', e)
 			          		}
 			          	}
 			          })
@@ -66,7 +66,7 @@ const YourPunks = (props) => {
 			        },
 			        (error) => {
 			        	setLoaded(true)
-			          console.log('e', error)
+			          //console.log('e', error)
 			        }
 			      )
 			    

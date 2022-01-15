@@ -31,7 +31,7 @@ import globals from './globals'
 export default {
 	
 	addAddress: async (args = {principal:''}, UserState, doContractCall, cb = null, ecb = null) => {
-			console.log('calling add contractAddress')
+			//console.log('calling add contractAddress')
 			try {
 				
 				doContractCall({
@@ -40,11 +40,11 @@ export default {
 				      functionName: 'add_address_to_mint_event',
 				      functionArgs: [standardPrincipalCV(args.principal)],
 				      onFinish: (result) => {
-				      	console.log('onFinish', result)
+				      	//console.log('onFinish', result)
 				      	if(cb) cb( result )
 				      },
 				      onCancel: (result) => {
-				      	console.log('onFinish', result)
+				      	//console.log('onFinish', result)
 				      	if(ecb) ecb( result )
 				      },
 				      network: globals.NETWORK,
@@ -52,13 +52,13 @@ export default {
 				    });
 				
 			} catch(e) {
-				console.log('error', e)
+				//console.log('error', e)
 				if(ecb) ecb(e)
 			}
 		},
 
 	removeAddress: async (args = {principal:''}, UserState, doContractCall, cb = null, ecb = null) => {
-			console.log('calling add contractAddress')
+			//console.log('calling add contractAddress')
 			try {
 				
 				doContractCall({
@@ -67,11 +67,11 @@ export default {
 				      functionName: 'remove_address_to_mint_event',
 				      functionArgs: [standardPrincipalCV(args.principal)],
 				      onFinish: (result) => {
-				      	console.log('onFinish', result)
+				      	//console.log('onFinish', result)
 				      	if(cb) cb( result )
 				      },
 				      onCancel: (result) => {
-				      	console.log('onFinish', result)
+				      	//console.log('onFinish', result)
 				      	if(ecb) ecb( result )
 				      },
 				      network: globals.NETWORK,
@@ -79,13 +79,13 @@ export default {
 				    });
 				
 			} catch(e) {
-				console.log('error', e)
+				//console.log('error', e)
 				if(ecb) ecb(e)
 			}
 		},
 
 	openMintEvent: async (args = {mint_price:0, public_value: 0, address_mint: 0}, UserState, doContractCall, cb = null, ecb = null) => {
-			console.log('calling add contractAddress')
+			//console.log('calling add contractAddress')
 			try {
 				
 				doContractCall({
@@ -94,11 +94,11 @@ export default {
 				      functionName: 'open_mint_event',
 				      functionArgs: [uintCV(args.mint_price),uintCV(args.public_value),uintCV(args.address_mint)],
 				      onFinish: (result) => {
-				      	console.log('onFinish', result)
+				      	//console.log('onFinish', result)
 				      	if(cb) cb( result )
 				      },
 				      onCancel: (result) => {
-				      	console.log('onFinish', result)
+				      	//console.log('onFinish', result)
 				      	if(ecb) ecb( result )
 				      },
 				      network: globals.NETWORK,
@@ -106,13 +106,13 @@ export default {
 				    });
 				
 			} catch(e) {
-				console.log('error', e)
+				//console.log('error', e)
 				if(ecb) ecb(e)
 			}
 		},
 
 	closeMintEvent: async (args = {}, UserState, doContractCall, cb = null, ecb = null) => {
-			console.log('calling add contractAddress')
+			//console.log('calling add contractAddress')
 			try {
 				
 				doContractCall({
@@ -121,11 +121,11 @@ export default {
 				      functionName: 'close_mint_event',
 				      functionArgs: [],
 				      onFinish: (result) => {
-				      	console.log('onFinish', result)
+				      	//console.log('onFinish', result)
 				      	if(cb) cb( result )
 				      },
 				      onCancel: (result) => {
-				      	console.log('onFinish', result)
+				      	//console.log('onFinish', result)
 				      	if(ecb) ecb( result )
 				      },
 				      network: globals.NETWORK,
@@ -133,13 +133,13 @@ export default {
 				    });
 				
 			} catch(e) {
-				console.log('error', e)
+				//console.log('error', e)
 				if(ecb) ecb(e)
 			}
 		},
 
 	mint: async (args = {}, UserState, doContractCall, cb = null, ecb = null) => {
-			console.log('calling add contractAddress')
+			//console.log('calling add contractAddress')
 			try {
 				
 				doContractCall({
@@ -148,11 +148,11 @@ export default {
 				      functionName: 'claim_punk',
 				      functionArgs: [],
 				      onFinish: (result) => {
-				      	console.log('onFinish', result)
+				      	//console.log('onFinish', result)
 				      	if(cb) cb( result )
 				      },
 				      onCancel: (result) => {
-				      	console.log('onFinish', result)
+				      	//console.log('onFinish', result)
 				      	if(ecb) ecb( result )
 				      },
 				      network: globals.NETWORK,
@@ -160,13 +160,13 @@ export default {
 				    });
 				
 			} catch(e) {
-				console.log('error', e)
+				//console.log('error', e)
 				if(ecb) ecb(e)
 			}
 		},
 
 	addPunk: async (args = {list: []}, UserState, doContractCall, cb = null, ecb = null) => {
-			console.log('calling add punks')
+			//console.log('calling add punks')
 			try {
 				
 				let n = window.MAX_PUNK; // max number
@@ -204,18 +204,18 @@ export default {
 				  	i++;
 				});
 
-			  	console.log('invio', listCV(list) )
+			  	//console.log('invio', listCV(list) )
 				doContractCall({
 				      contractAddress: globals.CONTRACT_ADDRESS,
 				      contractName: globals.CONTRACT_NAME,
 				      functionName: 'create-multiple-punk',
 				      functionArgs: [listCV(list)],
 				      onFinish: (result) => {
-				      	console.log('onFinish', result)
+				      	//console.log('onFinish', result)
 				      	if(cb) cb( result )
 				      },
 				      onCancel: (result) => {
-				      	console.log('onFinish', result)
+				      	//console.log('onFinish', result)
 				      	if(ecb) ecb( result )
 				      },
 				      network: globals.NETWORK,
@@ -223,7 +223,7 @@ export default {
 				    });
 				
 			} catch(e) {
-				console.log('error', e)
+				//console.log('error', e)
 				if(ecb) ecb(e)
 			}
 		},

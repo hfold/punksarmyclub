@@ -51,7 +51,7 @@ export default function Mint (props) {
 			setLoaded(true)
 			// Update the document title using the browser API
 		     ReadOnly.mintingResume([], UserState, (result) => {
-		    	console.log('result', result)
+		    	//console.log('result', result)
 		    	setCurrent(result)
 		    	setLoadedFull(true)
 		    	callRandomPunk(result)

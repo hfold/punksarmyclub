@@ -20,11 +20,11 @@ export default class Main extends React.Component {
 
   componentDidMount() {
 
-    console.log('ctx', this.context)
+    //console.log('ctx', this.context)
     
     if (userSession.isSignInPending()) {
       userSession.handlePendingSignIn().then(userData => {
-        console.log('userData', userData)
+        //console.log('userData', userData)
         window.history.replaceState({}, document.title, '/');
         
         this.setState({ user: userData });
@@ -41,7 +41,7 @@ export default class Main extends React.Component {
     } else if (userSession.isUserSignedIn()) {
       
       let userData = userSession.loadUserData()
-      console.log('userData', userData)
+      //console.log('userData', userData)
       this.setState({ user: userData });
       this.context.UserDispatch({
         type: 'update',

@@ -51,7 +51,7 @@ export default function MintEvent (props) {
 		    	setIsOpen(result)
 		    	if(result) {
 		    		ReadOnly.currentMintEvent([], UserState, (result) => {
-		    			console.log('event', result);
+		    			//console.log('event', result);
 		    			setLoaded(true)
 		    			setCurrent(result)
 
@@ -72,7 +72,7 @@ export default function MintEvent (props) {
 		<p>Fill in the form and confirm opening</p>
 		<FormGroup floating>
 			<CurrencyInput className="form-control" id="fee" value={stx} onValueChange={(value, name) => {
-				console.log('value', value); 
+				//console.log('value', value); 
 				setStx(value)
 			}} />
 			{/*<Input value={stx} type="number" id="fee" onChange={(e)=>setStx(e.target.value)} />*/}
@@ -117,7 +117,7 @@ export default function MintEvent (props) {
 
 		      		let full_value = ""
 		      		let value = stx.split(",");
-		      		console.log('splitted', value)
+		      		//console.log('splitted', value)
 
 		      		full_value += String(value[0]);
 		      		if(value[1]) {

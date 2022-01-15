@@ -37,7 +37,7 @@ export default function Whitelist (props) {
 		if(!loaded) {
 
 			ReadOnly.getWhiteListAddresses([], UserState, (result) => {
-				console.log('addresses', result);
+				//console.log('addresses', result);
 				setLoaded(true)
 				setAddresses(result)
 
