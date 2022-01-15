@@ -28,7 +28,7 @@ const is_open = (curr) => {
 }
 
 const can_mint = (curr) => {
-	let founds = (curr.balance?.value > curr.mint_event?.value?.mint_price?.value) || false
+	let founds = (curr.balance?.value > (curr.mint_event?.value?.mint_price?.value || 0) ) || false
 	return (founds && curr.can_mint_address?.value) || false
 }
 
