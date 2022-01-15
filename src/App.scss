@@ -1,0 +1,149 @@
+$primary: #4db5ea;
+$secondary: #f82a5c;
+$danger: #f82a5c;
+$font-family-sans-serif: "Open Sauce", Inter, sans-serif;
+$font-size-base: 0.9rem;
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+body *{
+  text-align: left;
+  overflow-x: hidden;
+}
+
+.app_logo{
+      margin: 10px auto;
+}
+
+.site-wrapper{
+  background: #fff;
+  padding: 20px;
+  padding-top: 1px;
+  padding-bottom: 64px;
+  width: 1280px;
+  max-width: 90%;
+  margin-right: 20px;
+  margin-left: 20px;
+  border-radius: 15px;
+  box-shadow: 20px 20px #4db5ea;
+  margin: 10px auto;
+}
+
+.logos_container img{
+  line-height: 100px;
+  display: inline;
+      margin-left: 12px;
+    margin-right: 12px;
+}
+.logos_container a{
+  padding: 8px 0px;
+  background: #fff;
+  display: inline-block;
+  border-radius: 14px;
+  
+}
+.logos_container a:hover{
+  background: #f82a5c;
+}
+.logos_container a.left{
+  box-shadow: 5px 5px #4db5ea;
+}
+.logos_container a.right{
+  box-shadow: -5px 5px #4db5ea;
+}
+.logos_container .logo_img{
+  width: 50%;
+}
+.App {
+  text-align: center;
+
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.nav-item a{
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.sign-out{
+  color: $gray-600;
+}
+.sign-out:hover{
+  color: $gray-300;
+}
+
+h3{
+  font-size: calc(1.2825rem + 0.39vw) !important;
+}
+.title{
+  font-size: 48px;
+    text-align: center;
+    margin-top: 64px;
+    font-weight: bold;
+    color: #4db5ea;
+    text-shadow: 2px 2px 0px #f82a5c;
+}
+
+
+iframe{
+  width: 0 !important;
+  height: 0 !important;
+}
+
+
+
+.next-container{
+      text-align: center;
+    margin-top: 20px;
+    padding: 40px;
+}
+.next-container p{
+  text-align: center;
+    font-size: 40px;
+}
+.next-container img{
+  width: 160px;
+    margin: 10px auto;
+    border-radius: 20px;
+    box-shadow: 0 0 50px #074868;
+}
+
+.punk-image{
+  width: 160px;
+    margin: 10px auto;
+    border-radius: 20px;
+    box-shadow: 0 0 50px #074868;
+    display: inline-block;
+}
