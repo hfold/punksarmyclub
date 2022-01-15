@@ -83,10 +83,10 @@ export default function MintEvent (props) {
 		
 		<FormGroup floating>
 			<Input type="select" value={_private} id="import" onChange={(e)=>setPrivate(e.target.value)}>
-				<option value="0">
+				<option value="1">
 		        	Public
 		      	</option>
-		      	<option value="1">
+		      	<option value="0">
 		        	Private
 		      	</option>
 	      	</Input>
