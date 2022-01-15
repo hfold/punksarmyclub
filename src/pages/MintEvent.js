@@ -161,7 +161,7 @@ export default function MintEvent (props) {
 	  				<p><span style={{fontSize: 46}}>
 	  				<Stx dim={40} style={{marginRight: 6}} />
 	  				<b>STX:</b> <i style={{color: '#f82a5c', fontWeight: 'bold', fontStyle: 'normal'}}>{formatter.format_stx_integers(current.mint_price.value)}</i></span><br />
-	  					<b>Public:</b> {parseInt(current.public_value.value) === 0 ? 'YES' : 'NO'}
+	  					<b>Public:</b> {parseInt(current.public_value.value) === 0 ? 'NO' : 'YES'}
 	  				</p>
 	  				<Button color="danger" style={{color: '#fff'}} className="mt-3" onClick={async () => {
 	  					if(removing) return;

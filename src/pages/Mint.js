@@ -28,7 +28,7 @@ const is_open = (curr) => {
 }
 
 const can_mint = (curr) => {
-	let founds = (curr.balance?.value > (curr.mint_event?.value?.mint_price?.value || 0) ) || false
+	let founds = ((curr.balance?.value || 0) > (curr.mint_event?.value?.mint_price?.value || 0) ) || false
 	return (founds && curr.can_mint_address?.value) || false
 }
 
@@ -51,7 +51,7 @@ export default function Mint (props) {
 			setLoaded(true)
 			// Update the document title using the browser API
 		     ReadOnly.mintingResume([], UserState, (result) => {
-		    	//console.log('result', result)
+		    	console.log('result', result)
 		    	setCurrent(result)
 		    	setLoadedFull(true)
 		    	callRandomPunk(result)
