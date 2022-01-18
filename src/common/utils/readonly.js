@@ -41,7 +41,7 @@ export default {
 				  functionName: 'get-last-token-id',
 				  network: globals.NETWORK,
 				  functionArgs: [...args],
-				  senderAddress: UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK]
+				  senderAddress: UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK_CALLER]
 				})
 				if(cb) cb( cvToJSON(result).value.value )
 
@@ -61,7 +61,7 @@ export default {
 				  functionName: 'get_last_punk',
 				  network: globals.NETWORK,
 				  functionArgs: [...args],
-				  senderAddress: UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK]
+				  senderAddress: UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK_CALLER]
 				})
 				if(cb) cb( cvToJSON(result).value.value )
 
@@ -81,7 +81,7 @@ export default {
 				  functionName: 'is_open_minting',
 				  network: globals.NETWORK,
 				  functionArgs: [...args],
-				  senderAddress: UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK]
+				  senderAddress: UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK_CALLER]
 				})
 				if(cb) cb( cvToString(result) === 'true' )
 
@@ -92,7 +92,7 @@ export default {
 		},
 
 	isCtxOwner: async (args = [], UserState, cb = null, ecb = null) => {
-			//console.log('calling is owner')
+			console.log('calling is owner', UserState.userData.profile)
 			try {
 				
 				let result = await callReadOnlyFunction({
@@ -101,8 +101,9 @@ export default {
 				  functionName: 'is_nft_contract_owner',
 				  network: globals.NETWORK,
 				  functionArgs: [...args],
-				  senderAddress: UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK]
+				  senderAddress: UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK_CALLER]
 				})
+				console.log('risultato', result)
 				if(cb) cb( cvToString(result) === 'true' )
 
 			} catch(e) {
@@ -121,7 +122,7 @@ export default {
 				  functionName: 'current_mint_event',
 				  network: globals.NETWORK,
 				  functionArgs: [...args],
-				  senderAddress: UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK]
+				  senderAddress: UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK_CALLER]
 				})
 				if(cb) cb( cvToJSON(result).value )
 
@@ -141,7 +142,7 @@ export default {
 				  functionName: 'whitelist_addresses',
 				  network: globals.NETWORK,
 				  functionArgs: [],
-				  senderAddress: UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK]
+				  senderAddress: UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK_CALLER]
 				})
 				if(cb) cb( cvToJSON(result).value.value )
 
@@ -161,7 +162,7 @@ export default {
 				  functionName: 'minting_resume',
 				  network: globals.NETWORK,
 				  functionArgs: [],
-				  senderAddress: UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK]
+				  senderAddress: UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK_CALLER]
 				})
 				if(cb) cb( cvToJSON(result).value.value )
 
@@ -181,7 +182,7 @@ export default {
 				  functionName: 'get-punk',
 				  network: globals.NETWORK,
 				  functionArgs: [uintCV(args.token_id)],
-				  senderAddress: UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK]
+				  senderAddress: UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK_CALLER]
 				})
 				if(cb) cb( cvToJSON(result).value.value )
 

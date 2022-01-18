@@ -111,12 +111,13 @@ export default function MintEvent (props) {
 		    trigger="focus"
 		  >
 		    <PopoverBody>
-		      Are you sure to add this address?<br />
+		      Are you sure to open this event?<br />
 		      	<Button color="primary" style={{color: '#fff'}} className="mb-3" size="sm" onClick={async () => {
 		      		
 
 		      		let full_value = ""
-		      		let value = stx.split(",");
+		      		let _stx = stx || "0";
+		      		let value = _stx.split(",");
 		      		//console.log('splitted', value)
 
 		      		full_value += String(value[0]);
@@ -141,7 +142,7 @@ export default function MintEvent (props) {
 		      				type: 'add_transaction',
 		      				tx: result
 		      			})
-		      			setIsOpen(true)
+		      			setIsOpen(false)
 		      		}, (result)=>{
 		      			setAdding(false)
 		      			UserDispatch({

@@ -25,7 +25,7 @@ const Transactions = (props) => {
 
 			const load = async () => {
 				
-			    fetch(globals.STACKS_API_BASE_URL+"/extended/v1/address/"+UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK]+"/transactions?limit=50")
+			    fetch(globals.STACKS_API_BASE_URL+"/extended/v1/address/"+UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK_CALLER]+"/transactions?limit=50&unanchored=true")
 			      .then(res => res.json())
 			      .then(
 			        (result) => {

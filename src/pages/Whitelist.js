@@ -35,14 +35,14 @@ export default function Whitelist (props) {
 	const [addresses, setAddresses] = React.useState([])
 	React.useEffect(() => {
 		if(!loaded) {
-
+			console.log('carico indirizzi')
+			setLoaded(true)
 			ReadOnly.getWhiteListAddresses([], UserState, (result) => {
-				//console.log('addresses', result);
-				setLoaded(true)
+				console.log('addresses', result);
 				setAddresses(result)
 
 			}, (result) => {
-				setLoaded(true)
+				
 			})
 
 		}

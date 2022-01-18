@@ -48,7 +48,7 @@ export default {
 				      	if(ecb) ecb( result )
 				      },
 				      network: globals.NETWORK,
-				      stxAddress: UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK],
+				      stxAddress: UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK_CALLER],
 				    });
 				
 			} catch(e) {
@@ -75,7 +75,7 @@ export default {
 				      	if(ecb) ecb( result )
 				      },
 				      network: globals.NETWORK,
-				      stxAddress: UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK],
+				      stxAddress: UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK_CALLER],
 				    });
 				
 			} catch(e) {
@@ -85,7 +85,7 @@ export default {
 		},
 
 	openMintEvent: async (args = {mint_price:0, public_value: 0, address_mint: 0}, UserState, doContractCall, cb = null, ecb = null) => {
-			//console.log('calling add contractAddress')
+			console.log('calling add contractAddress', UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK_CALLER])
 			try {
 				
 				doContractCall({
@@ -102,7 +102,7 @@ export default {
 				      	if(ecb) ecb( result )
 				      },
 				      network: globals.NETWORK,
-				      stxAddress: UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK],
+				      stxAddress: UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK_CALLER],
 				    });
 				
 			} catch(e) {
@@ -129,7 +129,7 @@ export default {
 				      	if(ecb) ecb( result )
 				      },
 				      network: globals.NETWORK,
-				      stxAddress: UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK],
+				      stxAddress: UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK_CALLER],
 				    });
 				
 			} catch(e) {
@@ -156,7 +156,7 @@ export default {
 				      	if(ecb) ecb( result )
 				      },
 				      network: globals.NETWORK,
-				      stxAddress: UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK],
+				      stxAddress: UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK_CALLER],
 				    });
 				
 			} catch(e) {
@@ -219,7 +219,7 @@ export default {
 				      	if(ecb) ecb( result )
 				      },
 				      network: globals.NETWORK,
-				      stxAddress: UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK],
+				      stxAddress: UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK_CALLER],
 				    });
 				
 			} catch(e) {

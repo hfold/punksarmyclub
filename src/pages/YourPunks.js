@@ -1,6 +1,6 @@
 import React from 'react';
 import { useConnect } from '@stacks/connect-react';
-import { Button, Spinner } from 'reactstrap';
+import { Button, Spinner, Row, Col } from 'reactstrap';
 
 import {  
 	intCV,
@@ -42,23 +42,32 @@ const YourPunks = (props) => {
 
 			const load = async () => {
 				
-			    fetch(globals.STACKS_API_BASE_URL+"/extended/v1/address/"+UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK]+"/nft_events?limit=50")
+			    fetch(globals.STACKS_API_BASE_URL+"/extended/v1/address/"+UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK_CALLER]+"/assets")
 			      .then(res => res.json())
 			      .then(
 			        (result) => {
 			          setLoaded(true)
 			          //console.log('res', result)
 			          let ids = [];
-			          result.nft_events.map(e => {
-			          	if(!e.sender && e.asset_identifier == globals.CONTRACT_ADDRESS+"."+globals.CONTRACT_NAME+"::"+globals.TOKEN_STR){
-			          		let value = hexToCV(e.value.hex)
-			          		try {
-			          			let id = cvToJSON( value ).value
-			          			if(ids.indexOf(id) === -1) ids.push(id)
-			          		} catch(e) {
-			          			//console.log('e', e)
-			          		}
-			          	}
+			          result.results.map(e => {
+			          	try {
+
+			          		
+				          	if(e.event_type == 'non_fungible_token_asset' && 
+				          		e.asset.asset_id == globals.CONTRACT_ADDRESS+"."+globals.CONTRACT_NAME+"::"+globals.TOKEN_STR){
+				          		
+				          		let value = hexToCV(e.asset.value.hex)
+				          		try {
+				          			let id = cvToJSON( value ).value
+				          			
+				          			if(ids.indexOf(id) === -1) ids.push(id)
+				          		} catch(e) {
+				          			console.log('e', e)
+				          		}
+				          	}
+				        } catch(e) {
+				        	console.log('e', e)
+				        } 
 			          })
 
 			          setPunks(ids)
@@ -78,7 +87,11 @@ const YourPunks = (props) => {
 	});
 
 
-  return (<div style={{padding: 80}}>{punks.map(id => <GetPunk id={id} key={"punk_id_"+id}/>)}</div>);
+  return (<div style={{padding: 80}}>
+  	<Row style={{overflow: 'visible'}}>
+  		{punks.map(id => <Col style={{padding: 20, overflow: 'visible', textAlign: 'center'}} sm={6} xs={12} md={4}><GetPunk id={id} key={"punk_id_"+id}/></Col>)}
+  	</Row>
+  	</div>);
 };
 
 export default YourPunks;

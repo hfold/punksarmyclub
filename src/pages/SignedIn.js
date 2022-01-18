@@ -20,7 +20,7 @@ import AddPunks from './AddPunks'
 import Mint from './Mint'
 import Transactions from './Transactions'
 import YourPunks from './YourPunks'
-
+import globals from '../common/utils/globals';
 
 
 
@@ -75,6 +75,16 @@ export default class SignedInClass extends React.Component {
 				
 				<Col xs={12} sm={12} md={12}>
 					<div style={{marginTop: 28, marginBottom: 28}}>
+						<div>
+							<b>ADDRESS</b>: {this.context.UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK_CALLER]}<br />
+							<a href="#" onClick={async () => {
+										userSession.signUserOut();
+				          				this.context.UserDispatch({
+								    		type: 'logout'
+								    	})
+
+									}}>Sign out</a>
+						</div>
 					{
 						!this.state.loading ?
 						<Nav
@@ -130,19 +140,7 @@ export default class SignedInClass extends React.Component {
 						        Transactions
 						      </NavLink>
 						    </NavItem> : null}
-						    <NavItem>
-						    	<NavLink href="#"
-							      	onClick={async () => {
-										userSession.signUserOut();
-				          				this.context.UserDispatch({
-								    		type: 'logout'
-								    	})
-
-									}}
-							      >
-							        <span style={{color: '#f82a5c'}}>Sign out</span>
-							      </NavLink>
-						    </NavItem>
+						    
 						  </Nav>
 					  : <Spinner color="primary" />
 					}

@@ -10,7 +10,7 @@ module.exports = {
   webpack: override(
     // usual webpack plugin
     disableEsLint(),
-    addBabelPlugins('transform-remove-console') 
+    ( process.env === 'production' ) ? addBabelPlugins('transform-remove-console') : null
   )
 };
 /*const {override, addBabelPlugins} = require("customize-cra");

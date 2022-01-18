@@ -29,7 +29,7 @@ const is_open = (curr) => {
 
 const can_mint = (curr) => {
 	let founds = ((curr.balance?.value || 0) > (curr.mint_event?.value?.mint_price?.value || 0) ) || false
-	return (founds && curr.can_mint_address?.value) || false
+	return (founds && curr.can_mint_address?.value && is_open(curr)) || false
 }
 
 export default function Mint (props) {
