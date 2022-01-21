@@ -29,6 +29,12 @@ import {
   UserContext
 } from '../store/UserContext';
 import GetPunk from '../common/components/GetPunk';
+
+import {
+  	useParams
+} from "react-router-dom";
+import Wrapper from '../common/components/Wrapper';
+
 const YourPunks = (props) => {
  	const [loaded, setLoaded] = React.useState(false)
 	const [loading, setLoading] = React.useState(false)
@@ -36,13 +42,16 @@ const YourPunks = (props) => {
   	const [punks, setPunks] = React.useState([])
   
   	const {UserState, UserDispatch} = React.useContext(UserContext);
-	
+	let {collection} = useParams();
+
   	React.useEffect( () => {
 		if(!loaded) {
 
 			const load = async () => {
 				
-			    fetch(globals.STACKS_API_BASE_URL+"/extended/v1/address/"+UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK_CALLER]+"/assets")
+			    fetch(globals.STACKS_API_BASE_URL+"/extended/v1/address/"+
+			    	UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK_CALLER]+
+			    	"/assets")
 			      .then(res => res.json())
 			      .then(
 			        (result) => {
@@ -54,7 +63,11 @@ const YourPunks = (props) => {
 
 			          		
 				          	if(e.event_type == 'non_fungible_token_asset' && 
-				          		e.asset.asset_id == globals.CONTRACT_ADDRESS+"."+globals.CONTRACT_NAME+"::"+globals.TOKEN_STR){
+				          		e.asset.asset_id == globals.COLLECTIONS[collection].address+
+				          		"."+
+				          		globals.COLLECTIONS[collection].ctr_name+
+				          		"::"+
+				          		globals.COLLECTIONS[collection].tkn){
 				          		
 				          		let value = hexToCV(e.asset.value.hex)
 				          		try {
@@ -87,11 +100,17 @@ const YourPunks = (props) => {
 	});
 
 
-  return (<div style={{padding: 80}}>
+  return (<div>
+  	<h3 className="subtitle">YOUR NFTS</h3>
   	<Row style={{overflow: 'visible'}}>
-  		{punks.map(id => <Col style={{padding: 20, overflow: 'visible', textAlign: 'center'}} sm={6} xs={12} md={4}><GetPunk id={id} key={"punk_id_"+id}/></Col>)}
+  		{punks.map(id => 
+  			<Col style={{padding: 20, overflow: 'visible', textAlign: 'center'}} sm={6} xs={12} md={4}>
+  			<GetPunk id={id} key={"punk_id_"+id} collection={collection} /></Col>)}
   	</Row>
   	</div>);
 };
 
-export default YourPunks;
+
+export default Wrapper({route: 'YourPunks', 
+  hasHeader: true
+}, YourPunks)

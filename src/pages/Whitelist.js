@@ -3,7 +3,8 @@ import {FormGroup, Input, Label, Button, Spinner,
 UncontrolledPopover,
 PopoverHeader,
 PopoverBody,
-List} from 'reactstrap';
+List,
+Row, Col} from 'reactstrap';
 
 import contractCall from '../common/utils/contractCall';
 import {
@@ -13,13 +14,60 @@ import {
 import { useConnect } from "@stacks/connect-react";
 import ReadOnly from '../common/utils/readonly';
 
-const addAddress = (address, UserState) => {}
+import Wrapper from '../common/components/Wrapper';
 
-const removeAddress = (address, UserState) => {}
+import globals from '../common/utils/globals'
+import {
+  	useParams,
+  	useLocation
+} from "react-router-dom";
 
+const loadMempool = (address, contract_id, setTxs, old_txs, refresh) => {
 
+	const function_names = ['add_address_to_mint_event','remove_address_to_mint_event']
 
-export default function Whitelist (props) {
+	let ids = old_txs.map(t => t.tx_id);
+	console.log('ids', ids)
+	fetch(globals.STACKS_API_BASE_URL+"/extended/v1/address/"+
+    	address
+    	+"/mempool?limit=50&unanchored=true")
+        .then(res => res.json())
+        .then(
+          async (result) => {
+            console.log('-----------------MEMPOOL TRANSACTIONS------------------', result)
+            let txs = []
+            let new_ids = []
+            await result.results.map(tx => {
+            	if(tx.tx_type == 'contract_call' && 
+            		tx.contract_call &&
+            		tx.contract_call.contract_id == contract_id &&
+            		function_names.indexOf(tx.contract_call.function_name) !== -1
+            		) {
+            		txs.push(tx)
+            		console.log('metto transazione', tx)
+            		new_ids[tx.tx_id] = true
+            	} 
+            })
+            console.log('imposto nuove txs', txs)
+            setTxs(txs)
+
+            let same = true;
+            
+            await ids.map(i => {
+            	if(!new_ids[i]) same = false;
+            })
+            console.log('is the same', same)
+            if(!same) refresh()
+
+          },
+          (error) => {
+            
+          }
+        )
+  
+}
+
+function Whitelist (props) {
 	const {doContractCall} = useConnect();
 
 	const {UserState, UserDispatch} = React.useContext(UserContext);
@@ -32,135 +80,134 @@ export default function Whitelist (props) {
 
 
 	const [loaded, setLoaded] = React.useState(false)
+	const [loading, setLoading] = React.useState(false)
 	const [addresses, setAddresses] = React.useState([])
-	React.useEffect(() => {
-		if(!loaded) {
-			console.log('carico indirizzi')
-			setLoaded(true)
-			ReadOnly.getWhiteListAddresses([], UserState, (result) => {
+
+	let {collection} = useParams();
+	const location = useLocation();
+
+	const [txs, setTxs] = React.useState([]);
+
+
+	const load_pool = () => loadMempool(
+					UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK_CALLER],
+					globals.COLLECTIONS[collection].address+'.'+globals.COLLECTIONS[collection].ctr_name,
+					setTxs,
+					txs,
+					getAddesses
+				);
+
+	const getAddesses = () => {
+		if(loading) return;
+
+		setLoading(true)
+		ReadOnly.getWhiteListAddresses([], UserState, globals.COLLECTIONS[collection], (result) => {
 				console.log('addresses', result);
 				setAddresses(result)
+				setLoaded(true)
+				setLoading(false)
 
 			}, (result) => {
-				
+				console.log('errore', result)
+				setLoaded(true)
+				setLoading(false)
 			})
+	}
+
+
+	React.useEffect(() => {
+		if(!loaded) {
+			
+			setLoaded(true)
+			
+
+			getAddesses();
+			load_pool();
+
+			let pool = setInterval(()=>load_pool(), 1000*5);
+			return ()=>clearInterval(pool);
 
 		}
-	});	
+
+	}, [collection, location]);	
 	
-	return <>
-		<h3>Add address in whitelist</h3>
-		<p>Add an address to whitelist for mint events</p>
-		<FormGroup floating>
-			<Input value={address} id="add_address" onChange={(e)=>setAddress(e.target.value)} />
-			<Label for="add_address">
-		        STX Address
-	      	</Label>
-		</FormGroup>
-		<Button id="confirm_add" color="primary" style={{color: '#fff'}} className="mb-3" size="md" 
-		onClick={async () => null}>
-			{adding ? <Spinner size="sm" /> : <b>Confirm</b>}
-		</Button>
-		
+	return <div>
+		{
+			txs.length > 0 && <div className="pending">
+				<h3 className="subtitle">Pending transactions</h3>
+				{
+					<List type="unstyled">
+						{
+							txs.map((a,i,arr)=>{
+								return <li key={"list_a_"+i} style={{color:'#a5a3a3'}}>
+									{a.tx_id}<br />
+									<b>{a.contract_call.function_name}</b>
+								</li>
+							})
+						}
+					</List>
+				}
+			</div>
+		}
+		<Row>
+		<Col md={12} lg={6}>	
+			<div className="w_box">
+				<p>Add an address to whitelist for mint events</p>
+				<FormGroup floating>
+					<Input value={address} id="add_address" onChange={(e)=>setAddress(e.target.value)} />
+					<Label for="add_address">
+				        STX Address
+			      	</Label>
+				</FormGroup>
+				<Button id="confirm_add" color="primary" style={{color: '#fff'}} className="mb-3" size="lg" block 
+				onClick={async () => {
+			      		if(adding || address.length == '') return;
 
-		<hr />
-
-		{/*<h3 className="mt-3">Remove address from whitelist</h3>
-		<p>Remove an address to whitelist for mint events</p>
-		<FormGroup floating>
-			<Input value={_address} id="remove_address" onChange={(e)=>_setAddress(e.target.value)} />
-			<Label for="remove_address">
-		        STX Address
-	      	</Label>
-		</FormGroup>
-		<Button id="confirm_remove" color="danger" style={{color: '#fff'}} onClick={async () => null}>
-			{removing ? <Spinner size="sm" /> : <b>Confirm</b>}
-		</Button>*/}
-
-		<div style={{marginTop: 48}}>
-			<h3>Addresses</h3>
-			<List type="unstyled">
+			      		setAdding(true)
+			      		contractCall.addAddress({principal: address}, UserState, globals.COLLECTIONS[collection], doContractCall, (result)=>{
+			      			setAdding(false)
+			      			setAddress('')
+			      			load_pool();
+			      		}, (result)=>{
+			      			setAdding(false)
+			      		})
+			      	}}>
+					{adding ? <Spinner size="sm" /> : <b>CONFIRM</b>}
+				</Button>
+			</div>
+		</Col>
+		<Col md={12} lg={6}>
+			
+			<h3 className="subtitle">Addresses</h3>
+			<Button id="confirm_add" color="primary" style={{color: '#fff'}} className="mb-3" size="xs" 
+				onClick={async () => getAddesses()}>
+					{loading ? <Spinner size="sm" /> : "Refresh"}
+				</Button>
+			<List type="unstyled" className="addresses_list">
 				{
 					addresses.map((a,i,arr)=>{
-						return <li key={"list_a_"+i} style={{color:'#a5a3a3'}}><Button disabled={removing} close onClick={()=>{
+						return <li key={"list_a_"+i} style={{color:'#a5a3a3'}}>
+						<Button disabled={removing} close onClick={()=>{
 							if(removing) return;
 
 							setRemoving(true)
-				      		contractCall.removeAddress({principal: a.value}, UserState, doContractCall, (result)=>{
+				      		contractCall.removeAddress({principal: a.value}, UserState, globals.COLLECTIONS[collection], doContractCall, (result)=>{
 				      			setRemoving(false)
-				      			UserDispatch({
-				      				type: 'add_transaction',
-				      				tx: result
-				      			})
+				      			load_pool();
+
 				      		}, (result)=>{
 				      			setAdding(false)
-				      			UserDispatch({
-				      				type: 'add_transaction',
-				      				tx: result
-				      			})
 				      		})
-						}}/> {a.value}</li>
+						}}/><span>{a.value}</span></li>
 					})
 				}
 			</List>
-		</div>
-
-
-		<UncontrolledPopover
-		    placement="bottom"
-		    target="confirm_add"
-		    trigger="focus"
-		  >
-		    <PopoverBody>
-		      Are you sure to add this address?<br />
-		      	<Button color="primary" style={{color: '#fff'}} className="mb-3" size="sm" onClick={async () => {
-		      		if(adding || address.length == '') return;
-
-		      		setAdding(true)
-		      		contractCall.addAddress({principal: address}, UserState, doContractCall, (result)=>{
-		      			setAdding(false)
-		      			UserDispatch({
-		      				type: 'add_transaction',
-		      				tx: result
-		      			})
-		      		}, (result)=>{
-		      			setAdding(false)
-		      			UserDispatch({
-		      				type: 'add_transaction',
-		      				tx: result
-		      			})
-		      		})
-		      	}}>
-					{adding ? <Spinner size="sm" /> : 'Yes'}
-				</Button>
-		    </PopoverBody>
-	  	</UncontrolledPopover>
-	  	{/*<UncontrolledPopover
-		    placement="bottom"
-		    target="confirm_remove"
-		    trigger="focus"
-		  >
-		    <PopoverBody>
-		      Are you sure to remove this address?<br />
-		      <Button color="primary" style={{color: '#fff'}} className="mb-3" size="sm" onClick={async () => {
-		      		setRemoving(true)
-		      		contractCall.removeAddress({principal: _address}, UserState, doContractCall, (result)=>{
-		      			setRemoving(false)
-		      			UserDispatch({
-		      				type: 'add_transaction',
-		      				tx: result
-		      			})
-		      		}, (result)=>{
-		      			setAdding(false)
-		      			UserDispatch({
-		      				type: 'add_transaction',
-		      				tx: result
-		      			})
-		      		})
-		      	}}>
-					{adding ? <Spinner size="sm" /> : 'Yes'}
-				</Button>
-		    </PopoverBody>
-	  	</UncontrolledPopover>*/}
-	</>
+		</Col>
+	</Row>
+	</div>
 }
+
+
+export default Wrapper({route: 'Whitelist', 
+  hasHeader: true
+}, Whitelist)

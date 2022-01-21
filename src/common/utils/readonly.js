@@ -24,20 +24,17 @@ import {
 } from '@stacks/transactions';
 import {callReadOnlyFunction} from '@stacks/transactions';
 import { StacksMainnet, StacksTestnet } from '@stacks/network';
-
 import globals from './globals'
-
-
 
 export default {
 	
-	getLastTokenId: async (args = [], UserState, cb = null, ecb = null) => {
+	getLastTokenId: async (args = [], UserState, ctx, cb = null, ecb = null) => {
 			//console.log('calling get last token id')
 			try {
 				
 				let result = await callReadOnlyFunction({
-				  contractAddress: globals.CONTRACT_ADDRESS,
-				  contractName: globals.CONTRACT_NAME,
+				  contractAddress: ctx.address,
+				  contractName: ctx.ctr_name,
 				  functionName: 'get-last-token-id',
 				  network: globals.NETWORK,
 				  functionArgs: [...args],
@@ -51,13 +48,13 @@ export default {
 			}
 		},
 
-	getLastPunkId: async (args = [], UserState, cb = null, ecb = null) => {
+	getLastPunkId: async (args = [], UserState, ctx, cb = null, ecb = null) => {
 			//console.log('calling get last token id')
 			try {
 				
 				let result = await callReadOnlyFunction({
-				  contractAddress: globals.CONTRACT_ADDRESS,
-				  contractName: globals.CONTRACT_NAME,
+				  contractAddress: ctx.address,
+				  contractName: ctx.ctr_name,
 				  functionName: 'get_last_punk',
 				  network: globals.NETWORK,
 				  functionArgs: [...args],
@@ -71,13 +68,13 @@ export default {
 			}
 		},
 
-	isOpenMinting: async (args = [], UserState, cb = null, ecb = null) => {
+	isOpenMinting: async (args = [], UserState, ctx, cb = null, ecb = null) => {
 			//console.log('calling get last token id')
 			try {
 				
 				let result = await callReadOnlyFunction({
-				  contractAddress: globals.CONTRACT_ADDRESS,
-				  contractName: globals.CONTRACT_NAME,
+				  contractAddress: ctx.address,
+				  contractName: ctx.ctr_name,
 				  functionName: 'is_open_minting',
 				  network: globals.NETWORK,
 				  functionArgs: [...args],
@@ -91,34 +88,34 @@ export default {
 			}
 		},
 
-	isCtxOwner: async (args = [], UserState, cb = null, ecb = null) => {
+	isCtxOwner: async (args = [], UserState, ctx, cb = null, ecb = null) => {
 			console.log('calling is owner', UserState.userData.profile)
 			try {
 				
 				let result = await callReadOnlyFunction({
-				  contractAddress: globals.CONTRACT_ADDRESS,
-				  contractName: globals.CONTRACT_NAME,
+				  contractAddress: ctx.address,
+				  contractName: ctx.ctr_name,
 				  functionName: 'is_nft_contract_owner',
 				  network: globals.NETWORK,
 				  functionArgs: [...args],
 				  senderAddress: UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK_CALLER]
 				})
-				console.log('risultato', result)
+				
 				if(cb) cb( cvToString(result) === 'true' )
 
 			} catch(e) {
-				//console.log('error', e)
+				console.log('error', e)
 				if(ecb) ecb(e)
 			}
 		},
 
-	currentMintEvent: async (args = [], UserState, cb = null, ecb = null) => {
+	currentMintEvent: async (args = [], UserState, ctx, cb = null, ecb = null) => {
 			//console.log('calling current mint event')
 			try {
 				
 				let result = await callReadOnlyFunction({
-				  contractAddress: globals.CONTRACT_ADDRESS,
-				  contractName: globals.CONTRACT_NAME,
+				  contractAddress: ctx.address,
+				  contractName: ctx.ctr_name,
 				  functionName: 'current_mint_event',
 				  network: globals.NETWORK,
 				  functionArgs: [...args],
@@ -132,13 +129,13 @@ export default {
 			}
 		},
 
-	getWhiteListAddresses: async (args = [], UserState, cb = null, ecb = null) => {
+	getWhiteListAddresses: async (args = [], UserState, ctx, cb = null, ecb = null) => {
 			//console.log('calling whitelist')
 			try {
 				
 				let result = await callReadOnlyFunction({
-				  contractAddress: globals.CONTRACT_ADDRESS,
-				  contractName: globals.CONTRACT_NAME,
+				  contractAddress: ctx.address,
+				  contractName: ctx.ctr_name,
 				  functionName: 'whitelist_addresses',
 				  network: globals.NETWORK,
 				  functionArgs: [],
@@ -152,13 +149,13 @@ export default {
 			}
 		},
 
-	mintingResume: async (args = [], UserState, cb = null, ecb = null) => {
+	mintingResume: async (args = [], UserState, ctx, cb = null, ecb = null) => {
 			//console.log('calling minting resume')
 			try {
 				
 				let result = await callReadOnlyFunction({
-				  contractAddress: globals.CONTRACT_ADDRESS,
-				  contractName: globals.CONTRACT_NAME,
+				  contractAddress: ctx.address,
+				  contractName: ctx.ctr_name,
 				  functionName: 'minting_resume',
 				  network: globals.NETWORK,
 				  functionArgs: [],
@@ -172,13 +169,13 @@ export default {
 			}
 		},
 
-	getPunk: async (args = {token_id: 0}, UserState, cb = null, ecb = null) => {
+	getPunk: async (args = {token_id: 0}, UserState, ctx, cb = null, ecb = null) => {
 			if(!args.token_id) return;
 			try {
 				
 				let result = await callReadOnlyFunction({
-				  contractAddress: globals.CONTRACT_ADDRESS,
-				  contractName: globals.CONTRACT_NAME,
+				  contractAddress: ctx.address,
+				  contractName: ctx.ctr_name,
 				  functionName: 'get-punk',
 				  network: globals.NETWORK,
 				  functionArgs: [uintCV(args.token_id)],

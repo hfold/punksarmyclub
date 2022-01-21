@@ -19,9 +19,21 @@ import {
 	cvToHex,
 
 	cvToString,
-	cvToJSON
+	cvToJSON,
+
+	FungibleConditionCode,
+	makeStandardSTXPostCondition,
+	makeContractSTXPostCondition,
+
+	NonFungibleConditionCode,
+	createAssetInfo,
+	makeStandardNonFungiblePostCondition,
+	makeContractNonFungiblePostCondition,
+	bufferCVFromString,
+
+
 } from '@stacks/transactions';
-import {callReadOnlyFunction} from '@stacks/transactions';
+import {callReadOnlyFunction,makeSTXTokenTransfer} from '@stacks/transactions';
 
 import { StacksMainnet, StacksTestnet } from '@stacks/network';
 
@@ -30,13 +42,13 @@ import globals from './globals'
 
 export default {
 	
-	addAddress: async (args = {principal:''}, UserState, doContractCall, cb = null, ecb = null) => {
+	addAddress: async (args = {principal:''}, UserState, ctx, doContractCall, cb = null, ecb = null) => {
 			//console.log('calling add contractAddress')
 			try {
 				
 				doContractCall({
-				      contractAddress: globals.CONTRACT_ADDRESS,
-				      contractName: globals.CONTRACT_NAME,
+				      contractAddress: ctx.address,
+				  	  contractName: ctx.ctr_name,
 				      functionName: 'add_address_to_mint_event',
 				      functionArgs: [standardPrincipalCV(args.principal)],
 				      onFinish: (result) => {
@@ -57,13 +69,13 @@ export default {
 			}
 		},
 
-	removeAddress: async (args = {principal:''}, UserState, doContractCall, cb = null, ecb = null) => {
+	removeAddress: async (args = {principal:''}, UserState, ctx, doContractCall, cb = null, ecb = null) => {
 			//console.log('calling add contractAddress')
 			try {
 				
 				doContractCall({
-				      contractAddress: globals.CONTRACT_ADDRESS,
-				      contractName: globals.CONTRACT_NAME,
+				      contractAddress: ctx.address,
+				  	  contractName: ctx.ctr_name,
 				      functionName: 'remove_address_to_mint_event',
 				      functionArgs: [standardPrincipalCV(args.principal)],
 				      onFinish: (result) => {
@@ -84,13 +96,13 @@ export default {
 			}
 		},
 
-	openMintEvent: async (args = {mint_price:0, public_value: 0, address_mint: 0}, UserState, doContractCall, cb = null, ecb = null) => {
+	openMintEvent: async (args = {mint_price:0, public_value: 0, address_mint: 0}, UserState, ctx, doContractCall, cb = null, ecb = null) => {
 			console.log('calling add contractAddress', UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK_CALLER])
 			try {
 				
 				doContractCall({
-				      contractAddress: globals.CONTRACT_ADDRESS,
-				      contractName: globals.CONTRACT_NAME,
+				      contractAddress: ctx.address,
+				  	  contractName: ctx.ctr_name,
 				      functionName: 'open_mint_event',
 				      functionArgs: [uintCV(args.mint_price),uintCV(args.public_value),uintCV(args.address_mint)],
 				      onFinish: (result) => {
@@ -111,13 +123,13 @@ export default {
 			}
 		},
 
-	closeMintEvent: async (args = {}, UserState, doContractCall, cb = null, ecb = null) => {
+	closeMintEvent: async (args = {}, UserState, ctx, doContractCall, cb = null, ecb = null) => {
 			//console.log('calling add contractAddress')
 			try {
 				
 				doContractCall({
-				      contractAddress: globals.CONTRACT_ADDRESS,
-				      contractName: globals.CONTRACT_NAME,
+				      contractAddress: ctx.address,
+				  	  contractName: ctx.ctr_name,
 				      functionName: 'close_mint_event',
 				      functionArgs: [],
 				      onFinish: (result) => {
@@ -137,14 +149,89 @@ export default {
 				if(ecb) ecb(e)
 			}
 		},
+/*
+	gift: async (args = {}, UserState, ctx, doContractCall, cb = null, ecb = null) => {
+			//console.log('calling add contractAddress')
+			try {
+				let post_conditions = []
+				const contractAddress = ctx.address;
+				const contractName = ctx.ctr_name;
+				const postConditionCode = FungibleConditionCode.LessEqual;
+				const postConditionAmount = parseInt(200000000);
+				
+				post_conditions.push( makeStandardSTXPostCondition(
+				  contractAddress,
+				  //contractName,
+				  postConditionCode,
+				  postConditionAmount
+				) )
 
-	mint: async (args = {}, UserState, doContractCall, cb = null, ecb = null) => {
+				post_conditions.push( makeContractSTXPostCondition(
+				  contractAddress,
+				  contractName,
+				  postConditionCode,
+				  postConditionAmount
+				) )
+
+				post_conditions = null
+
+				doContractCall({
+				      contractAddress: ctx.address,
+				  	  contractName: ctx.ctr_name,
+				      functionName: 'gift-ct',
+				      functionArgs: [],
+				      onFinish: (result) => {
+				      	//console.log('onFinish', result)
+				      	if(cb) cb( result )
+				      },
+				      onCancel: (result) => {
+				      	//console.log('onFinish', result)
+				      	if(ecb) ecb( result )
+				      },
+				  	  postConditions: post_conditions,
+				      network: globals.NETWORK,
+				      stxAddress: UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK_CALLER],
+				    });
+				
+			} catch(e) {
+				//console.log('error', e)
+				if(ecb) ecb(e)
+			}
+		},*/
+
+	mint: async (args = {}, UserState, ctx, amount, doContractCall, cb = null, ecb = null) => {
 			//console.log('calling add contractAddress')
 			try {
 				
+				let post_conditions = []
+				if (
+					UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK_CALLER] != ctx.address && 
+					amount > 0) 
+				{
+					console.log('amount', amount)
+					const contractAddress = ctx.address;
+					const contractName = ctx.ctr_name;
+					const postConditionCode = FungibleConditionCode.LessEqual;
+					const postConditionAmount = parseInt(amount*1.5);
+
+					post_conditions.push( makeStandardSTXPostCondition(
+					  contractAddress,
+					  //contractName,
+					  postConditionCode,
+					  postConditionAmount
+					) )
+
+					post_conditions.push( makeContractSTXPostCondition(
+					  contractAddress,
+					  contractName,
+					  postConditionCode,
+					  postConditionAmount
+					) )
+				}
+
 				doContractCall({
-				      contractAddress: globals.CONTRACT_ADDRESS,
-				      contractName: globals.CONTRACT_NAME,
+				      contractAddress: ctx.address,
+				  	  contractName: ctx.ctr_name,
 				      functionName: 'claim_punk',
 				      functionArgs: [],
 				      onFinish: (result) => {
@@ -155,6 +242,7 @@ export default {
 				      	//console.log('onFinish', result)
 				      	if(ecb) ecb( result )
 				      },
+				  	  postConditions: post_conditions,
 				      network: globals.NETWORK,
 				      stxAddress: UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK_CALLER],
 				    });
@@ -165,7 +253,7 @@ export default {
 			}
 		},
 
-	addPunk: async (args = {list: []}, UserState, doContractCall, cb = null, ecb = null) => {
+	addPunk: async (args = {list: []}, UserState, ctx, doContractCall, cb = null, ecb = null) => {
 			//console.log('calling add punks')
 			try {
 				
@@ -206,8 +294,8 @@ export default {
 
 			  	//console.log('invio', listCV(list) )
 				doContractCall({
-				      contractAddress: globals.CONTRACT_ADDRESS,
-				      contractName: globals.CONTRACT_NAME,
+				      contractAddress: ctx.address,
+				  	  contractName: ctx.ctr_name,
 				      functionName: 'create-multiple-punk',
 				      functionArgs: [listCV(list)],
 				      onFinish: (result) => {

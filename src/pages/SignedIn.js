@@ -42,21 +42,6 @@ export default class SignedInClass extends React.Component {
 		currentTab: 'none'
 	}
 
-	
-
-	componentDidMount() {
-		ReadOnly.isCtxOwner([], this.context.UserState, (result) => {
-	    	
-	    	this.setState({loading: false, currentTab: 'mint'})
-	    	this.context.UserDispatch({
-	    		type: 'update',
-	    		obj: {
-	    			isOwner: result
-	    		}
-	    	})
-	    })
-	}
-	
 	getChild() {
 		switch(this.state.currentTab){
 			case 'mint': return <Mint />

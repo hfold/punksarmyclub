@@ -10,7 +10,10 @@ let initialState = {
   isOwner: false,
   mintEvent: {},
   mintAddresses: [],
-  txs: []
+  txs: [],
+  subscriptions: null,
+  openModal: false,
+  modalContent: {}
 };
 
 let reducer = (state, action) => {
@@ -30,7 +33,7 @@ let reducer = (state, action) => {
           return {
             ...state,
             txs: state.txs.map(tx => {
-              return (tx.tx_id === action.tx.tx_id) ? action.tx : tx
+              return (tx.tx_id === action.tx.tx_id) ? {...tx, ...action.tx} : tx
             })
           };
         } else {
@@ -41,6 +44,37 @@ let reducer = (state, action) => {
         }
       } else {
         return {...state}
+      }
+    case "open_modal":
+      return {
+            ...state,
+            openModal: true,
+            modalContent: action.punk
+          };
+    case "close_modal":
+      return {
+            ...state,
+            openModal: false,
+            modalContent: {}
+          };
+    case "update_transaction":
+      let exists = state.txs.find(tx => tx.tx_id === action.tx_id)
+      if(action.tx_ && action.tx.tx_id) {
+        let exists = state.txs.find(tx => tx.tx_id === action.tx.tx_id)
+        if(exists) {
+          return {
+            ...state,
+            txs: state.txs.map(tx => {
+              return (tx.tx_id === action.tx.tx_id) ? {...tx, ...action.tx} : tx
+            })
+          };
+        } 
+      } 
+      return {...state}
+    case "set_subscription":
+      return {
+        ...state,
+        subscriptions: action.subscriptions
       }
     case "change_theme":
       return {
