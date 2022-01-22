@@ -173,7 +173,16 @@ export default function Main (props) {
           <ModalBody>
             <Row>
               <Col md={6}sm={12}>{UserState.modalContent.image ?
-                <img style={{width:'100%'}} src={formatter.ipfs_gateway( UserState.modalContent.image )} />
+                <>
+                {
+                  formatter.video_mime_type.indexOf(UserState.modalContent.image_type || 'image') !== -1
+                  ?
+                  <video style={{width:'100%'}} className="video" autoPlay loop muted>
+                    <source src={formatter.ipfs_gateway( UserState.modalContent.image )} type="video/mp4"/>
+                  </video>
+                  : <img style={{width:'100%'}} src={formatter.ipfs_gateway( UserState.modalContent.image )} />
+                }
+                </>
                 : null 
               }</Col>
               <Col md={6}sm={12}>{UserState.modalContent.description}</Col>

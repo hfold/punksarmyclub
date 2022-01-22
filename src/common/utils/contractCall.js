@@ -30,6 +30,7 @@ import {
 	makeStandardNonFungiblePostCondition,
 	makeContractNonFungiblePostCondition,
 	bufferCVFromString,
+	PostConditionMode
 
 
 } from '@stacks/transactions';
@@ -149,7 +150,7 @@ export default {
 				if(ecb) ecb(e)
 			}
 		},
-/*
+	/*
 	gift: async (args = {}, UserState, ctx, doContractCall, cb = null, ecb = null) => {
 			//console.log('calling add contractAddress')
 			try {
@@ -157,7 +158,7 @@ export default {
 				const contractAddress = ctx.address;
 				const contractName = ctx.ctr_name;
 				const postConditionCode = FungibleConditionCode.LessEqual;
-				const postConditionAmount = parseInt(200000000);
+				const postConditionAmount = parseInt(20000000);
 				
 				post_conditions.push( makeStandardSTXPostCondition(
 				  contractAddress,
@@ -173,9 +174,8 @@ export default {
 				  postConditionAmount
 				) )
 
-				post_conditions = null
-
 				doContractCall({
+					  postConditionMode: PostConditionMode.Allow,
 				      contractAddress: ctx.address,
 				  	  contractName: ctx.ctr_name,
 				      functionName: 'gift-ct',
@@ -212,7 +212,7 @@ export default {
 					const contractAddress = ctx.address;
 					const contractName = ctx.ctr_name;
 					const postConditionCode = FungibleConditionCode.LessEqual;
-					const postConditionAmount = parseInt(amount*1.5);
+					const postConditionAmount = parseInt(amount);
 
 					post_conditions.push( makeStandardSTXPostCondition(
 					  contractAddress,
@@ -221,12 +221,12 @@ export default {
 					  postConditionAmount
 					) )
 
-					post_conditions.push( makeContractSTXPostCondition(
-					  contractAddress,
-					  contractName,
-					  postConditionCode,
-					  postConditionAmount
-					) )
+					//post_conditions.push( makeContractSTXPostCondition(
+					  //contractAddress,
+					  //contractName,
+					  //postConditionCode,
+					  //postConditionAmount
+					//) )
 				}
 
 				doContractCall({
@@ -243,6 +243,7 @@ export default {
 				      	if(ecb) ecb( result )
 				      },
 				  	  postConditions: post_conditions,
+				  	  postConditionMode: PostConditionMode.Allow,
 				      network: globals.NETWORK,
 				      stxAddress: UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK_CALLER],
 				    });

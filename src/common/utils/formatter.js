@@ -14,6 +14,7 @@ export default {
 		return url;
 
 	},
+	video_mime_type: ['video/mp4', 'video/ogg'],
 	getIpfsUrl: async (url) => {
 
 		//if(url && url.match(/ipfs:\/\//)) {

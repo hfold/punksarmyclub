@@ -12,7 +12,7 @@ window.COLLECTIONS = {
 	'punks': {
 		address: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
 		ctr_name: 'punk-army-nft',
-		tkn: 'PUNK_ARMY_NFT_TKN_STR',
+		tkn: 'PunksArmyToken',
 		name: 'Punks',
 		description: '1k dangerous punks',
 		enabled: true,
@@ -24,26 +24,28 @@ window.COLLECTIONS = {
 			"ipfs://QmXm6d2hYVFWSZZiLLhbDKcWRpkGfwoTYMiaotScpXPYDk/2"
 		]
 	},
-	'parot': {
+	'pet': {
 		address: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
-		ctr_name: 'punk-army-parot-nft',
-		name: 'Parot',
-		tkn: 'PUNK_ARMY_PAROT_NFT_TKN_STR',
-		description: '3 Fuc***g cool parots',
-		enabled: true,
+		ctr_name: 'punk-army-pets-nft',
+		name: 'Pets',
+		tkn: 'PunksArmyPets',
+		description: 'Coming soon',
+		enabled: false,
 		logo_image: 'parot.jpeg',
 		main_image: 'parot.jpeg',
 		gallery: []	
 	},
-	'animated': {
+	'ancestor': {
 		address: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
-		ctr_name: 'punk-army-animated-nft',
-		name: 'Animated',
+		ctr_name: 'punk-army-ancestors-nft',
+		name: 'Ancestors',
 		description: '10 strong animated punks',
-		tkn: 'PUNK_ARMY_ANCESTORS_NFT_TKN_STR',
+		tkn: 'PunksArmyAncestors',
 		enabled: true,
 		logo_image: 'animated.gif',
 		main_image: 'animated.gif',
-		gallery: []	
+		gallery: [
+			"ipfs://QmShDkpNzAmHHEDtWtg7striv3iRui1cFSN87hGExrXTLb/0"		
+		]	
 	}
 }
