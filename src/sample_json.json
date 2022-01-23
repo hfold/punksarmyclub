@@ -1,6 +1,6 @@
 [
-	{"metadata_url":"https://gateway.pinata.cloud/ipfs/QmXm6d2hYVFWSZZiLLhbDKcWRpkGfwoTYMiaotScpXPYDk/0"},
-	{"metadata_url":"https://gateway.pinata.cloud/ipfs/QmXm6d2hYVFWSZZiLLhbDKcWRpkGfwoTYMiaotScpXPYDk/1"},
-	{"metadata_url":"https://gateway.pinata.cloud/ipfs/QmXm6d2hYVFWSZZiLLhbDKcWRpkGfwoTYMiaotScpXPYDk/2"},
-	{"metadata_url":"https://gateway.pinata.cloud/ipfs/QmXm6d2hYVFWSZZiLLhbDKcWRpkGfwoTYMiaotScpXPYDk/3"}
+	{"metadata_url":"ipfs://QmXm6d2hYVFWSZZiLLhbDKcWRpkGfwoTYMiaotScpXPYDk/0"},
+	{"metadata_url":"ipfs://QmXm6d2hYVFWSZZiLLhbDKcWRpkGfwoTYMiaotScpXPYDk/1"},
+	{"metadata_url":"ipfs://QmXm6d2hYVFWSZZiLLhbDKcWRpkGfwoTYMiaotScpXPYDk/2"},
+	{"metadata_url":"ipfs://QmXm6d2hYVFWSZZiLLhbDKcWRpkGfwoTYMiaotScpXPYDk/3"}
 ]
