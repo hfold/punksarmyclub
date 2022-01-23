@@ -45,7 +45,7 @@ export default function Header(props) {
 		<Row>
 			<Col lg={5} md={12}>
 				<div className="text-right">
-					<h1 className="title">Punks Army<br />NFT Club</h1>	
+					<h1 className="title">Punks Army<br />NFTs Club</h1>	
 					<a className="social_url" href={window.TWITTER_URL} target="_blank"><BsTwitter /></a> 
 					<a className="social_url" href={window.DISCORD_URL} target="_blank"><BsDiscord /></a>
 
