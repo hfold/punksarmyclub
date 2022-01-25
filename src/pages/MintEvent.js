@@ -32,7 +32,7 @@ import {
 
 const loadMempool = (address, contract_id, setTxs, old_txs) => {
 
-	const function_names = ['open_mint_event', 'close_mint_event']
+	const function_names = ['open_mint_event', 'close_mint_event','edit_mint_event']
 
 	
 	
@@ -71,8 +71,7 @@ function MintEvent (props) {
 	const [loaded, setLoaded] = React.useState(false)
 	const [loading, setLoading] = React.useState(false)
 	const [current, setCurrent] = React.useState(null)
-
-
+	
 	const {doContractCall} = useConnect();
 	const {UserState, UserDispatch} = React.useContext(UserContext);
 
@@ -104,10 +103,20 @@ function MintEvent (props) {
 			console.log('-------------EVENT------------', result)
 
 			if(!loaded) setLoaded(true)
+
+			console.log('current', result)
 			setCurrent(result)
 			setIsOpen(result.is_open.value)
+			console.log('open')
+			setStx( parseFloat(result.mint_price.value/1000000).toFixed(2) )
+			console.log('stx')
+			setPrivate(parseInt(result.public_value.value))
+			console.log('private')
+			setAddrm(parseInt(result.address_mint.value) )
+			console.log('addrm')
 	    	
 	    	setLoading(false)
+
 	    }, (err) => {
 	    	if(!loaded) setLoaded(true)
 	    	setIsOpen(false)
@@ -149,13 +158,39 @@ function MintEvent (props) {
 				onClick={async () => loadCurrentEvent()}>
 					{loading ? <Spinner size="sm" /> : "Refresh"}
 				</Button>
-				{!is_open ? 
-				<>
-				<h3 className="subtitle">Open mint event</h3>
+				{
+		  			current && current.is_open.value ? <div className="bg_black_el">
+		  				<h3>#{current.id?.value}</h3>
+		  				<p><span style={{fontSize: 46}}>
+		  				<Stx dim={40} style={{marginRight: 6}} />
+		  				<b>STX:</b> <span className="currency">{formatter.format_stx_integers(current.mint_price.value)}</span></span><br />
+		  					<b>Public:</b> {parseInt(current.public_value.value) === 0 ? 'NO' : 'YES'}<br />
+		  					<b>Max per address:</b> {parseInt(current.address_mint.value)}
+		  				</p>
+		  				<Button color="danger" style={{color: '#fff'}} className="mt-3" size="lg" onClick={async () => {
+		  					if(removing) return;
+				      		setRemoving(true)
+				      		contractCall.closeMintEvent({}, UserState, globals.COLLECTIONS[collection], doContractCall, (result)=>{
+				      			setRemoving(false)
+				      			
+				      			load_pool();
+				      		}, (result)=>{
+				      			setRemoving(false)
+				      		})
+				      	}}>
+							{removing ? <Spinner size="sm" /> : <b>CLOSE EVENT</b>}
+						</Button>
+		  			</div>
+		  			: null
+		  		}
+		  		<div style={{height: 24, width: '100%'}}></div>
+				<h3 className="subtitle">{!is_open ? "Open mint event" : "Edit mint event"}</h3>
 				<div className="w_box">
-					<p>Fill in the form and confirm opening</p>
+					<p>Fill in the form and confirm</p>
 					<FormGroup floating>
-						<CurrencyInput className="form-control" id="fee" value={stx} onValueChange={(value, name) => {
+						<CurrencyInput 
+						decimalSeparator="." groupSeparator=","
+						className="form-control" id="fee" value={stx} onValueChange={(value, name) => {
 							setStx(value)
 						}} />
 						<Label for="fee">
@@ -189,8 +224,8 @@ function MintEvent (props) {
 
 					      		let full_value = ""
 					      		let _stx = stx || "0";
-					      		let value = _stx.split(",");
-					      		//console.log('splitted', value)
+					      		let value = _stx.split(".");
+					      		console.log('splitted', value)
 
 					      		full_value += String(value[0]);
 					      		if(value[1]) {
@@ -207,7 +242,11 @@ function MintEvent (props) {
 					      		
 					      		if(adding) return;
 					      		setAdding(true)
-					      		contractCall.openMintEvent(
+
+					      		let fn = 'openMintEvent';
+					      		if(is_open) fn = 'editMintEvent'
+					      		
+					      		contractCall[fn](
 					      			{mint_price: stx_full_value, public_value: _private, address_mint: addrm}, 
 					      			UserState, 
 					      			globals.COLLECTIONS[collection], 
@@ -220,38 +259,12 @@ function MintEvent (props) {
 					      			setAdding(false)
 					      			
 					      		})
+
 					      	}}>
 						{adding ? <Spinner size="sm" /> : <b>Confirm</b>}
 					</Button>
 				</div>
-				</>
-			: <>
-		  		{
-		  			current ? <div className="bg_black_el">
-		  				<h3>#{current.id?.value}</h3>
-		  				<p><span style={{fontSize: 46}}>
-		  				<Stx dim={40} style={{marginRight: 6}} />
-		  				<b>STX:</b> <span className="currency">{formatter.format_stx_integers(current.mint_price.value)}</span></span><br />
-		  					<b>Public:</b> {parseInt(current.public_value.value) === 0 ? 'NO' : 'YES'}<br />
-		  					<b>Max per address:</b> {parseInt(current.address_mint.value)}
-		  				</p>
-		  				<Button color="danger" style={{color: '#fff'}} className="mt-3" size="lg" onClick={async () => {
-		  					if(removing) return;
-				      		setRemoving(true)
-				      		contractCall.closeMintEvent({}, UserState, globals.COLLECTIONS[collection], doContractCall, (result)=>{
-				      			setRemoving(false)
-				      			
-				      			load_pool();
-				      		}, (result)=>{
-				      			setRemoving(false)
-				      		})
-				      	}}>
-							{removing ? <Spinner size="sm" /> : <b>CLOSE EVENT</b>}
-						</Button>
-		  			</div>
-		  			: null
-		  		}
-	  		</>}</Col>
+			</Col>
 		</Row>
 	</> : <Spinner color="primary" />
 }

@@ -476,3 +476,17 @@ margin-top: 26px;
     background-color: #fff !important;
   }
 }
+
+
+.to-mint-input{
+  color: rgb(0, 0, 0);
+  font-size: 70px;
+  line-height: 90px;
+  height: 110px !important;
+  font-weight: bold;
+}
+.no-border:before, .no-border:after{
+  content: "";
+  width: 0;
+  height: 0;
+}

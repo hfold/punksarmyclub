@@ -27,7 +27,44 @@ import { StacksMainnet, StacksTestnet } from '@stacks/network';
 import globals from './globals'
 
 export default {
-	
+	getCanAddMultipleWhitelist: async (args = [], UserState, ctx, cb = null, ecb = null) => {
+			//console.log('calling get last token id')
+			try {
+				
+				let result = await callReadOnlyFunction({
+				  contractAddress: ctx.address,
+				  contractName: ctx.ctr_name,
+				  functionName: 'has_multiple_whitelist',
+				  network: globals.NETWORK,
+				  functionArgs: [...args],
+				  senderAddress: UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK_CALLER]
+				})
+				if(cb) cb( cvToJSON(result).value.value )
+
+			} catch(e) {
+				if(ecb) ecb(e)
+			}
+		},
+
+	hasAvaibleMultipleMint: async (args = [], UserState, ctx, cb = null, ecb = null) => {
+			//console.log('calling get last token id')
+			try {
+				
+				let result = await callReadOnlyFunction({
+				  contractAddress: ctx.address,
+				  contractName: ctx.ctr_name,
+				  functionName: 'has_avaible_multiple_mint',
+				  network: globals.NETWORK,
+				  functionArgs: [...args],
+				  senderAddress: UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK_CALLER]
+				})
+				if(cb) cb( cvToJSON(result).value.value )
+
+			} catch(e) {
+				if(ecb) ecb(e)
+			}
+		},
+
 	getLastTokenId: async (args = [], UserState, ctx, cb = null, ecb = null) => {
 			//console.log('calling get last token id')
 			try {

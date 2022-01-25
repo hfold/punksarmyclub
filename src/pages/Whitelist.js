@@ -22,9 +22,11 @@ import {
   	useLocation
 } from "react-router-dom";
 
+import CodeEditor from '@uiw/react-textarea-code-editor';
+
 const loadMempool = (address, contract_id, setTxs, old_txs, refresh) => {
 
-	const function_names = ['add_address_to_mint_event','remove_address_to_mint_event']
+	const function_names = ['empty_whitelist', 'add_multiple_addresses_to_mint_event','add_address_to_mint_event','remove_address_to_mint_event','has_multiple_whitelist']
 
 	let ids = old_txs.map(t => t.tx_id);
 	console.log('ids', ids)
@@ -72,6 +74,8 @@ function Whitelist (props) {
 
 	const {UserState, UserDispatch} = React.useContext(UserContext);
 
+	const [can_add_multiple, setCanAddMultiple] = React.useState(false)
+	const [multiple_addresses, setMultipleAddresses] = React.useState(false)
 	const [address, setAddress] = React.useState('')
 	const [_address, _setAddress] = React.useState('')
 
@@ -114,6 +118,19 @@ function Whitelist (props) {
 			})
 	}
 
+	const canAddMultipleWhitelist = () => {
+		if(loading) return;
+
+		setLoading(true)
+		ReadOnly.getCanAddMultipleWhitelist([], UserState, globals.COLLECTIONS[collection], (result) => {
+				console.log('can_add_multiple', result);
+				setCanAddMultiple(result)
+			}, (result) => {
+				console.log('errore can_add_multiple', result)
+				setCanAddMultiple(false)
+			})
+	}
+
 
 	React.useEffect(() => {
 		if(!loaded) {
@@ -122,6 +139,7 @@ function Whitelist (props) {
 			
 
 			getAddesses();
+			canAddMultipleWhitelist();
 			load_pool();
 
 			let pool = setInterval(()=>load_pool(), 1000*5);
@@ -152,7 +170,7 @@ function Whitelist (props) {
 		<Row>
 		<Col md={12} lg={6}>	
 			<div className="w_box">
-				<p>Add an address to whitelist for mint events</p>
+				<p>Add <b>single</b> address to whitelist for mint events</p>
 				<FormGroup floating>
 					<Input value={address} id="add_address" onChange={(e)=>setAddress(e.target.value)} />
 					<Label for="add_address">
@@ -175,6 +193,45 @@ function Whitelist (props) {
 					{adding ? <Spinner size="sm" /> : <b>CONFIRM</b>}
 				</Button>
 			</div>
+			{can_add_multiple ?
+			<div className="w_box" style={{marginTop: 36}}>
+				<p>Add <b>multiple</b> addresses to whitelist for mint events</p>
+				<CodeEditor
+			      value={multiple_addresses}
+			      language="js"
+			      placeholder={"Please enter a json list of principals (es. \n\t[\n\t\t\"ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM\",\n\t\t\"ST1SJ3DTE5DN7X54YDH5D64R3BCB6A2AG2ZQ8YPD5\"\n\t]\n)"}
+			      onChange={(evn) => setMultipleAddresses(evn.target.value)}
+			      padding={15}
+			      minHeight={350}
+			      style={{
+			        backgroundColor: "#f5f5f5"
+			      }}
+			    />
+				<Button id="confirm_add_multiple" color="primary" style={{color: '#fff', marginTop: 12}} className="mb-3" size="lg" block 
+				onClick={async () => {
+
+						let addresses = [];
+						try {
+							addresses = JSON.parse(multiple_addresses)
+						} catch(e) {
+							alert("Invalid addresses list");
+							return;
+						}
+
+			      		if(adding || addresses.length == 0) return;
+
+			      		setAdding(true)
+			      		contractCall.addMultipleAddresses({list: addresses}, UserState, globals.COLLECTIONS[collection], doContractCall, (result)=>{
+			      			setAdding(false)
+			      			setMultipleAddresses('')
+			      			load_pool();
+			      		}, (result)=>{
+			      			setAdding(false)
+			      		})
+			      	}}>
+					{adding ? <Spinner size="sm" /> : <b>CONFIRM</b>}
+				</Button>
+			</div> : null}
 		</Col>
 		<Col md={12} lg={6}>
 			
@@ -183,6 +240,20 @@ function Whitelist (props) {
 				onClick={async () => getAddesses()}>
 					{loading ? <Spinner size="sm" /> : "Refresh"}
 				</Button>
+			{
+				can_add_multiple ?
+			<Button id="remove_all" color="danger" style={{color: '#fff', marginLeft: 12}} className="mb-3" size="xs" 
+				onClick={async () => {
+					contractCall.emptyAddresses({}, UserState, globals.COLLECTIONS[collection], doContractCall, (result)=>{
+			      			setRemoving(false)
+			      			setMultipleAddresses('')
+			      			load_pool();
+			      		}, (result)=>{
+			      			setRemoving(false)
+			      		})
+				}}>
+					{removing ? <Spinner size="sm" /> : "Remove all"}
+				</Button> : null}
 			<List type="unstyled" className="addresses_list">
 				{
 					addresses.map((a,i,arr)=>{

@@ -9,7 +9,7 @@ Col,
 List
 } from 'reactstrap';
 
-import AceEditor from "react-ace";
+import CodeEditor from '@uiw/react-textarea-code-editor';
 
 import contractCall from '../common/utils/contractCall';
 import {
@@ -20,8 +20,6 @@ import { useConnect } from "@stacks/connect-react";
 
 import ReadOnly from '../common/utils/readonly';
 
-import "ace-builds/src-noconflict/mode-json";
-import "ace-builds/src-noconflict/theme-github";
 
 
 import Wrapper from '../common/components/Wrapper';
@@ -161,13 +159,25 @@ function AddPunks (props) {
 		<p style={{color: '#fff'}}>Copy and paste a json array in the editor and then call the function</p>
 		{adding ? <>
 			<p>Process: {added}/{total_to_add}</p>
-			</> : <AceEditor
-		    mode="json"
-		    onChange={(newValue)=>setJsonVal(newValue)}
-		    style={{width: '100%'}}
-		    name="editor_json"
-		    editorProps={{ $blockScrolling: true }}
-		  />}
+			</> : <CodeEditor
+			      value={json_val}
+			      language="js"
+			      placeholder={`Please enter a json list of metadata_url (es. 
+	[
+		{"metadata_url":"ipfs://QmXm6d2hYVFWSZZiLLhbDKcWRpkGfwoTYMiaotScpXPYDk/0"},
+		{"metadata_url":"ipfs://QmXm6d2hYVFWSZZiLLhbDKcWRpkGfwoTYMiaotScpXPYDk/1"},
+		{"metadata_url":"ipfs://QmXm6d2hYVFWSZZiLLhbDKcWRpkGfwoTYMiaotScpXPYDk/2"},
+		{"metadata_url":"ipfs://QmXm6d2hYVFWSZZiLLhbDKcWRpkGfwoTYMiaotScpXPYDk/3"}
+	]
+)
+			      	`}
+			      onChange={(evn) => setJsonVal(evn.target.value)}
+			      padding={15}
+			      minHeight={350}
+			      style={{
+			        backgroundColor: "#f5f5f5"
+			      }}
+			    />}
 		<Button color="primary" block style={{color: '#fff'}} className="mt-3" size="lg" onClick={async () => {
 			if(adding) return;
 

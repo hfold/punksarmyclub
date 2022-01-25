@@ -32,7 +32,8 @@ Nav, NavItem,
 Modal,
 ModalHeader,
 ModalBody,
-ModalFooter
+ModalFooter,
+List
 } from 'reactstrap';
 
 import { io } from "socket.io-client";
@@ -185,7 +186,20 @@ export default function Main (props) {
                 </>
                 : null 
               }</Col>
-              <Col md={6}sm={12}>{UserState.modalContent.description}</Col>
+              <Col md={6}sm={12}>
+                <h3 className="subtitle" style={{marginTop: 24}}>DESCRIPTION</h3>
+                {UserState.modalContent.description}
+                
+                {UserState.modalContent.attributes && <><h3 className="subtitle no-border" style={{marginTop: 24}}>TRAITS</h3><List type="unstyled" style={{marginTop: 12}}>
+                  {
+                    UserState.modalContent.attributes.map((a,i,arr)=>{
+                      return <li key={"list_a_"+i} style={{color:'#fff'}}>
+                        <b>{a.trait_type}</b>: {a.value}
+                      </li>
+                    })
+                  }
+                </List></>}
+              </Col>
             </Row>
           </ModalBody>
         </Modal>

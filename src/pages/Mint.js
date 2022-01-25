@@ -7,10 +7,10 @@ Alert,
 List,
 Row, Col,
 Carousel,
-  CarouselItem,
-  CarouselControl,
-  CarouselIndicators,
-  CarouselCaption
+CarouselItem,
+CarouselControl,
+CarouselIndicators,
+CarouselCaption,
 } from 'reactstrap';
 
 
@@ -42,7 +42,7 @@ const is_open = (curr) => {
 }
 
 const has_stx = (curr) => {
-	return ((curr.balance?.value || 0) > (curr.mint_event?.value?.mint_price?.value || 0) ) || false
+	return (parseInt(curr.balance?.value || 0) > parseInt(curr.mint_event?.value?.mint_price?.value || 0) ) || false
 }
 
 const can_mint_address = (curr) => {
@@ -69,7 +69,7 @@ const getGalleryElements = (collection) => {
 
 const loadMempool = (address, contract_id, setTxs, old_txs) => {
 
-	const function_names = ['claim_punk']
+	const function_names = ['claim_punk', 'claim_multiple']
 
 	
 	
@@ -115,6 +115,8 @@ function Mint (props) {
 	const {doContractCall} = useConnect();
 	const {UserState, UserDispatch} = React.useContext(UserContext);
 
+	const [has_avaible_multiple, setHasAvaibleMultiple] = React.useState(false);
+	const [multiple_mint, setMultipleMint] = React.useState(1);
 	const [random_punk, setRandomPunk] = React.useState(null);
 	const [claiming, setClaiming] = React.useState(false);
 	const [claimed, setClaimed] = React.useState(false);
@@ -136,15 +138,27 @@ function Mint (props) {
 		if(loading) return;
 		setLoading(true)
 		ReadOnly.mintingResume([], UserState, globals.COLLECTIONS[collection],  (result) => {
-	    	console.log('result', result)
+	    	console.log('mint resume result', result)
 	    	setCurrent(result)
 	    	setLoaded(true)
 	    	setLoading(false)
-	    	//callRandomPunk(result)
-
+	    	
 	    }, (err)=>{
 	    	setLoaded(true)
 	    	setLoading(false)
+	    })
+	}
+
+	const loadAvaibleMultipleMint = () => {
+		if(loading) return;
+		setLoading(true)
+		ReadOnly.hasAvaibleMultipleMint([], UserState, globals.COLLECTIONS[collection],  (result) => {
+	    	console.log('multi result', result)
+	    	setHasAvaibleMultiple(result)
+	    	
+	    }, (err)=>{
+	    	console.log('err multi', err)
+	    	setHasAvaibleMultiple(false)
 	    })
 	}
 
@@ -152,6 +166,7 @@ function Mint (props) {
 		setLoaded(false)
 		
 		loadMintingResume();
+		loadAvaibleMultipleMint();
 
 		load_pool();
 
@@ -160,6 +175,19 @@ function Mint (props) {
 
 	}, [collection, location]);
 
+	const getStxMultiplier = (price) => {
+		return multiple_mint ? price * multiple_mint : price
+	}
+
+	const max_to_mint = () => {
+		let avaible_punks = parseInt(current.last_punk_id.value) - parseInt(current.last_nft_id.value);
+		let minted_punks = parseInt(current.minted_tokens?.value || 0)
+		let addr_mint = parseInt(current.mint_event?.value.address_mint?.value)
+
+		let val = addr_mint - minted_punks;
+		if(avaible_punks < val) val = avaible_punks;
+		return val
+	}
 
 	const returnMessageMintElement = () => {
 		if(!is_open(current)) return <p className="text-danger">MINT IS CLOSED</p>
@@ -174,8 +202,42 @@ function Mint (props) {
 			? <React.Fragment>
 				<p>{parseInt(current.last_punk_id?.value || 0) - parseInt(current.last_nft_id?.value || 0)} LEFT</p>
 				{
+					has_avaible_multiple
+					?
+					<div className="w_box" style={{margin: '10px auto'}}>
+						<FormGroup floating>
+							<Input className="to-mint-input" 
+							value={multiple_mint} 
+							type="number" 
+							id="max_mint" 
+							min={1}
+							style={{color: '#000'}}
+							onBlur={(e)=>{
+								let max = max_to_mint();
+								if(parseInt(multiple_mint) < 1 || isNaN(multiple_mint)) {
+									setMultipleMint(1);
+								} else
+									if(parseInt(multiple_mint) > max) {
+										setMultipleMint(max)
+								}
+							}}
+							onChange={(e)=>{
+								setMultipleMint(parseInt(e.target.value))
+							}} />
+							<Label for="max_mint" style={{color: '#000'}}>
+						        Select how much NFTs to mint
+					      	</Label>
+						</FormGroup>
+					</div>
+					: null
+				}
+				{
 					formatter.format_stx_integers(current.mint_event?.value?.mint_price?.value || 0) > 0 ?
-					<p className="mint_price">STX PRICE: {formatter.format_stx_integers(current.mint_event?.value?.mint_price?.value || 0)}</p>
+					<p className="mint_price">STX PRICE: {
+						getStxMultiplier( 
+							formatter.format_stx_integers(current.mint_event?.value?.mint_price?.value || 0)
+						)
+					}</p>
 					: <p className="mint_price">FREE MINTING</p>
 				}
 				<Button color="danger" style={{color: '#fff'}} size="lg" className="mt-3" onClick={async () => {
@@ -184,18 +246,43 @@ function Mint (props) {
 						return;
 					}
 		      		setClaiming(true)
-		      		contractCall.mint({}, UserState, globals.COLLECTIONS[collection], (current.mint_event?.value?.mint_price?.value || 0), doContractCall, (result)=>{
-		      			
-		      			console.log('res mint', result)
-		      			setClaiming(false)
-		      			setClaimed(true)
-		      			load_pool();
+		      		if(multiple_mint && multiple_mint > 1) {
+			      		
+			      		let max = max_to_mint();
+			      		let to_add_value = multiple_mint;
+			      		if(to_add_value > max) {
+			      			to_add_value = max; 
+			      		} else 
+			      			if(isNaN(to_add_value) || to_add_value < 1) {
+			      				to_add_value = 1;
+			      			}
 
-		      		}, (result)=>{
-		      			console.log('error', result)
-		      			setClaiming(false)
-		      			
-		      		})
+			      		contractCall.mintMultiple({amount: to_add_value}, UserState, globals.COLLECTIONS[collection], (current.mint_event?.value?.mint_price?.value || 0), doContractCall, (result)=>{
+			      			
+			      			console.log('res mint', result)
+			      			setClaiming(false)
+			      			setClaimed(true)
+			      			load_pool();
+
+			      		}, (result)=>{
+			      			console.log('error', result)
+			      			setClaiming(false)
+			      			
+			      		})
+			      	} else {
+			      		contractCall.mint({}, UserState, globals.COLLECTIONS[collection], (current.mint_event?.value?.mint_price?.value || 0), doContractCall, (result)=>{
+			      			
+			      			console.log('res mint', result)
+			      			setClaiming(false)
+			      			setClaimed(true)
+			      			load_pool();
+
+			      		}, (result)=>{
+			      			console.log('error', result)
+			      			setClaiming(false)
+			      			
+			      		})
+			      	}
 		      	}}>
 					{claiming ? <Spinner color="#000" size="lg" /> : <b>CLAIM YOUR PUNK</b>}
 				</Button>
