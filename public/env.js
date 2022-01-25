@@ -1,6 +1,6 @@
 window.network = 'mainnet'
 window.CONTRACT_ADDRESS = 'SP2A665S3H6FVMZSY4VJ17ESXX21CGS0A32984B1H';//'ST1Y81WMHPCZ5Y92E6BAJDP0CR8PJXB53E2J71436'
-window.CONTRACT_NAME = 'AncestorsNFTs' //punks-test
+window.CONTRACT_NAME = 'Punks-Army-Ancestors-NFTs' //punks-test
 window.COLLECTION_URL = 'https://punksarmynft.club/'
 window.MAX_PUNK = 2500
 window.DISCORD_URL = 'https://discord.gg/rpFju7cPt9'
@@ -11,7 +11,7 @@ window.GATEWAY = 'https://ipfs.io/ipfs/'
 window.COLLECTIONS = {
 	'ancestor': {
 		address: 'SP2A665S3H6FVMZSY4VJ17ESXX21CGS0A32984B1H',
-		ctr_name: 'AncestorsNFTs',
+		ctr_name: 'Punks-Army-Ancestors-NFTs',
 		name: 'Ancestors',
 		description: 'The Ancestors of the Punks Army',
 		tkn: 'PunksArmyAncestors',
