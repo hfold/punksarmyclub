@@ -204,7 +204,7 @@ function Mint (props) {
 	}
 	
 	return loaded ? <>
-		<div className="bg_black_el">
+		<div className="bg_black_el" style={{minHeight: 100}}>
 			<Row>
 				<Col lg={6} md={12} className="offset-lg-3 offset-md-0">
 					{
@@ -274,7 +274,7 @@ function Mint (props) {
 				</Col>
 			</Row>
 		</div>
-	</> : <Spinner color="primary" />
+	</> : <div style={{minHeight: 100, textAlign: 'center'}}><Spinner color="white" /></div>
 }
 
 

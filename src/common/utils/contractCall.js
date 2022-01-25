@@ -215,7 +215,7 @@ export default {
 					const postConditionAmount = parseInt(amount);
 
 					post_conditions.push( makeStandardSTXPostCondition(
-					  contractAddress,
+					  UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK_CALLER],
 					  //contractName,
 					  postConditionCode,
 					  postConditionAmount
@@ -243,7 +243,7 @@ export default {
 				      	if(ecb) ecb( result )
 				      },
 				  	  postConditions: post_conditions,
-				  	  postConditionMode: PostConditionMode.Allow,
+				  	  postConditionMode: PostConditionMode.Deny,
 				      network: globals.NETWORK,
 				      stxAddress: UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK_CALLER],
 				    });
