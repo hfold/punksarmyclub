@@ -30,6 +30,7 @@ import {
 } from '../store/UserContext';
 import GetPunk from '../common/components/GetPunk';
 
+import moment from 'moment';
 import {
   	useParams
 } from "react-router-dom";
@@ -51,25 +52,24 @@ const YourPunks = (props) => {
 				
 			    fetch(globals.STACKS_API_BASE_URL+"/extended/v1/address/"+
 			    	UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK_CALLER]+
-			    	"/assets")
+			    	"/nft_events?limit=50&t="+moment.unix())
 			      .then(res => res.json())
 			      .then(
 			        (result) => {
 			          setLoaded(true)
 			          //console.log('res', result)
 			          let ids = [];
-			          result.results.map(e => {
+			          result.nft_events.map(e => {
 			          	try {
 
 			          		
-				          	if(e.event_type == 'non_fungible_token_asset' && 
-				          		e.asset.asset_id == globals.COLLECTIONS[collection].address+
+				          	if(e.asset_identifier == globals.COLLECTIONS[collection].address+
 				          		"."+
 				          		globals.COLLECTIONS[collection].ctr_name+
 				          		"::"+
 				          		globals.COLLECTIONS[collection].tkn){
 				          		
-				          		let value = hexToCV(e.asset.value.hex)
+				          		let value = hexToCV(e.value.hex)
 				          		try {
 				          			let id = cvToJSON( value ).value
 				          			

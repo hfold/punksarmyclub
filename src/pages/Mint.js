@@ -182,11 +182,11 @@ function Mint (props) {
 	const max_to_mint = () => {
 		let avaible_punks = parseInt(current.last_punk_id.value) - parseInt(current.last_nft_id.value);
 		let minted_punks = parseInt(current.minted_tokens?.value || 0)
-		let addr_mint = parseInt(current.mint_event?.value.address_mint?.value)
+		let addr_mint = parseInt(current.mint_event?.value.address_mint?.value) == 0 ? 100 : parseInt(current.mint_event?.value.address_mint?.value)
 
 		let val = addr_mint - minted_punks;
 		if(avaible_punks < val) val = avaible_punks;
-		return val
+		return val <= 100 ? val : 100
 	}
 
 	const returnMessageMintElement = () => {
@@ -262,6 +262,7 @@ function Mint (props) {
 			      			console.log('res mint', result)
 			      			setClaiming(false)
 			      			setClaimed(true)
+			      			setMultipleMint(1);
 			      			load_pool();
 
 			      		}, (result)=>{
