@@ -189,7 +189,11 @@ function Mint (props) {
 		return val <= 100 ? val : 100
 	}
 
+	const collection_name = globals.COLLECTIONS[collection].ctr_name 
+
 	const returnMessageMintElement = () => {
+		if(collection_name == 'Punks-Army-Ancestors-NFTs') return <p className="text-danger">ANCESTORS ARE SOLD OUT 10/10</p>
+
 		if(!is_open(current)) return <p className="text-danger">MINT IS CLOSED</p>
 
 		if(!has_stx(current)) return <p className="text-danger">YOU DO NOT HAVE ENOUGH STX TO MINT</p>
@@ -200,7 +204,12 @@ function Mint (props) {
 
 		return can_mint(current) 
 			? <React.Fragment>
-				<p>{parseInt(current.last_punk_id?.value || 0) - parseInt(current.last_nft_id?.value || 0)} LEFT</p>
+				<p className="mint_price"> UNIT PRICE: <b>{
+					formatter.format_stx_integers2(current.mint_event?.value?.mint_price?.value || 0) 
+					} STX</b></p>
+				<p className="mint_price"> MAX NFTs ALLOWED FOR WALLET:<b> {
+					formatter.format_stx_integers2(current.mint_event?.value.address_mint?.value || 0)
+					}</b></p>
 				{
 					has_avaible_multiple
 					?
@@ -233,12 +242,12 @@ function Mint (props) {
 				}
 				{
 					formatter.format_stx_integers(current.mint_event?.value?.mint_price?.value || 0) > 0 ?
-					<p className="mint_price">STX PRICE: {
+					<p className="big_text">TOTAL PRICE: {
 						getStxMultiplier( 
 							formatter.format_stx_integers(current.mint_event?.value?.mint_price?.value || 0)
 						)
-					}</p>
-					: <p className="mint_price">FREE MINTING</p>
+					} STX</p>
+					: <p className="big_text">FREE MINTING</p>
 				}
 				<Button color="danger" style={{color: '#fff'}} size="lg" className="mt-3" onClick={async () => {
 					if(claiming) {
@@ -329,7 +338,9 @@ function Mint (props) {
 						onClick={async () => loadMintingResume()}>
 							{loading ? <Spinner size="sm" /> : "Refresh"}
 						</Button>
-						<p className="big_text"><Stx dim={36} style={{marginRight: 6}} /> <b>BALANCE: <span className="currency">{formatter.format_stx_integers(current.balance?.value || 0)}</span></b></p>
+						<p>NFTs REMAINING: <b>{parseInt(current.last_punk_id?.value || 0) - parseInt(current.last_nft_id?.value || 0)}/ 
+						 {parseInt(current.last_punk_id?.value || 0)} </b> </p>
+						<p className="big_text"><Stx dim={36} style={{marginRight: 6}} /> BALANCE: <span className="currency">{formatter.format_stx_integers(current.balance?.value || 0)}</span></p>
 						<div className="block_element" >
 						{
 							returnMessageMintElement(current)

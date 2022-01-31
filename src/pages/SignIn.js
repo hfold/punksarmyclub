@@ -13,7 +13,7 @@ const SignIn = (props) => {
       setLoading(true)
       doOpenAuth()
       setLoading(false)
-    }}>{loading ? <Spinner /> : <b>Join the Army</b>}</Button>
+    }}>{loading ? <Spinner /> : <b>Connect your Wallet </b>}</Button>
     </div>);
 };
 

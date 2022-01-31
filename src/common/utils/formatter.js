@@ -2,7 +2,10 @@
 
 export default {
 	format_stx_integers: (n) => {
-		return String(parseFloat(n/1000000).toFixed(6))
+		return String(parseFloat(n/1000000).toFixed(2))
+	},
+	format_stx_integers2: (n) => {
+		return String(parseFloat(n/1000000).toFixed(0))
 	},
 	ipfs_gateway: (url) => {
 		if(!window.GATEWAY) return url;
