@@ -1,20 +1,20 @@
 export default {
 	Ancestors: [
-		"ipfs://QmShDkpNzAmHHEDtWtg7striv3iRui1cFSN87hGExrXTLb/0",
-		"ipfs://QmShDkpNzAmHHEDtWtg7striv3iRui1cFSN87hGExrXTLb/1",	
-		"ipfs://QmShDkpNzAmHHEDtWtg7striv3iRui1cFSN87hGExrXTLb/2",			
-		"ipfs://QmShDkpNzAmHHEDtWtg7striv3iRui1cFSN87hGExrXTLb/3",	
-		"ipfs://QmShDkpNzAmHHEDtWtg7striv3iRui1cFSN87hGExrXTLb/4",	
-		"ipfs://QmShDkpNzAmHHEDtWtg7striv3iRui1cFSN87hGExrXTLb/5",	
-		"ipfs://QmShDkpNzAmHHEDtWtg7striv3iRui1cFSN87hGExrXTLb/6",	
-		"ipfs://QmShDkpNzAmHHEDtWtg7striv3iRui1cFSN87hGExrXTLb/7",
-		"ipfs://QmShDkpNzAmHHEDtWtg7striv3iRui1cFSN87hGExrXTLb/8",
-		"ipfs://QmShDkpNzAmHHEDtWtg7striv3iRui1cFSN87hGExrXTLb/9"
+		"ipfs://QmYyh6ijf9zHPzvvi3r8LrtFHk2LqaHVvPGXmfgVLYWsDH/0",
+		"ipfs://QmYyh6ijf9zHPzvvi3r8LrtFHk2LqaHVvPGXmfgVLYWsDH/1",	
+		"ipfs://QmYyh6ijf9zHPzvvi3r8LrtFHk2LqaHVvPGXmfgVLYWsDH/2",			
+		"ipfs://QmYyh6ijf9zHPzvvi3r8LrtFHk2LqaHVvPGXmfgVLYWsDH/3",	
+		"ipfs://QmYyh6ijf9zHPzvvi3r8LrtFHk2LqaHVvPGXmfgVLYWsDH/4",	
+		"ipfs://QmYyh6ijf9zHPzvvi3r8LrtFHk2LqaHVvPGXmfgVLYWsDH/5",	
+		"ipfs://QmYyh6ijf9zHPzvvi3r8LrtFHk2LqaHVvPGXmfgVLYWsDH/6",	
+		"ipfs://QmYyh6ijf9zHPzvvi3r8LrtFHk2LqaHVvPGXmfgVLYWsDH/7",
+		"ipfs://QmYyh6ijf9zHPzvvi3r8LrtFHk2LqaHVvPGXmfgVLYWsDH/8",
+		"ipfs://QmYyh6ijf9zHPzvvi3r8LrtFHk2LqaHVvPGXmfgVLYWsDH/9"
 	],
-	Punks: [
-		"ipfs://QmXm6d2hYVFWSZZiLLhbDKcWRpkGfwoTYMiaotScpXPYDk/0",
-		"ipfs://QmXm6d2hYVFWSZZiLLhbDKcWRpkGfwoTYMiaotScpXPYDk/1",
-		"ipfs://QmXm6d2hYVFWSZZiLLhbDKcWRpkGfwoTYMiaotScpXPYDk/2"
+	Friends: [
+		"ipfs://QmbDvx1tAQCBUjD564H4zAy1Q8AhQBGx1rX6LMqy4KCFbd/0",
+		"ipfs://QmbDvx1tAQCBUjD564H4zAy1Q8AhQBGx1rX6LMqy4KCFbd/1",
+		"ipfs://QmbDvx1tAQCBUjD564H4zAy1Q8AhQBGx1rX6LMqy4KCFbd/2"
 	],
-	Pets: []
+	Punks: []
 }
