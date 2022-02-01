@@ -193,7 +193,7 @@ function Mint (props) {
 
 	const returnMessageMintElement = () => {
 		
-		if(!are_enough_to_mint(current)) return <p className="text-danger">{globals.COLLECTIONS[collection].name} ARE SOLD OUT {arseInt(curr.last_nft_id?.value)}/{arseInt(curr.last_nft_id?.value)}</p>
+		if(!are_enough_to_mint(current)) return <p className="text-danger">{globals.COLLECTIONS[collection].name} ARE SOLD OUT {parseInt(curr.last_nft_id?.value)}/{parseInt(curr.last_nft_id?.value)}</p>
 
 		if(!is_open(current)) return <p className="text-danger">MINT IS CLOSED</p>
 
