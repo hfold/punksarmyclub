@@ -236,8 +236,9 @@ function useRedirectNotLogged() {
   React.useEffect(() => {
     console.log('loc', location)
 
-    let _pathname = collection ? "/" + collection + "/gallery" : "/"
-    if(!UserState.logged && location.pathname !== '/' && location.pathname != _pathname ) {
+    
+    if(!UserState.logged && location.pathname !== '/' && !location.pathname.match(/gallery/) ) {
+      
       setOk(false)
       window.location = '/'
     } else {

@@ -87,7 +87,7 @@ const Gallery = (props) => {
   	<Row style={{overflow: 'visible'}}>
   		{getPunksToShow(collection, current_page).map(pnk => 
   			<Col style={{padding: 20, overflow: 'visible', textAlign: 'center'}} sm={6} xs={12} md={4}>
-  			<GetPunkByMetadata metadata_url={pnk} key={"punk_id_"+pnk} collection={collection} /></Col>)}
+  			<GetPunkByMetadata metadata_url={pnk} key={"punk_id_"+pnk} collection={globals.COLLECTIONS[collection]} /></Col>)}
   	</Row>
   	{
   		hasMorePunks(collection, current_page) ?
