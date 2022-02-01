@@ -193,7 +193,7 @@ function Mint (props) {
 
 	const returnMessageMintElement = () => {
 		
-		if(!are_enough_to_mint(current)) return <p className="text-danger">{globals.COLLECTIONS[collection].name} ARE SOLD OUT {parseInt(curr.last_nft_id?.value)}/{parseInt(curr.last_nft_id?.value)}</p>
+		if(!are_enough_to_mint(current) && current.last_nft_id?.value && current.last_nft_id?.value > 0) return <p className="text-danger">{globals.COLLECTIONS[collection].name} ARE SOLD OUT {parseInt(current.last_nft_id?.value || 0)}/{parseInt(current.last_nft_id?.value || 0)}</p>
 
 		if(!is_open(current)) return <p className="text-danger">MINT IS CLOSED</p>
 
@@ -201,7 +201,7 @@ function Mint (props) {
 
 		if(!can_mint_address(current)) return <p className="text-danger">SORRY YOU CANNOT MINT</p>
 
-		
+		if(!are_enough_to_mint(current)) return <p className="text-danger">THERE ARE NO MORE NFT TO MINT</p>		
 
 		return can_mint(current) 
 			? <React.Fragment>

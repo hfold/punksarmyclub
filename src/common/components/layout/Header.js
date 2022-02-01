@@ -2,9 +2,10 @@ import React from 'react'
 
 import {
   	useParams,
-  	useHistory
+  	useHistory,
+  	useLocation
 } from "react-router-dom";
-import {Col, Row, Container, Dropdown, DropdownToggle, DropdownMenu, DropdownItem} from 'reactstrap'
+import {Col, Row, Container, Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Button} from 'reactstrap'
 import {
 	UserContext
 } from '../../../store/UserContext';
@@ -13,18 +14,31 @@ import globals from '../../utils/globals'
 
 import { BsDiscord, BsTwitter } from "react-icons/bs";
 import { userSession, authOptions } from '../../utils/auth';
+
+import galleries from '../../utils/collections_gallery';
+const has_full_gallery = (collection) => {
+	try {
+		return galleries[globals.COLLECTIONS[collection].full_gallery_name].length > 0
+	} catch(e) {
+		return false;
+	}
+}
+
 export default function Header(props) {
 	const {UserState, UserDispatch} = React.useContext(UserContext);
 	
 	const [is_open, setIsOpen] = React.useState(false)
 	let {collection} = useParams();
 	const history = useHistory();
-
+	let location = useLocation();
 	React.useEffect(()=>{
 		console.log('changed collection', collection)
 		if(collection) {
 			// collezione non presente o non abilitata
-			if(!globals.COLLECTIONS[collection] || !globals.COLLECTIONS[collection].enabled) {
+			let _pathname = collection ? "/" + collection + "/gallery" : "/"
+			if( (!globals.COLLECTIONS[collection] || !globals.COLLECTIONS[collection].enabled) &&
+				location.pathname !== '/' && location.pathname != _pathname
+				) {
 				history.push("/")
 				return;
 			}
@@ -90,12 +104,27 @@ export default function Header(props) {
 				              <h3>{_collection.name}</h3>
 				              <p>{_collection.description}</p>
 				            </div>
+				            {
+				            	has_full_gallery(collection_key)
+				            	?
+				            	<Button id="open_full_gallery" color="primary" style={{
+				            		color: '#fff', margin: '-24px auto', display: 'block'}} className="mb-3" size="xs" 
+								onClick={async () => history.push("/"+collection_key+"/gallery")}>
+									GALLERY
+								</Button>
+				            	: null
+				            }
 				          </Col>
 						})
 					}
 		        </Row>
 			</Col>
 		</Row>
-		<Navbar />
+		{
+			!props.hide_nav
+			?
+				<Navbar />
+			: null
+		}
 	</Container>
 }

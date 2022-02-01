@@ -13,6 +13,7 @@ import Transactions from './Transactions';
 import AddPunks from './AddPunks';
 import MintEvent from './MintEvent';
 import SignIn from './SignIn';
+import Gallery from './Gallery';
 import {
   HashRouter as Router,
   Switch,
@@ -123,6 +124,7 @@ export default function Main (props) {
   const [loaded, setLoaded] = React.useState(false)
   const [subscription, setSubscription] = React.useState(null)
 
+  
   React.useEffect(() => {
     if(!loaded) {
 
@@ -214,6 +216,7 @@ function RoutesList() {
 
   return ok_redirect ? <React.Fragment>
       <Route exact path="/" component={Home} />
+      <Route exact path="/:collection/gallery" component={Gallery} />
       <Route exact path="/:collection/mint" component={Mint} />{/* mettiamo qui la lista */}
       <Route exact path="/:collection/nft" component={YourPunks} />
       <Route exact path="/:collection/whitelist" component={Whitelist} />
@@ -228,9 +231,13 @@ function useRedirectNotLogged() {
   const {UserState, UserDispatch} = React.useContext(UserContext)
   const [ok, setOk] = React.useState(false)
   let location = useLocation();
+  let {collection} = useParams();
   
   React.useEffect(() => {
-    if(!UserState.logged && location.pathname !== '/' ) {
+    console.log('loc', location)
+
+    let _pathname = collection ? "/" + collection + "/gallery" : "/"
+    if(!UserState.logged && location.pathname !== '/' && location.pathname != _pathname ) {
       setOk(false)
       window.location = '/'
     } else {
