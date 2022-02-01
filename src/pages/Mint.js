@@ -192,7 +192,8 @@ function Mint (props) {
 	const collection_name = globals.COLLECTIONS[collection].ctr_name 
 
 	const returnMessageMintElement = () => {
-		if(collection_name == 'Punks-Army-Ancestors-NFTs') return <p className="text-danger">ANCESTORS ARE SOLD OUT 10/10</p>
+		
+		if(!are_enough_to_mint(current)) return <p className="text-danger">{globals.COLLECTIONS[collection].name} ARE SOLD OUT {arseInt(curr.last_nft_id?.value)}/{arseInt(curr.last_nft_id?.value)}</p>
 
 		if(!is_open(current)) return <p className="text-danger">MINT IS CLOSED</p>
 
@@ -200,7 +201,7 @@ function Mint (props) {
 
 		if(!can_mint_address(current)) return <p className="text-danger">SORRY YOU CANNOT MINT</p>
 
-		if(!are_enough_to_mint(current)) return <p className="text-danger">SORRY THERE ARE NO MORE NFTS TO MINT</p>
+		
 
 		return can_mint(current) 
 			? <React.Fragment>
