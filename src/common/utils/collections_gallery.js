@@ -12,9 +12,9 @@ export default {
 		"ipfs://QmYyh6ijf9zHPzvvi3r8LrtFHk2LqaHVvPGXmfgVLYWsDH/9"
 	],
 	Friends: [
-		"ipfs://QmbDvx1tAQCBUjD564H4zAy1Q8AhQBGx1rX6LMqy4KCFbd/0",
-		"ipfs://QmbDvx1tAQCBUjD564H4zAy1Q8AhQBGx1rX6LMqy4KCFbd/1",
-		"ipfs://QmbDvx1tAQCBUjD564H4zAy1Q8AhQBGx1rX6LMqy4KCFbd/2"
+		"ipfs://Qmbe3jnhTBMXe5LxyU7t9rGWjF3peL4VuFPbMwqTXerTTa/0",
+		"ipfs://Qmbe3jnhTBMXe5LxyU7t9rGWjF3peL4VuFPbMwqTXerTTa/1",
+		"ipfs://Qmbe3jnhTBMXe5LxyU7t9rGWjF3peL4VuFPbMwqTXerTTa/2"
 	],
 	Punks: []
 }
