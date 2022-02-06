@@ -21,7 +21,9 @@ window.COLLECTIONS = {
 		full_gallery_name: 'Friends',
 		gallery: ["ipfs://Qmbe3jnhTBMXe5LxyU7t9rGWjF3peL4VuFPbMwqTXerTTa/0",
 		"ipfs://Qmbe3jnhTBMXe5LxyU7t9rGWjF3peL4VuFPbMwqTXerTTa/1",
-		"ipfs://Qmbe3jnhTBMXe5LxyU7t9rGWjF3peL4VuFPbMwqTXerTTa/2"]
+		"ipfs://Qmbe3jnhTBMXe5LxyU7t9rGWjF3peL4VuFPbMwqTXerTTa/2",
+		"ipfs://QmXND9ouCHtL7HHHoyJNVbQcfeW9wLKmfDmj6cm3VZ24jB/0",
+		"ipfs://QmXND9ouCHtL7HHHoyJNVbQcfeW9wLKmfDmj6cm3VZ24jB/1"]
 	},
 	'Ancestors': {
 		address: 'SP2A665S3H6FVMZSY4VJ17ESXX21CGS0A32984B1H',
