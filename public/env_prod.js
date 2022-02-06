@@ -19,9 +19,11 @@ window.COLLECTIONS = {
 		logo_image: '1no-back2.png',
 		main_image: 'parot.jpeg',
 		full_gallery_name: 'Friends',
-		gallery: ["ipfs://QmbDvx1tAQCBUjD564H4zAy1Q8AhQBGx1rX6LMqy4KCFbd/0",
-		"ipfs://QmbDvx1tAQCBUjD564H4zAy1Q8AhQBGx1rX6LMqy4KCFbd/1",
-		"ipfs://QmbDvx1tAQCBUjD564H4zAy1Q8AhQBGx1rX6LMqy4KCFbd/2"]
+		gallery: ["ipfs://Qmbe3jnhTBMXe5LxyU7t9rGWjF3peL4VuFPbMwqTXerTTa/0",
+		"ipfs://Qmbe3jnhTBMXe5LxyU7t9rGWjF3peL4VuFPbMwqTXerTTa/1",
+		"ipfs://Qmbe3jnhTBMXe5LxyU7t9rGWjF3peL4VuFPbMwqTXerTTa/2",
+		"ipfs://QmXND9ouCHtL7HHHoyJNVbQcfeW9wLKmfDmj6cm3VZ24jB/0",
+		"ipfs://QmXND9ouCHtL7HHHoyJNVbQcfeW9wLKmfDmj6cm3VZ24jB/1"]
 	},
 	'Ancestors': {
 		address: 'SP2A665S3H6FVMZSY4VJ17ESXX21CGS0A32984B1H',
@@ -32,7 +34,7 @@ window.COLLECTIONS = {
 		enabled: true,
 		logo_image: '9-unscreen.gif',
 		main_image: '2.gif',
-		// full_gallery_name: 'Ancestors',
+		full_gallery_name: 'Ancestors',
 		gallery: [
 			"ipfs://QmYyh6ijf9zHPzvvi3r8LrtFHk2LqaHVvPGXmfgVLYWsDH/0",
 			"ipfs://QmYyh6ijf9zHPzvvi3r8LrtFHk2LqaHVvPGXmfgVLYWsDH/1",	
