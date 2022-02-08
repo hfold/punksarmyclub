@@ -65,6 +65,15 @@ export default function GetPunkByMetadata(props) {
 				              ><img src={"images/"+props.collection.logo_image} /></div> : null}
 				              <h3>{el.name}</h3>
 				              <p>{el.description}</p>
+				              {
+				              	el.rarity_points && el.rank
+				              	?
+				              	<div className="ranking_container row">
+				              		<div className="col-6"><b>Rarity:</b> <span className="highlight">{el.rarity_points}</span></div>
+				              		<div className="col-6"><b>Rank:</b> <span className="highlight">{el.rank}</span></div>
+				              	</div>
+				              	: null
+				              }
 				            </div> : null
 }
 

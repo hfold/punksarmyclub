@@ -257,7 +257,7 @@ body{
   text-align: center;
   box-shadow: 0 0 36px #6f247c;
   border-radius: 6px;
-  margin-bottom: 42px;
+  margin: 0 auto 42px;
   .logo_image_container{
     width: 80px;
     height: 80px;
@@ -488,4 +488,17 @@ margin-top: 26px;
   content: "";
   width: 0;
   height: 0;
+}
+
+.ranking_container{
+  color: #fff;
+  padding: 15px 0;
+  background: #5f2c68;
+  div{
+    text-align: center;
+    span.highlight{
+      color: #f82a5c;
+      font-weight: bold;
+    }
+  }
 }

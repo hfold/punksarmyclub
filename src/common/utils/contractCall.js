@@ -42,6 +42,55 @@ import globals from './globals'
 
 
 export default {
+
+	burn: async (args = {token_id:null}, UserState, ctx, doContractCall, cb = null, ecb = null) => {
+			//console.log('calling add contractAddress')
+			try {
+				
+				let post_conditions = []
+				if (
+					UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK_CALLER] == ctx.address 
+				) 
+				{
+					const contractAddress = ctx.address;
+					const contractName = ctx.ctr_name;
+					const assetName = ctx.tkn;
+					const postConditionCode = NonFungibleConditionCode.DoesNotOwn;
+					const nonFungibleAssetInfo = createAssetInfo(contractAddress, contractName, assetName);
+
+					post_conditions.push( makeStandardNonFungiblePostCondition(
+					  UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK_CALLER],
+					  postConditionCode,
+					  nonFungibleAssetInfo,
+					  uintCV(args.token_id)
+					) )
+				}
+
+
+				doContractCall({
+				      contractAddress: ctx.address,
+				  	  contractName: ctx.ctr_name,
+				      functionName: 'burn-token',
+				      functionArgs: [uintCV(args.token_id)],
+				      onFinish: (result) => {
+				      	//console.log('onFinish', result)
+				      	if(cb) cb( result )
+				      },
+				      onCancel: (result) => {
+				      	//console.log('onFinish', result)
+				      	if(ecb) ecb( result )
+				      },
+				  	  postConditions: post_conditions,
+				  	  postConditionMode: PostConditionMode.Deny,
+				      network: globals.NETWORK,
+				      stxAddress: UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK_CALLER],
+				    });
+				
+			} catch(e) {
+				//console.log('error', e)
+				if(ecb) ecb(e)
+			}
+		},
 	
 	addAddress: async (args = {principal:''}, UserState, ctx, doContractCall, cb = null, ecb = null) => {
 			//console.log('calling add contractAddress')

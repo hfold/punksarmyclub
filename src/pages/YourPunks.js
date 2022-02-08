@@ -1,6 +1,6 @@
 import React from 'react';
 import { useConnect } from '@stacks/connect-react';
-import { Button, Spinner, Row, Col } from 'reactstrap';
+import { Button, Spinner, Row, Col, List } from 'reactstrap';
 
 import {  
 	intCV,
@@ -25,6 +25,8 @@ import {
 } from '@stacks/transactions';
 
 import globals from '../common/utils/globals';
+import readonly from '../common/utils/readonly';
+import contractCall from '../common/utils/contractCall';
 import {
   UserContext
 } from '../store/UserContext';
@@ -36,23 +38,70 @@ import {
 } from "react-router-dom";
 import Wrapper from '../common/components/Wrapper';
 
+
+const loadMempool = (address, contract_id, setTxs, old_txs) => {
+
+	const function_names = ['burn-token']
+
+	
+	
+	fetch(globals.STACKS_API_BASE_URL+"/extended/v1/address/"+
+    	address
+    	+"/mempool?limit=50&unanchored=true")
+        .then(res => res.json())
+        .then(
+          async (result) => {
+            console.log('-----------------MEMPOOL TRANSACTIONS------------------', result)
+            let txs = []
+            
+            await result.results.map(tx => {
+            	if(tx.tx_type == 'contract_call' && 
+            		tx.contract_call &&
+            		tx.contract_call.contract_id == contract_id &&
+            		function_names.indexOf(tx.contract_call.function_name) !== -1
+            		) {
+            		txs.push(tx)
+            		
+            	} 
+            })
+            setTxs(txs)
+
+          },
+          (error) => {
+            
+          }
+        )
+  
+}
+
 const YourPunks = (props) => {
  	const [loaded, setLoaded] = React.useState(false)
 	const [loading, setLoading] = React.useState(false)
-
+	const {doContractCall} = useConnect();
   	const [punks, setPunks] = React.useState([])
   
   	const {UserState, UserDispatch} = React.useContext(UserContext);
 	let {collection} = useParams();
 
+	const [is_owner, setIsOwner] = React.useState(false);
+	const [txs, setTxs] = React.useState([]);
+	const [burning, setBurning] = React.useState(false);
+
+	const load_pool = () => loadMempool(
+		UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK_CALLER],
+		globals.COLLECTIONS[collection].address+'.'+globals.COLLECTIONS[collection].ctr_name,
+		setTxs,
+		txs
+	);
+
   	React.useEffect( () => {
 		if(!loaded) {
-
+			let u = moment().unix();
 			const load = async () => {
 				
 			    fetch(globals.STACKS_API_BASE_URL+"/extended/v1/address/"+
 			    	UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK_CALLER]+
-			    	"/nft_events?limit=50&t="+moment.unix())
+			    	"/nft_events?limit=50&t="+u)
 			      .then(res => res.json())
 			      .then(
 			        (result) => {
@@ -94,7 +143,17 @@ const YourPunks = (props) => {
 			    
 			}
 
-			load()
+			readonly.isCtxOwner([], UserState, globals.COLLECTIONS[collection], (res) => {
+	          console.log('res', res)
+	          setIsOwner(res)
+	        }, (err) => null)
+
+			load();
+			
+			load_pool();
+			
+			let pool = setInterval(()=>load_pool(), 1000*5);
+			return ()=>clearInterval(pool);
 		    
 		}
 	});
@@ -102,10 +161,56 @@ const YourPunks = (props) => {
 
   return (<div>
   	<h3 className="subtitle">YOUR NFTS</h3>
+  	<Row>
+	  	<Col className="">
+	  	{
+			txs.length > 0 && <div className="pending">
+				<h3 className="subtitle">Pending transactions</h3>
+				{
+					<List type="unstyled">
+						{
+							txs.map((a,i,arr)=>{
+								return <li key={"list_a_"+i} style={{color:'#a5a3a3'}}>
+									{a.tx_id}<br />
+									<b>{a.contract_call.function_name}</b>
+								</li>
+							})
+						}
+					</List>
+				}
+			</div>
+		}
+		</Col>
+	</Row>
   	<Row style={{overflow: 'visible'}}>
   		{punks.map(id => 
   			<Col style={{padding: 20, overflow: 'visible', textAlign: 'center'}} sm={6} xs={12} md={4}>
-  			<GetPunk id={id} key={"punk_id_"+id} collection={collection} /></Col>)}
+  				<GetPunk id={id} key={"punk_id_"+id} collection={collection} />
+  				{
+  					is_owner ? <Button id="load_more_punks" color="primary" 
+  					style={{color: '#fff', margin: '12px auto', display: 'block', marginTop: -20}} 
+  					className="mb-3" size="xs" 
+					onClick={async () => {
+						console.log('burn')
+						if(burning) return;
+						setBurning(true);
+
+						contractCall.burn({token_id: id}, UserState, globals.COLLECTIONS[collection], doContractCall, (result)=>{
+			      			
+			      			console.log('res burn', result)
+			      			setBurning(false);
+			      			load_pool();
+
+			      		}, (result)=>{
+			      			console.log('error', result)
+			      			setBurning(false);
+			      			
+			      		})
+					}}>
+						BURN
+					</Button> : null
+  				}
+  			</Col>)}
   	</Row>
   	</div>);
 };

@@ -191,7 +191,8 @@ export default function Main (props) {
               <Col md={6}sm={12}>
                 <h3 className="subtitle" style={{marginTop: 24}}>DESCRIPTION</h3>
                 {UserState.modalContent.description}
-                
+                {UserState.modalContent.rarity_points ? <span style={{display: 'block'}}><b>Rarity:</b> {UserState.modalContent.rarity_points}</span> : null }
+                {UserState.modalContent.rank ? <span style={{display: 'block'}}><b>Rank:</b> {UserState.modalContent.rank}</span> : null }
                 {UserState.modalContent.attributes && <><h3 className="subtitle no-border" style={{marginTop: 24}}>TRAITS</h3><List type="unstyled" style={{marginTop: 12}}>
                   {
                     UserState.modalContent.attributes.map((a,i,arr)=>{

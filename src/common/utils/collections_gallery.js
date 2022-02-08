@@ -18,5 +18,9 @@ export default {
 		"ipfs://Qmbe3jnhTBMXe5LxyU7t9rGWjF3peL4VuFPbMwqTXerTTa/1",
 		"ipfs://Qmbe3jnhTBMXe5LxyU7t9rGWjF3peL4VuFPbMwqTXerTTa/2"
 	],
-	Punks: []
+	Punks: [
+		"ipfs://QmNXMgnHwhk4hZ5WQZR4e9KSXDYHf4QN9AK21jEDGivEw5/1",
+		"ipfs://QmNXMgnHwhk4hZ5WQZR4e9KSXDYHf4QN9AK21jEDGivEw5/2",
+		"ipfs://QmNXMgnHwhk4hZ5WQZR4e9KSXDYHf4QN9AK21jEDGivEw5/3"
+	]
 }
