@@ -1,4 +1,4 @@
-window.network = 'mocknet'
+window.network = 'mainnet'
 window.CONTRACT_ADDRESS = 'SP2A665S3H6FVMZSY4VJ17ESXX21CGS0A32984B1H';//'ST1Y81WMHPCZ5Y92E6BAJDP0CR8PJXB53E2J71436'
 window.CONTRACT_NAME = 'Punka-Army-Friends-NFTs' //punks-test
 window.COLLECTION_URL = 'https://punksarmynft.club/'
@@ -54,7 +54,7 @@ window.COLLECTIONS = {
 		tkn: 'PunksArmyToken',
 		name: 'Punks Army',
 		description: 'Coming Soon',
-		enabled: true,
+		enabled: false,
 		logo_image: 'logo.png',
 		main_image: 'punk.png',
 		//full_gallery_name: 'Punks',
