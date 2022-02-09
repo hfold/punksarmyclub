@@ -4,28 +4,94 @@ import ReadOnly from '../utils/readonly';
 import {
   UserContext
 } from '../../store/UserContext';
+import {
+  CacheContext
+} from '../../store/CacheContext';
 import formatters from '../utils/formatter';
 
 
-const getImg = async (url, setUrl, setEl, setImageType) => {
-	
-	let u = await formatters.ipfs_gateway( url );
-	console.log('-------------------------------------------ipfs url', u)
+const fetchImagePromise = async (url) => {
+	return new Promise((resolve, reject)=>{
 
-	fetch( u )
-	      .then(res => res.json())
-	      .then(
-	        (result) => {
-	          if(result.image) {
-	          	setUrl(result.image)
-	          	setImageType(result.image_type || 'image')
-	          }
-	          setEl(result)
-	        },
-	        (error) => {
-	          console.log('e', error)
+		var xhr = new XMLHttpRequest();
+	    xhr.onload = function() {
+	        var reader = new FileReader();
+	        reader.onloadend = function() {
+	            resolve(reader.result);
 	        }
-	      )
+	        reader.readAsDataURL(xhr.response);
+	    };
+	    xhr.open('GET', formatters.ipfs_gateway(url));
+	    xhr.responseType = 'blob';
+	    xhr.send();
+
+		//fetch(formatters.ipfs_gateway( url ))
+		  //.then(response => response.blob())
+		  //.then(async (imageBlob) => {
+		      //var reader = new FileReader();
+		      //const imageObjectURL = await reader.readAsDataURL(imageBlob);
+		      //await localStorage.setItem(url, imageObjectURL)
+		      //resolve(imageObjectURL)
+//
+		  //})
+		  //.catch((e)=>reject(e));
+	})
+}
+
+const fetchImage = async (url, setImageUrl, CacheState, CacheDispatch) => {
+	console.log('CacheState', CacheState.cachedImgs)
+	let cached = CacheState.cachedImgs[url];
+	if(cached) {
+		
+		console.log('ritorno cached', cached)
+		//UserDispatch({action: 'cache_image', url: url, response: cached});
+		setImageUrl(cached)
+	
+	} else {
+
+		let img_data = await fetchImagePromise(url);
+		CacheDispatch({action: 'cache_image', url: url, response: img_data})
+		setImageUrl(img_data);
+		  
+	}
+	console.log('non ritorno nulla')
+} 
+
+const getImg = async (url, setUrl, setEl, setImageType, CacheState, CacheDispatch, setImageUrl) => {
+	
+	let cached = localStorage.getItem(url);
+	if(cached) {
+		
+		let result = JSON.parse(cached);
+		if(result.image) {
+	      	setUrl(result.image)
+	      	setImageType(result.image_type || 'image')
+	    }
+	    setEl(result)
+	    //fetchImage(result.image, setImageUrl, CacheState, CacheDispatch)
+
+	} else {
+
+		let u = await formatters.ipfs_gateway( url );
+		console.log('-------------------------------------------ipfs url', u)
+
+		fetch( u )
+		      .then(res => res.json())
+		      .then(
+		        (result) => {
+		          if(result.image) {
+		          	setUrl(result.image)
+		          	//fetchImage(result.image, setImageUrl, CacheState, CacheDispatch)
+		          	setImageType(result.image_type || 'image')
+		          }
+		          localStorage.setItem(url, JSON.stringify(result) )
+		          setEl(result)
+		        },
+		        (error) => {
+		          console.log('e', error)
+		        }
+		      )
+	}
 }
 
 
@@ -35,12 +101,14 @@ export default function GetPunkByMetadata(props) {
 	const [url, setUrl] = React.useState(null)
 	const [el, setEl] = React.useState({})
 	const [image_type, setImageType] = React.useState(null)
+	const [image_url, setImageUrl] = React.useState(null)
 	const {UserState, UserDispatch} = React.useContext(UserContext);
+	const {CacheState, CacheDispatch} = React.useContext(CacheContext);
 
 	React.useEffect( () => {
 		if(!loaded && props.metadata_url) {
 			setLoaded(true)
-			getImg(props.metadata_url, setUrl, setEl, setImageType)
+			getImg(props.metadata_url, setUrl, setEl, setImageType, CacheState, CacheDispatch, setImageUrl)
 		}
 	});
 
@@ -56,9 +124,9 @@ export default function GetPunkByMetadata(props) {
 				              		formatters.video_mime_type.indexOf(image_type) !== -1
 				              		?
 				              		<video className="video" autoPlay loop muted>
-						              	<source src={formatters.ipfs_gateway( el.image )} type="video/mp4"/>
+						              	<source src={formatters.ipfs_gateway(url)} type="video/mp4"/>
 						            </video>
-				              		: <img src={formatters.ipfs_gateway( el.image )} />
+				              		: <img src={formatters.ipfs_gateway(url)} />
 				              	}
 				              </div>
 				              {props.collection ? <div className="logo_image_container" 

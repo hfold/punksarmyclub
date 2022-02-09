@@ -94,54 +94,82 @@ const YourPunks = (props) => {
 		txs
 	);
 
+	const [total_pages, setTotalPages] = React.useState(1);
+	const loadNfts = (ids, page) => {
+		console.log('_______________CARICO PAGINA', page)
+		let u = moment().unix();
+		let str = globals.STACKS_API_BASE_URL+"/extended/v1/address/"+
+	    	UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK_CALLER]+
+	    	"/nft_events?t="+u+"&limit=50";
+
+	    if(page > 1) {
+	    	str += "&offset="+((page*50) -50)
+	    }
+
+		fetch(str)
+	      .then(res => res.json())
+	      .then(
+	        (result) => {
+	          setLoaded(true)
+	          let new_ids = [...ids]
+	          //console.log('res', result)
+	          result.nft_events.map(e => {
+	          	try {
+
+	          		
+		          	if(e.asset_identifier == globals.COLLECTIONS[collection].address+
+		          		"."+
+		          		globals.COLLECTIONS[collection].ctr_name+
+		          		"::"+
+		          		globals.COLLECTIONS[collection].tkn){
+		          		
+		          		let value = hexToCV(e.value.hex)
+		          		try {
+		          			let id = cvToJSON( value ).value
+		          			
+		          			if(new_ids.indexOf(id) === -1) new_ids.push(id)
+		          		} catch(e) {
+		          			console.log('e', e)
+		          		}
+		          	}
+		        } catch(e) {
+		        	console.log('e', e)
+		        } 
+	          })
+
+	          if(result.total > 50) {
+	          	let t = parseInt(result.total / 50);
+	          	let rest = result.total % 50;
+	          	if(rest > 0) t += 1;
+
+	          	console.log('total pages', rest, result.total, t)
+	          	
+	          	if(page+1 <= t) {
+	          		console.log('imposto ids', ids)
+	          		loadNfts(new_ids, page+1)
+	          	} else {
+	          		console.log('imposto ids finali', ids)
+	          		setPunks(new_ids)
+	          		setLoaded(true);
+	          	}
+
+	          } 
+	          
+	        },
+	        (error) => {
+	        	
+	        }
+	    )
+	}
+
   	React.useEffect( () => {
 		if(!loaded) {
+			
+
 			let u = moment().unix();
-			const load = async () => {
-				
-			    fetch(globals.STACKS_API_BASE_URL+"/extended/v1/address/"+
-			    	UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK_CALLER]+
-			    	"/nft_events?limit=50&t="+u)
-			      .then(res => res.json())
-			      .then(
-			        (result) => {
-			          setLoaded(true)
-			          //console.log('res', result)
-			          let ids = [];
-			          result.nft_events.map(e => {
-			          	try {
+			
 
-			          		
-				          	if(e.asset_identifier == globals.COLLECTIONS[collection].address+
-				          		"."+
-				          		globals.COLLECTIONS[collection].ctr_name+
-				          		"::"+
-				          		globals.COLLECTIONS[collection].tkn){
-				          		
-				          		let value = hexToCV(e.value.hex)
-				          		try {
-				          			let id = cvToJSON( value ).value
-				          			
-				          			if(ids.indexOf(id) === -1) ids.push(id)
-				          		} catch(e) {
-				          			console.log('e', e)
-				          		}
-				          	}
-				        } catch(e) {
-				        	console.log('e', e)
-				        } 
-			          })
-
-			          setPunks(ids)
-			          
-			        },
-			        (error) => {
-			        	setLoaded(true)
-			          //console.log('e', error)
-			        }
-			      )
-			    
-			}
+			const load = async () => loadNfts(punks, 1)
 
 			readonly.isCtxOwner([], UserState, globals.COLLECTIONS[collection], (res) => {
 	          console.log('res', res)
@@ -182,10 +210,12 @@ const YourPunks = (props) => {
 		}
 		</Col>
 	</Row>
+	<h3>{punks.length}</h3>
   	<Row style={{overflow: 'visible'}}>
   		{punks.map(id => 
   			<Col style={{padding: 20, overflow: 'visible', textAlign: 'center'}} sm={6} xs={12} md={4}>
   				<GetPunk id={id} key={"punk_id_"+id} collection={collection} />
+  				<h3>{id}</h3>
   				{
   					is_owner ? <Button id="load_more_punks" color="primary" 
   					style={{color: '#fff', margin: '12px auto', display: 'block', marginTop: -20}} 

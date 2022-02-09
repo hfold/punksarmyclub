@@ -8,6 +8,9 @@ import Main from './pages/Main';
 import {
 	UserContextProvider
 } from './store/UserContext';
+import {
+  CacheContextProvider
+} from './store/CacheContext';
 import {NotificationContainer} from 'react-notifications';
 
 if (process.env.NODE_ENV === 'production') {
@@ -19,9 +22,11 @@ if (process.env.NODE_ENV === 'production') {
 function App() {
   return (
     <div className="App">
+      <CacheContextProvider>
       <UserContextProvider>
       	<Main />
       </UserContextProvider>
+      </CacheContextProvider>
       <NotificationContainer/>
     </div>
   );

@@ -13,7 +13,8 @@ let initialState = {
   txs: [],
   subscriptions: null,
   openModal: false,
-  modalContent: {}
+  modalContent: {},
+  cachedImgs: {}
 };
 
 let reducer = (state, action) => {
@@ -56,6 +57,13 @@ let reducer = (state, action) => {
             ...state,
             openModal: false,
             modalContent: {}
+          };
+    case "cache_image":
+      return {
+            ...state,
+            cachedImgs: {
+              ...state.cachedImgs, 
+              [action.url]: action.response}
           };
     case "update_transaction":
       let exists = state.txs.find(tx => tx.tx_id === action.tx_id)

@@ -10,6 +10,7 @@
 
 # production
 /build/env.js
+/build/galleries.js
 /public/env.js
 
 # misc
