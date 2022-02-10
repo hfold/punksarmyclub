@@ -19,7 +19,10 @@ window.COLLECTIONS = {
 		logo_image: '1no-back2.png',
 		main_image: 'wastepunks2.png',
 		full_gallery_name: 'Friends',
-		gallery: ["ipfs://QmXND9ouCHtL7HHHoyJNVbQcfeW9wLKmfDmj6cm3VZ24jB/1",
+		gallery: [
+		"ipfs://QmZvvK4UmCRgK7PpwUKuHHiSvEgNe1Y3bVvCGxCFXpMz22/1",	
+		"ipfs://QmXWG2jC8ZSoUb7QEmSa8j5BtPjpSPH3h5Mu3Y3C96ixyy/3",
+		"ipfs://QmXND9ouCHtL7HHHoyJNVbQcfeW9wLKmfDmj6cm3VZ24jB/1",
 		"ipfs://QmXND9ouCHtL7HHHoyJNVbQcfeW9wLKmfDmj6cm3VZ24jB/2",
 		"ipfs://Qmbe3jnhTBMXe5LxyU7t9rGWjF3peL4VuFPbMwqTXerTTa/0",
 		"ipfs://Qmbe3jnhTBMXe5LxyU7t9rGWjF3peL4VuFPbMwqTXerTTa/1",
@@ -49,19 +52,19 @@ window.COLLECTIONS = {
 		]	
 	},
 	'Punks': {
-		address: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
-		ctr_name: 'punk-army-nft',
-		tkn: 'PunksArmyToken',
+		address: 'ST2A665S3H6FVMZSY4VJ17ESXX21CGS0A32H41WXG', //
+		ctr_name: 'Punks-Army-NFTs-Test',
+		tkn: 'Punks-Army-Test',
 		name: 'Punks Army',
 		description: 'Coming Soon',
 		enabled: false,
 		logo_image: 'logo.png',
 		main_image: 'punk.png',
-		//full_gallery_name: 'Punks',
+		full_gallery_name: 'Punks',
 		gallery: [
-			"ipfs://QmQ7sEt2o8RmGo8GGYAQwzV7fmtAEtMoXkwFKeTGMBho78/0",
-			"ipfs://QmQ7sEt2o8RmGo8GGYAQwzV7fmtAEtMoXkwFKeTGMBho78/1",
-			"ipfs://QmQ7sEt2o8RmGo8GGYAQwzV7fmtAEtMoXkwFKeTGMBho78/2"
+			"ipfs://Qmdnpeb1rknvBZszfxfuoR6PiUPmRzxu54FEaN7yu8qwTt/10",
+			"ipfs://Qmdnpeb1rknvBZszfxfuoR6PiUPmRzxu54FEaN7yu8qwTt/1",
+			"ipfs://Qmdnpeb1rknvBZszfxfuoR6PiUPmRzxu54FEaN7yu8qwTt/2"
 		]
 	}
 }
