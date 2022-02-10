@@ -193,6 +193,7 @@ function Mint (props) {
 
 	const returnMessageMintElement = () => {
 		
+		if(collection_name == 'Punks-Army-Friends-NFTs' && !are_enough_to_mint(current) && current.last_nft_id?.value && current.last_nft_id?.value > 0) return <p className="text-danger">{globals.COLLECTIONS[collection].name} <br></br> ARE SOLD OUT </p>
 		if(!are_enough_to_mint(current) && current.last_nft_id?.value && current.last_nft_id?.value > 0) return <p className="text-danger">{globals.COLLECTIONS[collection].name} ARE SOLD OUT {parseInt(current.last_nft_id?.value || 0)}/{parseInt(current.last_nft_id?.value || 0)}</p>
 
 		if(!is_open(current)) return <p className="text-danger">MINT IS CLOSED</p>
@@ -209,7 +210,7 @@ function Mint (props) {
 					formatter.format_stx_integers2(current.mint_event?.value?.mint_price?.value || 0) 
 					} STX</b></p>
 				<p className="mint_price"> MAX NFTs ALLOWED FOR WALLET:<b> {
-					formatter.format_stx_integers2(current.mint_event?.value.address_mint?.value || 0)
+					current.mint_event?.value.address_mint?.value
 					}</b></p>
 				{
 					has_avaible_multiple
@@ -339,8 +340,7 @@ function Mint (props) {
 						onClick={async () => loadMintingResume()}>
 							{loading ? <Spinner size="sm" /> : "Refresh"}
 						</Button>
-						<p>NFTs REMAINING: <b>{parseInt(current.last_punk_id?.value || 0) - parseInt(current.last_nft_id?.value || 0)}/ 
-						 {parseInt(current.last_punk_id?.value || 0)} </b> </p>
+						<p>NFTs REMAINING: <b>{parseInt(current.last_punk_id?.value || 0) - parseInt(current.last_nft_id?.value || 0)} </b> </p>
 						<p className="big_text"><Stx dim={36} style={{marginRight: 6}} /> BALANCE: <span className="currency">{formatter.format_stx_integers(current.balance?.value || 0)}</span></p>
 						<div className="block_element" >
 						{
