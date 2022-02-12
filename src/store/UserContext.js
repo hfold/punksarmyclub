@@ -50,7 +50,7 @@ let reducer = (state, action) => {
       return {
             ...state,
             openModal: true,
-            modalContent: action.punk
+            modalContent: {...action.rarity_obj, ...action.punk}
           };
     case "close_modal":
       return {

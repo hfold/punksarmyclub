@@ -125,7 +125,8 @@ export default function GetPunkByMetadata(props) {
 	return loaded && url ? <div className="collection_info no_shadow nft_container" onClick={()=>{
 					            	UserDispatch({
 					            		type: 'open_modal',
-					            		punk: el
+					            		punk: el,
+					            		rarity_obj: rarity_obj
 					            	})
 					            }}>
 				              <div className="img_container">
