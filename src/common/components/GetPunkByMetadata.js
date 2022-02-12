@@ -57,7 +57,7 @@ const fetchImage = async (url, setImageUrl, CacheState, CacheDispatch) => {
 	console.log('non ritorno nulla')
 } 
 
-const getImg = async (url, setUrl, setEl, setImageType, CacheState, CacheDispatch, setImageUrl) => {
+const getImg = async (url, setUrl, setEl, setImageType, CacheState, CacheDispatch, setImageUrl, setRarityObj) => {
 	
 	let cached = localStorage.getItem(url);
 	if(cached) {
@@ -65,7 +65,8 @@ const getImg = async (url, setUrl, setEl, setImageType, CacheState, CacheDispatc
 		let result = JSON.parse(cached);
 		if(result.image) {
 	      	setUrl(result.image)
-	      	setImageType(result.image_type || 'image')
+	      	setImageType(result.image_type || 'image');
+	      	getRarity(result.image, setRarityObj);
 	    }
 	    setEl(result)
 	    //fetchImage(result.image, setImageUrl, CacheState, CacheDispatch)
@@ -83,6 +84,7 @@ const getImg = async (url, setUrl, setEl, setImageType, CacheState, CacheDispatc
 		          	setUrl(result.image)
 		          	//fetchImage(result.image, setImageUrl, CacheState, CacheDispatch)
 		          	setImageType(result.image_type || 'image')
+		          	getRarity(result.image, setRarityObj);
 		          }
 		          localStorage.setItem(url, JSON.stringify(result) )
 		          setEl(result)
@@ -94,7 +96,12 @@ const getImg = async (url, setUrl, setEl, setImageType, CacheState, CacheDispatc
 	}
 }
 
-
+const getRarity = (image_url, setRarityObj) => {
+	if(window.rarity && Array.isArray(window.rarity)) {
+		let obj = window.rarity.find(el => el.image === image_url)
+		if(obj) setRarityObj(obj)
+	}
+}
 
 export default function GetPunkByMetadata(props) {
 	const [loaded, setLoaded] = React.useState(false)
@@ -104,11 +111,13 @@ export default function GetPunkByMetadata(props) {
 	const [image_url, setImageUrl] = React.useState(null)
 	const {UserState, UserDispatch} = React.useContext(UserContext);
 	const {CacheState, CacheDispatch} = React.useContext(CacheContext);
+	const [rarity_obj, setRarityObj] = React.useState(null);
 
 	React.useEffect( () => {
 		if(!loaded && props.metadata_url) {
 			setLoaded(true)
-			getImg(props.metadata_url, setUrl, setEl, setImageType, CacheState, CacheDispatch, setImageUrl)
+			getImg(props.metadata_url, setUrl, setEl, setImageType, CacheState, CacheDispatch, setImageUrl, setRarityObj)
+
 		}
 	});
 
@@ -134,11 +143,11 @@ export default function GetPunkByMetadata(props) {
 				              <h3>{el.name}</h3>
 				              <p>{el.description}</p>
 				              {
-				              	el.rarity_points && el.rank
+				              	rarity_obj
 				              	?
 				              	<div className="ranking_container row">
-				              		<div className="col-6"><b>Rarity:</b> <span className="highlight">{el.rarity_points}</span></div>
-				              		<div className="col-6"><b>Rank:</b> <span className="highlight">{el.rank}</span></div>
+				              		<div className="col-6"><b>Rarity:</b> <span className="highlight">{rarity_obj["rarity point"]}</span></div>
+				              		<div className="col-6"><b>Rank:</b> <span className="highlight">{rarity_obj.rank}</span></div>
 				              	</div>
 				              	: null
 				              }

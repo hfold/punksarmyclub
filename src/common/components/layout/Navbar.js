@@ -84,6 +84,10 @@ export default function Navbar(props) {
                   to={"/"+collection+"/add"}>
                     Add nfts
                   </NavLink>
+                  <NavLink 
+                  className={useRouteMatch("/:collection/meta") ? 'active' : ''}
+                  to={"/"+collection+"/meta"}>CH meta
+                  </NavLink>
                 </NavItem> : null}
                 <NavItem>
                   <NavLink 

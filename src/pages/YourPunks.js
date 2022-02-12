@@ -153,7 +153,10 @@ const YourPunks = (props) => {
 	          		setLoaded(true);
 	          	}
 
-	          } 
+	          } else {
+	          	setPunks(new_ids)
+          		setLoaded(true);
+	          }
 	          
 	        },
 	        (error) => {

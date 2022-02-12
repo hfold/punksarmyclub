@@ -15,7 +15,7 @@ export default function GetPunk(props) {
 	React.useEffect( () => {
 		if(!loaded && props.id) {
 		    ReadOnly.getPunk({token_id: props.id}, UserState, globals.COLLECTIONS[props.collection], (result) => {
-		    	
+		    	console.log('response get punk', result)
 		    	setUrl(result.value?.metadata_url?.value || null)
 		    	setLoaded(true);
 

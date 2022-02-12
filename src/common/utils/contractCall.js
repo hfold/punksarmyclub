@@ -209,6 +209,33 @@ export default {
 			}
 		},
 
+	chMetadata: async (args = {id: 0, metadata_url: ''}, UserState, ctx, doContractCall, cb = null, ecb = null) => {
+			console.log('calling ch metadata', UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK_CALLER])
+			try {
+				
+				doContractCall({
+				      contractAddress: ctx.address,
+				  	  contractName: ctx.ctr_name,
+				      functionName: 'set_punk_metadata_url',
+				      functionArgs: [uintCV(args.id), stringAsciiCV(args.metadata_url)],
+				      onFinish: (result) => {
+				      	//console.log('onFinish', result)
+				      	if(cb) cb( result )
+				      },
+				      onCancel: (result) => {
+				      	//console.log('onFinish', result)
+				      	if(ecb) ecb( result )
+				      },
+				      network: globals.NETWORK,
+				      stxAddress: UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK_CALLER],
+				    });
+				
+			} catch(e) {
+				//console.log('error', e)
+				if(ecb) ecb(e)
+			}
+		},
+
 	openMintEvent: async (args = {mint_price:0, public_value: 0, address_mint: 0}, UserState, ctx, doContractCall, cb = null, ecb = null) => {
 			console.log('calling add contractAddress', UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK_CALLER])
 			try {
