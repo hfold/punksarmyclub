@@ -9,6 +9,35 @@ window.MAIN_URL = 'https://punksarmynft.com'
 window.MAIN_URL_TEXT = 'https://punksarmynft.com'
 window.GATEWAY = 'https://punksarmynft.mypinata.cloud/ipfs/'
 window.COLLECTIONS = {
+	'Punks': {
+		address: 'SP2A665S3H6FVMZSY4VJ17ESXX21CGS0A32984B1H',//'ST2A665S3H6FVMZSY4VJ17ESXX21CGS0A32H41WXG', //
+		ctr_name: 'Punks-Army-NFTs',
+		tkn: 'Punks-Army',
+		name: 'Punks Army',
+		description: 'The invasion is ready',
+		enabled: true,
+		logo_image: 'logo.png',
+		main_image: 'punklogo.png',
+		full_gallery_name: 'Punks',
+		gallery: [
+			"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/13",
+			"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/3",
+			"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/5",
+			"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/6",
+			"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/10",
+			"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/50",
+			"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/34",
+			"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/44",
+			"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/43",
+			"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/77",
+			"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/36",
+			"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/59",
+			"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/99",
+			"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/102",
+			"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/122",
+			"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/121",
+		]
+	},
 	'Friends': {
 		address: 'SP2A665S3H6FVMZSY4VJ17ESXX21CGS0A32984B1H',
 		ctr_name: 'Punks-Army-Friends-NFTs',
@@ -16,8 +45,8 @@ window.COLLECTIONS = {
 		tkn: 'Punks-Army-Friends',
 		description: 'Stacks Friends of the Army',
 		enabled: true,
-		logo_image: '1no-back2.png',
-		main_image: 'wastepunks2.png',
+		logo_image: 'Chimpanzee1.png',
+		main_image: 'niccreations.jpg',
 		full_gallery_name: 'Friends',
 		gallery: [
 		"ipfs://QmZvvK4UmCRgK7PpwUKuHHiSvEgNe1Y3bVvCGxCFXpMz22/1",	
@@ -50,21 +79,5 @@ window.COLLECTIONS = {
 			"ipfs://QmYyh6ijf9zHPzvvi3r8LrtFHk2LqaHVvPGXmfgVLYWsDH/8",
 			"ipfs://QmYyh6ijf9zHPzvvi3r8LrtFHk2LqaHVvPGXmfgVLYWsDH/9"
 		]	
-	},
-	'Punks': {
-		address: 'ST2A665S3H6FVMZSY4VJ17ESXX21CGS0A32H41WXG', //
-		ctr_name: 'Punks-Army-NFTs-Test',
-		tkn: 'Punks-Army-Test',
-		name: 'Punks Army',
-		description: 'Coming Soon',
-		enabled: false,
-		logo_image: 'logo.png',
-		main_image: 'punk.png',
-		full_gallery_name: 'Punks',
-		gallery: [
-			"ipfs://Qmdnpeb1rknvBZszfxfuoR6PiUPmRzxu54FEaN7yu8qwTt/10",
-			"ipfs://Qmdnpeb1rknvBZszfxfuoR6PiUPmRzxu54FEaN7yu8qwTt/1",
-			"ipfs://Qmdnpeb1rknvBZszfxfuoR6PiUPmRzxu54FEaN7yu8qwTt/2"
-		]
 	}
 }

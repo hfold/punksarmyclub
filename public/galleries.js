@@ -20,10 +20,22 @@ window.FriendsGallery = [
 		"ipfs://Qmbe3jnhTBMXe5LxyU7t9rGWjF3peL4VuFPbMwqTXerTTa/2"
 	];
 window.PunksGallery = [
-	"ipfs://Qmdnpeb1rknvBZszfxfuoR6PiUPmRzxu54FEaN7yu8qwTt/10",
-	"ipfs://Qmdnpeb1rknvBZszfxfuoR6PiUPmRzxu54FEaN7yu8qwTt/1",
-	"ipfs://Qmdnpeb1rknvBZszfxfuoR6PiUPmRzxu54FEaN7yu8qwTt/2",
-	"ipfs://Qmdnpeb1rknvBZszfxfuoR6PiUPmRzxu54FEaN7yu8qwTt/102",
-	"ipfs://Qmdnpeb1rknvBZszfxfuoR6PiUPmRzxu54FEaN7yu8qwTt/111",
-	"ipfs://Qmdnpeb1rknvBZszfxfuoR6PiUPmRzxu54FEaN7yu8qwTt/1000"
+	"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/13",
+			"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/3",
+			"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/5",
+			"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/6",
+			"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/10",
+			"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/50",
+			"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/34",
+			"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/44",
+			"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/43",
+			"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/77",
+			"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/36",
+			"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/59",
+			"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/99",
+			"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/102",
+			"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/122",
+			"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/121",
+			"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/12",
+			"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/88",
 	]
