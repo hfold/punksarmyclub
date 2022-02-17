@@ -210,7 +210,9 @@ function Mint (props) {
 					formatter.format_stx_integers2(current.mint_event?.value?.mint_price?.value || 0) 
 					} STX</b></p>
 				<p className="mint_price"> MAX NFTs ALLOWED FOR WALLET:<b> {
-					current.mint_event?.value.address_mint?.value
+					parseInt(current.mint_event?.value.address_mint?.value) > 0
+					? current.mint_event?.value.address_mint?.value
+					: '∞'
 					}</b></p>
 				{
 					has_avaible_multiple
