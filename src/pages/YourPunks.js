@@ -218,7 +218,6 @@ const YourPunks = (props) => {
   		{punks.map(id => 
   			<Col style={{padding: 20, overflow: 'visible', textAlign: 'center'}} sm={6} xs={12} md={4}>
   				<GetPunk id={id} key={"punk_id_"+id} collection={collection} />
-  				<h3>{id}</h3>
   				{
   					is_owner ? <Button id="load_more_punks" color="primary" 
   					style={{color: '#fff', margin: '12px auto', display: 'block', marginTop: -20}} 

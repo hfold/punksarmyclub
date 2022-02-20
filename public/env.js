@@ -19,6 +19,7 @@ window.COLLECTIONS = {
 		logo_image: 'logo.png',
 		main_image: 'punklogo.png',
 		full_gallery_name: 'Punks',
+		has_rarity: true,
 		gallery: [
 			"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/13",
 			"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/3",

@@ -15,6 +15,7 @@ import MintEvent from './MintEvent';
 import SignIn from './SignIn';
 import Gallery from './Gallery';
 import ChangeMetadataUrl from './ChangeMetadataUrl';
+import Rarity from './Rarity';
 import {
   HashRouter as Router,
   Switch,
@@ -226,6 +227,7 @@ function RoutesList() {
       <Route exact path="/:collection/txs" component={Transactions} />
       <Route exact path="/:collection/add" component={AddPunks} />
       <Route exact path="/:collection/meta" component={ChangeMetadataUrl} />
+      <Route exact path="/:collection/rarity" component={Rarity} />
     </React.Fragment> : null
 }
 

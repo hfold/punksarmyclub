@@ -23,6 +23,13 @@ const has_full_gallery = (collection) => {
 		return false;
 	}
 }
+const has_rarity = (collection) => {
+	try {
+		return globals.COLLECTIONS[collection].has_rarity
+	} catch(e) {
+		return false;
+	}
+}
 
 export default function Header(props) {
 	const {UserState, UserDispatch} = React.useContext(UserContext);
@@ -111,6 +118,18 @@ export default function Header(props) {
 				            		color: '#fff', margin: '-24px auto', display: 'block'}} className="mb-3" size="xs" 
 								onClick={async () => history.push("/"+collection_key+"/gallery")}>
 									GALLERY
+								</Button>
+				            	: null
+				            }
+				            {
+				            	has_rarity(collection_key)
+				            	?
+				            	<Button id="open_full_gallery" color="primary" style={{
+				            		color: '#fff', margin: '-24px auto', display: 'block', 
+				            		marginTop: 12
+				            	}} className="mb-3" size="xs" 
+								onClick={async () => history.push("/"+collection_key+"/rarity")}>
+									RARITY CHECK
 								</Button>
 				            	: null
 				            }
