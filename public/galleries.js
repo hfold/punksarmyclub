@@ -11,6 +11,8 @@ window.AncestorsGallery = [
 		"ipfs://QmYyh6ijf9zHPzvvi3r8LrtFHk2LqaHVvPGXmfgVLYWsDH/9"
 	];
 window.FriendsGallery = [
+		"ipfs://QmVdJ2Z3a7BfHooXqZYsxgdX9nR6aispJTBzBQ76div8Aw/4",
+		"ipfs://QmScSJ2khofXtihLMbT3u1YtpidrJ8Vo8MscSdeAJVQYAF/3",
 		"ipfs://QmX7cw22HoXEEWuuNHJZRN3Jvs7PrF8dgJc23NRSdiM9Jv/2",
 		"ipfs://QmZvvK4UmCRgK7PpwUKuHHiSvEgNe1Y3bVvCGxCFXpMz22/1",	
 		"ipfs://QmXWG2jC8ZSoUb7QEmSa8j5BtPjpSPH3h5Mu3Y3C96ixyy/3",

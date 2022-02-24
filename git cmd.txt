@@ -1,0 +1,24 @@
+ssh-keygen (get a public key to get acces bitbucket)
+git init (from C:\Users\c.andreotti\punksarmyclub)
+git init (from C:\Users\c.andreotti\parmydapp)
+git remote add origin git@bitbucket.org:fabiorizzo1/punks-army-nft-dapp.git
+git remote rm origin
+git remote add origin https://git@bitbucket.org/shinopunk/punksarmydapp.git
+git remote add origin https://git@bitbucket.org/fabiorizzo1/punks-army-nft-dapp.git
+
+git pull origin master (to get the repository)
+
+Push:
+git add .
+git commit -a -m "messaggio del commit"
+git push origin nome_branch or git push origin master
+git remote -v
+git remote add origin git@bitbucket.org:fabiorizzo1/punks-army-nft-dapp.git
+
+
+rmdir /s "C:\Users\c.andreotti\paclub"
+
+git commit -a -m "messaggio del commit"
+
+
+git stash
