@@ -16,41 +16,7 @@ function Home(props) {
   
   const {UserState, UserDispatch} = React.useContext(UserContext)
   
-  return (<Container>{
-    UserState.logged 
-    ? 
-    <Row>
-      
-      <h3 className="call_to_action_choose_collection" style={{padding: 20}}>
-        <TweenOne
-          animation={{ 
-            y: -5, 
-            yoyo: true, 
-            repeat: -1, 
-            duration: 500
-          }}
-          paused={false}
-          
-          className="code-box-shape"
-        ><BsArrowUpCircle /></TweenOne>
-        <TweenOne
-          animation={{ 
-            y: -5, 
-            yoyo: true, 
-            repeat: -1, 
-            duration: 500
-          }}
-          paused={false}
-          
-          className="code-box-shape"
-        >
-        Choose a collection
-        </TweenOne>
-        </h3>
-    </Row>
-    : <SignIn />}
-    
-  </Container>);
+  return (<Container></Container>);
   
 };
 
