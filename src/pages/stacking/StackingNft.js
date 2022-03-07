@@ -72,7 +72,7 @@ function StackingNft (props) {
 					{ stacking_id: props.stacking_id },
 					UserState,
 					(res)=>{
-						console.log('minted results', res)
+						console.log('minted results NFT ID: '+props.nft_id, res)
 						setMinted(res)
 					},
 					(err) => {
