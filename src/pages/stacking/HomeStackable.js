@@ -50,7 +50,7 @@ function HomeStackable (props) {
 			
 			setLoaded(true)
 			
-			let balance_url = globals.STACKS_API_BASE_URL+"/extended/v1/tokens/nft/holdings?principal="+UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK_CALLER]+"&asset_identifier="+props.collection.fullName
+			let balance_url = globals.STACKS_API_BASE_URL+"/extended/v1/tokens/nft/holdings?principal="+UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK_CALLER]+"&asset_identifiers="+props.collection.fullName
 			fetch(balance_url)
 		      .then(res => res.json())
 		      .then(
