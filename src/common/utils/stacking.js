@@ -108,11 +108,23 @@ export default {
 
 	addBonusAddress: async (args = {address: null, percentage: null, daily: null}, UserState, doContractCall, cb = null, ecb = null ) => {
 		try {	
+			console.log('invio lista', args.address)
+
+			if(args.address.length > 200) {
+				alert("Invalid list length > 200");
+				if(ecb) ecb("Invalid list length")
+				return;
+			}
+
+			let list = []
+			args.address.map(principal => list.push(standardPrincipalCV(principal)))
+
+
 			doContractCall({
 			      contractAddress: ctx,
 			  	  contractName: ctx_name,
 			      functionName: 'add-address-to-bonus',
-			      functionArgs: [standardPrincipalCV(args.address), uintCV(args.percentage), uintCV(args.daily)],
+			      functionArgs: [listCV(list), uintCV(args.percentage), uintCV(args.daily)],
 			      onFinish: (result) => {
 			      	if(cb) cb( result )
 			      },
@@ -134,6 +146,36 @@ export default {
 			  	  contractName: ctx_name,
 			      functionName: 'remove-address-from-bonus',
 			      functionArgs: [standardPrincipalCV(args.address)],
+			      onFinish: (result) => {
+			      	if(cb) cb( result )
+			      },
+			      onCancel: (result) => {
+			      	if(ecb) ecb( result )
+			      },
+			      network: globals.NETWORK,
+			      stxAddress: UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK_CALLER],
+			    });
+			
+		} catch(e) {
+			if(ecb) ecb(e)
+		}
+	},
+	removeMultipleBonusAddress: async (args = {}, UserState, doContractCall, cb = null, ecb = null ) => {
+		try {	
+			if(args.address.length > 200) {
+				alert("Invalid list length > 200");
+				if(ecb) ecb("Invalid list length")
+				return;
+			}
+
+			let list = []
+			args.address.map(principal => list.push(standardPrincipalCV(principal)))
+
+			doContractCall({
+			      contractAddress: ctx,
+			  	  contractName: ctx_name,
+			      functionName: 'remove-multiple-address-from-bonus',
+			      functionArgs: [listCV(list)],
 			      onFinish: (result) => {
 			      	if(cb) cb( result )
 			      },
