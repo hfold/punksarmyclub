@@ -16,6 +16,11 @@ import SignIn from './SignIn';
 import Gallery from './Gallery';
 import ChangeMetadataUrl from './ChangeMetadataUrl';
 import Rarity from './Rarity';
+
+
+import StackingMain from './stacking/StackingMain';
+import RarityMain from './rarity/RarityMain';
+import TokenMain from './token/TokenMain';
 import {
   HashRouter as Router,
   Switch,
@@ -219,6 +224,9 @@ function RoutesList() {
 
   return ok_redirect ? <React.Fragment>
       <Route exact path="/" component={Home} />
+      <Route exact path="/stacking" component={StackingMain} />
+      <Route exact path="/rarity" component={RarityMain} />
+      <Route exact path="/token" component={TokenMain} />
       <Route exact path="/:collection/gallery" component={Gallery} />
       <Route exact path="/:collection/mint" component={Mint} />{/* mettiamo qui la lista */}
       <Route exact path="/:collection/nft" component={YourPunks} />

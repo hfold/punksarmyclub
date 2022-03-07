@@ -1,6 +1,6 @@
-window.network = 'mainnet'
-window.CONTRACT_ADDRESS = 'SP2A665S3H6FVMZSY4VJ17ESXX21CGS0A32984B1H';//'ST1Y81WMHPCZ5Y92E6BAJDP0CR8PJXB53E2J71436'
-window.CONTRACT_NAME = 'Punka-Army-Friends-NFTs' //punks-test
+window.network = 'testnet'
+window.CONTRACT_ADDRESS = 'ST1HA10B13YSF47JXWGJCVNF94QPZ3GWWYSCZDDSS';//'ST1Y81WMHPCZ5Y92E6BAJDP0CR8PJXB53E2J71436'
+window.CONTRACT_NAME = 'punks' //punks-test
 window.COLLECTION_URL = 'https://punksarmynft.club/'
 window.MAX_PUNK = 2500
 window.DISCORD_URL = 'https://discord.gg/rpFju7cPt9'
@@ -8,7 +8,27 @@ window.TWITTER_URL = 'https://twitter.com/punksarmynft/'
 window.MAIN_URL = 'https://punksarmynft.com'
 window.MAIN_URL_TEXT = 'https://punksarmynft.com'
 window.GATEWAY = 'https://punksarmynft.mypinata.cloud/ipfs/'
+window.STACKING = true
+window.TOKEN_CONTRACT = 'ST1HA10B13YSF47JXWGJCVNF94QPZ3GWWYSCZDDSS.romatoken'
+window.STACKING_CONTRACT = 'ST1HA10B13YSF47JXWGJCVNF94QPZ3GWWYSCZDDSS.stackerv3'
+window.RARITY_CONTRACT = 'ST1HA10B13YSF47JXWGJCVNF94QPZ3GWWYSCZDDSS.rarity'
 window.COLLECTIONS = {
+	'PunksTest': {
+		address: 'ST1HA10B13YSF47JXWGJCVNF94QPZ3GWWYSCZDDSS',//'ST2A665S3H6FVMZSY4VJ17ESXX21CGS0A32H41WXG', //
+		ctr_name: 'punks',
+		tkn: 'PunksArmyToken',
+		name: 'Punks Army Test',
+		description: 'The invasion is ready',
+		enabled: true,
+		logo_image: 'logo.png',
+		main_image: 'punklogo.png',
+		full_gallery_name: 'Punks',
+		has_rarity: true,
+		gallery: [
+			"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/13",
+			"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/3"
+		]
+	},
 	'Punks': {
 		address: 'SP2A665S3H6FVMZSY4VJ17ESXX21CGS0A32984B1H',//'ST2A665S3H6FVMZSY4VJ17ESXX21CGS0A32H41WXG', //
 		ctr_name: 'Punks-Army-NFTs',

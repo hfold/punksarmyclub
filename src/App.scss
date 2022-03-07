@@ -251,6 +251,9 @@ body{
     left: 0;
     display: inline-block;
 }
+.subtitle.no-border:after{
+  display: 'none';
+}
 .collection_info{
   transition: all  ease-in-out .2s;
   background: #1e0722;
@@ -383,7 +386,7 @@ a{
   box-shadow: none;
 }
 .nft_container{
-  width: 350px;
+  max-width: 350px;
 }
 
 
@@ -501,5 +504,74 @@ margin-top: 26px;
       color: #f82a5c;
       font-weight: bold;
     }
+  }
+}
+
+.vertical_nav{
+  .nav-link{
+    cursor: pointer;
+    color: #fff !important;
+    &:hover{
+      color: $danger !important;
+    }
+    &.current{
+      color: $secondary !important;
+    }
+  }
+}
+
+.overflowed{
+  overflow: hidden;
+  max-height: 20px;
+  &:hover{
+    overflow: auto;
+    max-height: inherit;
+  }
+}
+
+.args_title{
+  color: #480253;
+    font-weight: bold;
+    margin-top: 18px;
+    font-size: 14px;
+}
+
+.bar-left-custom{
+  background: rgb(96 22 109 / 60%);
+    padding: 40px;
+    border-radius: 20px;
+}
+
+.stacking_avaible{
+  .collection_info{
+    margin-bottom: 0;
+  }
+  margin-bottom: 24px;
+  position: relative;
+  .button_container{
+    text-align: center;
+    transition: all ease-in-out .3s;
+    display: none;
+    background: rgba(0,0,0,.4);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    color: #fff;
+    top: 0;
+    left: 0;
+  }
+  &:hover .button_container{
+    display: block;
+  }
+}
+
+.stacking_container{
+  &.white_content{
+    * {
+      color: #fff;
+    }
+  }
+  p{
+    font-size: 12px;
   }
 }

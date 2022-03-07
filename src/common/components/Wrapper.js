@@ -4,6 +4,7 @@ import {
 } from 'reactstrap';
 
 import Header from './layout/Header';
+import SecondaryHeader from './layout/SecondaryHeader';
 import Footer from './layout/Footer';
 
 import {
@@ -24,6 +25,12 @@ export default function Wrapper( args, WrappedComponent ) {
 					args.hasHeader
 					?
 					<Header {...this.props} {...args} />
+					: null
+				}
+				{
+					args.hasSecondaryHeader
+					?
+					<SecondaryHeader {...this.props} {...args} />
 					: null
 				}
 				<Container>
