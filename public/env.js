@@ -1,5 +1,5 @@
-window.network = 'testnet'
-window.CONTRACT_ADDRESS = 'ST1HA10B13YSF47JXWGJCVNF94QPZ3GWWYSCZDDSS';//'ST1Y81WMHPCZ5Y92E6BAJDP0CR8PJXB53E2J71436'
+window.network = 'mainnet'
+window.CONTRACT_ADDRESS = 'SP2A665S3H6FVMZSY4VJ17ESXX21CGS0A32984B1H';//'ST1Y81WMHPCZ5Y92E6BAJDP0CR8PJXB53E2J71436'
 window.CONTRACT_NAME = 'punks' //punks-test
 window.COLLECTION_URL = 'https://punksarmynft.club/'
 window.MAX_PUNK = 2500
@@ -9,26 +9,26 @@ window.MAIN_URL = 'https://punksarmynft.com'
 window.MAIN_URL_TEXT = 'https://punksarmynft.com'
 window.GATEWAY = 'https://punksarmynft.mypinata.cloud/ipfs/'
 window.STACKING = true
-window.TOKEN_CONTRACT = 'ST1HA10B13YSF47JXWGJCVNF94QPZ3GWWYSCZDDSS.romatoken'
-window.STACKING_CONTRACT = 'ST1HA10B13YSF47JXWGJCVNF94QPZ3GWWYSCZDDSS.stackerv4'
-window.RARITY_CONTRACT = 'ST1HA10B13YSF47JXWGJCVNF94QPZ3GWWYSCZDDSS.rarity'
+window.TOKEN_CONTRACT = 'SP2A665S3H6FVMZSY4VJ17ESXX21CGS0A32984B1H.romatoken'
+window.STACKING_CONTRACT = 'SP2A665S3H6FVMZSY4VJ17ESXX21CGS0A32984B1H.stacker'
+window.RARITY_CONTRACT = 'SP2A665S3H6FVMZSY4VJ17ESXX21CGS0A32984B1H.rarity'
 window.COLLECTIONS = {
-	'PunksTest': {
-		address: 'ST1HA10B13YSF47JXWGJCVNF94QPZ3GWWYSCZDDSS',//'ST2A665S3H6FVMZSY4VJ17ESXX21CGS0A32H41WXG', //
-		ctr_name: 'punks',
-		tkn: 'PunksArmyToken',
-		name: 'Punks Army Test',
-		description: 'The invasion is ready',
-		enabled: true,
-		logo_image: 'logo.png',
-		main_image: 'punklogo.png',
-		full_gallery_name: 'Punks',
-		has_rarity: true,
-		gallery: [
-			"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/13",
-			"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/3"
-		]
-	},
+	// 'PunksTest': {
+	// 	address: 'ST1HA10B13YSF47JXWGJCVNF94QPZ3GWWYSCZDDSS',//'ST2A665S3H6FVMZSY4VJ17ESXX21CGS0A32H41WXG', //
+	// 	ctr_name: 'punks',
+	// 	tkn: 'PunksArmyToken',
+	// 	name: 'Punks Army Test', 
+	// 	description: 'The invasion is ready',
+	// 	enabled: true,
+	// 	logo_image: 'logo.png',
+	// 	main_image: 'punklogo.png',
+	// 	full_gallery_name: 'Punks',
+	// 	has_rarity: true,
+	// 	gallery: [
+	// 		"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/13",
+	// 		"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/3"
+	// 	]
+	// },
 	'Punks': {
 		address: 'SP2A665S3H6FVMZSY4VJ17ESXX21CGS0A32984B1H',//'ST2A665S3H6FVMZSY4VJ17ESXX21CGS0A32H41WXG', //
 		ctr_name: 'Punks-Army-NFTs',
@@ -70,6 +70,9 @@ window.COLLECTIONS = {
 		main_image: 'niccreations.jpg',
 		full_gallery_name: 'Friends',
 		gallery: [
+		// "ipfs://QmQ7MJqeEb1myuq8GvbFjREhNaehtJgbAgXnSxCjS4zf3W/2",
+		"ipfs://Qmet3qszE7fsnZaj9U3wp9JAUZrzCFTJb3AhpvgcHX3z6a/1",
+		"ipfs://Qme8GH3ZAEkUCobR9CnvuSSy1xE2C79LxNu6jxempN9HaU/1",
 		"ipfs://QmVdJ2Z3a7BfHooXqZYsxgdX9nR6aispJTBzBQ76div8Aw/4",
 		"ipfs://QmScSJ2khofXtihLMbT3u1YtpidrJ8Vo8MscSdeAJVQYAF/3",
 		"ipfs://QmX7cw22HoXEEWuuNHJZRN3Jvs7PrF8dgJc23NRSdiM9Jv/2",

@@ -50,6 +50,9 @@ window.COLLECTIONS = {
 		main_image: 'niccreations.jpg',
 		full_gallery_name: 'Friends',
 		gallery: [
+		// "ipfs://QmQ7MJqeEb1myuq8GvbFjREhNaehtJgbAgXnSxCjS4zf3W/2",
+		"ipfs://Qmet3qszE7fsnZaj9U3wp9JAUZrzCFTJb3AhpvgcHX3z6a/1",
+		"ipfs://Qme8GH3ZAEkUCobR9CnvuSSy1xE2C79LxNu6jxempN9HaU/1",
 		"ipfs://QmVdJ2Z3a7BfHooXqZYsxgdX9nR6aispJTBzBQ76div8Aw/4",
 		"ipfs://QmScSJ2khofXtihLMbT3u1YtpidrJ8Vo8MscSdeAJVQYAF/3",
 		"ipfs://QmX7cw22HoXEEWuuNHJZRN3Jvs7PrF8dgJc23NRSdiM9Jv/2",

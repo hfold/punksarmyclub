@@ -9,6 +9,8 @@ Col,
 List
 } from 'reactstrap';
 
+import formatter from '../../common/utils/formatter';
+
 import CodeEditor from '@uiw/react-textarea-code-editor';
 
 import contractCall from '../../common/utils/contractCall';
@@ -90,10 +92,12 @@ function StackingNft (props) {
 		<Col lg={8} md={6} sm={6}>
 			{minted ?
 			<div className="stacking_container white_content">
-				<p><b>CURRENTLY MINTED:</b> {getValue(minted.minted.value)}</p>
-				<p><b>ADDRESS BONUS:</b> {getValue(minted['address-bonus'].value)}</p>
-				<p><b>COLLECTION BONUS:</b> {getValue(minted['bonus'].value)}</p>
-				<p><b>DAILY VALUE:</b> {getValue(minted['nft-daily-value'].value)}</p>
+				<p><b>EXPECTED DAILY GAIN:</b> {getValue(minted['nft-daily-value'].value)} $ROMA</p>
+				<p><b>CURRENT GAIN:</b> {getValue(minted.minted.value)} $ROMA</p>
+				<p><b>TIME BONUS*:</b> {getValue(minted['bonus'].value)} $ROMA</p>
+				<p>*Each 720 Blocks (about 5 days) you gain a 5% bonus on your total Reward</p>	
+				<p><b>OG BONUS**:</b> {getValue(minted['address-bonus'].value)} $ROMA</p>
+				<p>**If you are an OG, each 144 Blocks (about 1 day) you gain a 2% bonus on your total Reward</p>
 				{!claimed ? <Button id="confirm_add" color="primary" style={{color: '#fff'}} className="mb-3" size="xs" 
 				onClick={async () => {
 					if(loading) return;
