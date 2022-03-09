@@ -162,10 +162,10 @@ export default function Header(props) {
 		{window.STACKING ? <Row>
 			<Col lg={6} md={12} className="offset-lg-3 offset-md-0">
 				<p style={{color: '#fff', fontSize: 44, textAlign: 'center', fontWeight: 'bold', marginTop: 50, marginBottom: 40}}>
-				Stacking is now live
+				Staking is now live
 				{UserState.logged ? <Button id="back_to_home" color="danger" style={{color: '#fff', margin: '12px auto', display: 'block'}} className="mb-3" size="lg" 
 				onClick={async () => history.push("/stacking")}>
-					<b>GO TO STACKING</b>
+					<b>GO TO STAKING</b>
 				</Button> : null }
 				</p>
 			</Col>

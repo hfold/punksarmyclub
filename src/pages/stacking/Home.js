@@ -149,7 +149,7 @@ function Home (props) {
 		</Col>
 		<Row>
 			<Col sm={12}>
-				<h3 className="subtitle" style={{marginTop: 24}}>CURRENT STACKING</h3>
+				<h3 className="subtitle" style={{marginTop: 24}}>CURRENT STAKING</h3>
 			</Col>
 			<StackingData />
 		</Row>
