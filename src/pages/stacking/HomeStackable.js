@@ -70,10 +70,10 @@ function HomeStackable (props) {
 	return <div>
 		<Row>
 		{
-			nfts.map(nft => {
+			nfts.map((nft,i,n) => {
 				
 				return <Col xl={4} md={6} sm={12}>
-					<NftElement nft_id={parseInt(cvToJSON(hexToCV(nft.value.hex)).value)} ctx={{address: props.collection.collection.split(".")[0], name: props.collection.collection.split(".")[1], token: props.collection.tokenName}} />
+					<NftElement n_el={i} nft_id={parseInt(cvToJSON(hexToCV(nft.value.hex)).value)} ctx={{address: props.collection.collection.split(".")[0], name: props.collection.collection.split(".")[1], token: props.collection.tokenName}} />
 				</Col>
 			})
 		}

@@ -22,7 +22,15 @@ import { useConnect } from "@stacks/connect-react";
 
 import GetPunkByMetadata from '../../common/components/GetPunkByMetadata';
 
-
+import {  
+	standardPrincipalCV,
+	cvToHex,
+	hexToCV,
+	cvToJSON,
+	cvToString,
+	stringToCV,
+	uintCV
+} from '@stacks/transactions';
 
 import Wrapper from '../../common/components/Wrapper';
 import MempoolTxs from '../../common/components/MempoolTxs';
@@ -49,28 +57,56 @@ function StackingNft (props) {
 	const [minted,setMinted] = React.useState(null)
 	const [claimed,setClaimed] = React.useState(false)
 
+	const loadNftData = async () => {
+		let data = cvToHex( uintCV(props.stacking_id) )
+
+		let url_data_map = globals.STACKS_API_BASE_URL + '/v2/map_entry/' + window.STACKING_CONTRACT.split(".")[0] + '/' + window.STACKING_CONTRACT.split(".")[1] + '/stacking-map'
+		let response = await fetch(url_data_map, {
+		    method: 'POST', // *GET, POST, PUT, DELETE, etc.
+		    mode: 'cors', // no-cors, *cors, same-origin
+		    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+		    credentials: 'same-origin', // include, *same-origin, omit
+		    headers: {
+		      'Content-Type': 'application/json'
+		      // 'Content-Type': 'application/x-www-form-urlencoded',
+		    },
+		    redirect: 'follow', // manual, *follow, error
+		    referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+		    body: JSON.stringify(data) // body data type must match "Content-Type" header
+		  });
+	  	return response.json();
+	}
+
+
+
 	React.useEffect(() => {
 		if(!loaded) {
 			
 			setLoaded(true)
 			console.log('prendo nft', props)
-			stacking.getNft(
-					{ token_id: props.nft_id },
-					UserState,
-					{
-						address: props.ctx.address,
-						ctr_name: props.ctx.name
-					},
-					(res)=>{
-						console.log('nft results', res)
-						setNft(res)
-					},
-					(err) => {
-						console.log('err', err)
-					}
-				)
 
-			stacking.getTokenMinted(
+			setTimeout(()=>{
+				loadNftData().then(data => {
+					let json_val = cvToJSON(hexToCV(data.data));
+				    console.log('SINGLE NFT DATA', json_val)
+
+				    stacking.getNft(
+						{ token_id: json_val.value.value['nft-id'].value },
+						UserState,
+						{
+							address: json_val.value.value['nft-collection'].value.split(".")[0],
+							ctr_name: json_val.value.value['nft-collection'].value.split(".")[1]
+						},
+						(res)=>{
+							setNft(res)
+						},
+						(err) => {
+							console.log('err', err)
+						}
+					)
+			  	})
+
+			  	stacking.getTokenMinted(
 					{ stacking_id: props.stacking_id },
 					UserState,
 					(res)=>{
@@ -81,6 +117,10 @@ function StackingNft (props) {
 						console.log('err', err)
 					}
 				)
+			}, props.n_el * 2000)
+			
+
+			
 		}
 
 	}, []);	

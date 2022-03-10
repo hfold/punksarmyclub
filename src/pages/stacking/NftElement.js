@@ -48,7 +48,8 @@ function NftElement (props) {
 			
 			setLoaded(true)
 			console.log('prendo nft', props)
-			stacking.getNft(
+			setTimeout(()=>{
+				stacking.getNft(
 					{ token_id: props.nft_id },
 					UserState,
 					{
@@ -63,6 +64,8 @@ function NftElement (props) {
 						console.log('err', err)
 					}
 				)
+			}, props.n_el * 2000)
+			
 		}
 
 	}, []);	
