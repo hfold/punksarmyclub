@@ -9,9 +9,9 @@
 /coverage
 
 # production
-/build/env.js
-/build/galleries.js
-/build/rarity.js
+#/build/env.js
+#/build/galleries.js
+#/build/rarity.js
 /public/env.js
 
 # misc

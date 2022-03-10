@@ -54,7 +54,7 @@ function StackingData (props) {
 
 
 	const loadData = async () => {
-
+		//'SPM1Q7YG18378H6W254YN8PABEVRPT38ZCY01SJD'
 		let user_address = UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK_CALLER];
 		let data = cvToHex( standardPrincipalCV( user_address ) )
 
