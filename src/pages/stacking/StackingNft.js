@@ -170,7 +170,7 @@ function StackingNft (props) {
 					)
 
 				}}>
-					{loading ? <Spinner size="sm" /> : "Claim"}
+					{loading ? <Spinner size="sm" /> : "UNSTAKE PUNK AND CLAIM $ROMA"}
 				</Button> : null}
 				{
 					claimed ? <p>CLAIMED</p> : null

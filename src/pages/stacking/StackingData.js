@@ -147,6 +147,7 @@ function StackingData (props) {
 	}}>
 		{loading ? <Spinner size="sm" /> : "Refresh"}
 	</Button>
+	<h3 style={{color: '#fff'}}>You're staking {current_staking.length} Nfts</h3>
 	{current_staking.map((el,i,a) => {
 		return <StackingNft key={"stacking_"+i} 
 		stacking_id={el} 
