@@ -64,7 +64,7 @@ function NftElement (props) {
 						console.log('err', err)
 					}
 				)
-			}, props.n_el * 2000)
+			}, props.n_el * 300)
 			
 		}
 

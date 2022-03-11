@@ -312,6 +312,24 @@ export default {
 		}
 	},
 
+	_getAddressStackingNft: async (args = {address: null}, UserState, cb = null, ecb = null ) => {
+		try {
+
+			let result = await callReadOnlyFunction({
+			  contractAddress: ctx,
+			  contractName: ctx_name,
+			  functionName: 'get-address-staking-nfts',
+			  network: globals.NETWORK,
+			  functionArgs: [standardPrincipalCV(args.address)],
+			  senderAddress: UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK_CALLER]
+			})
+			if(cb) cb( cvToJSON(result).value.value )
+
+		} catch(e) {
+			if(ecb) ecb(e)
+		}
+	},
+
 	getTokenMinted: async (args = {stacking_id: null}, UserState, cb = null, ecb = null ) => {
 		try {
 

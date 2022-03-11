@@ -57,6 +57,9 @@ function StackingNft (props) {
 	const [minted,setMinted] = React.useState(null)
 	const [claimed,setClaimed] = React.useState(false)
 
+	const [collection, setCollection] = React.useState(null)
+	const [nft_id, setNftId] = React.useState(null)
+
 	const loadNftData = async () => {
 		let data = cvToHex( uintCV(props.stacking_id) )
 
@@ -88,6 +91,8 @@ function StackingNft (props) {
 			setTimeout(()=>{
 				loadNftData().then(data => {
 					let json_val = cvToJSON(hexToCV(data.data));
+					setCollection(json_val.value.value['nft-collection'].value)
+					setNftId(json_val.value.value['nft-id'].value)
 				    console.log('SINGLE NFT DATA', json_val)
 
 				    stacking.getNft(
@@ -145,15 +150,15 @@ function StackingNft (props) {
 
 					let token_name = '';
 					Object.keys(props.contract_assets).map(k=>{
-						if(k.split("::")[0] === props.ctx.address+"."+props.ctx.name) token_name = k.split("::")[1]
+						if(k.split("::")[0] === collection) token_name = k.split("::")[1]
 					})
 
 
 					stacking.claim(
 						{ 
 							stacking_id: props.stacking_id,
-							nft_id: props.nft_id,
-							collection: props.ctx.address+"."+props.ctx.name,
+							nft_id: nft_id,
+							collection: collection,
 							token_name: token_name
 						},
 						UserState,

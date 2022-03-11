@@ -106,18 +106,5 @@ window.COLLECTIONS = {
 			"ipfs://QmYyh6ijf9zHPzvvi3r8LrtFHk2LqaHVvPGXmfgVLYWsDH/8",
 			"ipfs://QmYyh6ijf9zHPzvvi3r8LrtFHk2LqaHVvPGXmfgVLYWsDH/9"
 		]	
-	},
-	'Upgrade': {
-		address: 'SP2A665S3H6FVMZSY4VJ17ESXX21CGS0A32984B1H',
-		ctr_name: 'Punks-Army-Upgrade-NFTs',
-		name: 'Punks Army Upgrade',
-		description: 'Unleash the power of your Punk',
-		tkn: 'Punks-Army-Upgrade',
-		enabled: false,
-		logo_image: '1.png',
-		main_image: '3.png',
-		full_gallery_name: 'Upgrade',
-		gallery: [
-		]	
 	}
 }
