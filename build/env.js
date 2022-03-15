@@ -29,12 +29,26 @@ window.COLLECTIONS = {
 	// 		"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/3"
 	// 	]
 	// },
+	'Punks Upgrade': {
+		address: 'SP2A665S3H6FVMZSY4VJ17ESXX21CGS0A32984B1H',//'ST2A665S3H6FVMZSY4VJ17ESXX21CGS0A32H41WXG', //
+		ctr_name: 'Punks-Army-Upgrade-NFTs',
+		tkn: 'Punks-Army-Upgrade',
+		name: 'Punks Army Upgrade',
+		description: 'Unleash the Power of your Punk',
+		enabled: true,
+		logo_image: 'hammer2.png',
+		main_image: 'pupgrade.gif',
+		full_gallery_name: 'Punks Upgrade',
+		has_rarity: false,
+		gallery: [
+		]
+	},
 	'Punks': {
 		address: 'SP2A665S3H6FVMZSY4VJ17ESXX21CGS0A32984B1H',//'ST2A665S3H6FVMZSY4VJ17ESXX21CGS0A32H41WXG', //
 		ctr_name: 'Punks-Army-NFTs',
 		tkn: 'Punks-Army',
 		name: 'Punks Army',
-		description: 'The invasion is ready',
+		description: 'The invasion is accomplished',
 		enabled: true,
 		logo_image: 'logo.png',
 		main_image: 'punklogo.png',

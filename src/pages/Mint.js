@@ -298,7 +298,7 @@ function Mint (props) {
 			      		})
 			      	}
 		      	}}>
-					{claiming ? <Spinner color="#000" size="lg" /> : <b>CLAIM YOUR PUNK</b>}
+					{claiming ? <Spinner color="#000" size="lg" /> : <b>CLAIM YOUR NFT</b>}
 				</Button>
 			</React.Fragment>
 			: <p className="text-danger">SORRY YOU CANNOT MINT</p>
