@@ -29,7 +29,7 @@ window.COLLECTIONS = {
 	// 		"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/3"
 	// 	]
 	// },
-	'Punks Upgrade': {
+	'PunksUpgrade': {
 		address: 'SP2A665S3H6FVMZSY4VJ17ESXX21CGS0A32984B1H',//'ST2A665S3H6FVMZSY4VJ17ESXX21CGS0A32H41WXG', //
 		ctr_name: 'Punks-Army-Upgrade-NFTs',
 		tkn: 'Punks-Army-Upgrade',
@@ -38,10 +38,35 @@ window.COLLECTIONS = {
 		enabled: true,
 		logo_image: 'hammer2.png',
 		main_image: 'pupgrade.gif',
-		full_gallery_name: 'Punks Upgrade',
+		full_gallery_name: 'PunksUpgrade',
 		has_rarity: false,
-		gallery: [
-		]
+		gallery:  [
+		"ipfs//:QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/1",
+		"ipfs//:QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/2",
+		"ipfs//:QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/3",
+		"ipfs//:QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/4",
+		"ipfs//:QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/5",
+		"ipfs//:QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/6",
+		"ipfs//:QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/7",
+		"ipfs//:QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/8",
+		"ipfs//:QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/9",
+		"ipfs//:QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/10",
+		"ipfs//:QmS1Bzajtfr3MCwVhGWkdMQEKrH3fzWmiCGQETwZgGnccs/11", 
+		"ipfs//:QmS1Bzajtfr3MCwVhGWkdMQEKrH3fzWmiCGQETwZgGnccs/12", 
+		"ipfs//:QmS1Bzajtfr3MCwVhGWkdMQEKrH3fzWmiCGQETwZgGnccs/13", 
+		"ipfs//:QmS1Bzajtfr3MCwVhGWkdMQEKrH3fzWmiCGQETwZgGnccs/14", 
+		"ipfs//:QmS1Bzajtfr3MCwVhGWkdMQEKrH3fzWmiCGQETwZgGnccs/15",
+		"ipfs//:QmRbscvnVKotYHuA2qN9yUttGnuaFAKHbbbyyoVAv5VYtY/20", 
+		"ipfs//:QmRbscvnVKotYHuA2qN9yUttGnuaFAKHbbbyyoVAv5VYtY/21", 
+		"ipfs//:QmRbscvnVKotYHuA2qN9yUttGnuaFAKHbbbyyoVAv5VYtY/22", 
+		"ipfs//:QmRbscvnVKotYHuA2qN9yUttGnuaFAKHbbbyyoVAv5VYtY/23", 
+		"ipfs//:QmRbscvnVKotYHuA2qN9yUttGnuaFAKHbbbyyoVAv5VYtY/24", 
+		"ipfs//:QmRbscvnVKotYHuA2qN9yUttGnuaFAKHbbbyyoVAv5VYtY/25", 
+		"ipfs//:QmRbscvnVKotYHuA2qN9yUttGnuaFAKHbbbyyoVAv5VYtY/26", 
+		"ipfs//:QmRbscvnVKotYHuA2qN9yUttGnuaFAKHbbbyyoVAv5VYtY/27", 
+		"ipfs//:QmRbscvnVKotYHuA2qN9yUttGnuaFAKHbbbyyoVAv5VYtY/28", 
+		"ipfs//:QmRbscvnVKotYHuA2qN9yUttGnuaFAKHbbbyyoVAv5VYtY/29", 
+		"ipfs//:QmRbscvnVKotYHuA2qN9yUttGnuaFAKHbbbyyoVAv5VYtY/30"]
 	},
 	'Punks': {
 		address: 'SP2A665S3H6FVMZSY4VJ17ESXX21CGS0A32984B1H',//'ST2A665S3H6FVMZSY4VJ17ESXX21CGS0A32H41WXG', //
