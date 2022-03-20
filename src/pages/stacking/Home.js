@@ -118,7 +118,7 @@ function Home (props) {
 		<Row>
 		<Col sm={12}>
 			{window.STACKING ? <Button id="back_to_home" color="danger" style={{color: '#fff', marginBottom: '12px'}} className="mb-3" size="lg" 
-			onClick={async () => history.push("/stackingv2")}>
+			onClick={async () => history.push("/stakingv2")}>
 				<b>GO TO STAKING V2</b>
 			</Button> : null }
 		</Col>

@@ -76,7 +76,7 @@ const StackingMain = (props) => {
   return (<div style={{marginTop: 40}}>
   	<Row style={{overflow: 'visible'}}>
   		<Col lg={3} md={4} sm={6} xs={12} className="bar-left-custom">
-  			<h3 className="subtitle">STACKING</h3>
+  			<h3 className="subtitle">STAKING</h3>
 		  	<Button id="back_to_home" color="primary" style={{color: '#fff', margin: '12px 0', display: 'block'}} className="mb-3" size="xs" 
 				onClick={async () => history.push("/")}>
 					BACK TO HOME

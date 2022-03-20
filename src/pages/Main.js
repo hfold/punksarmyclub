@@ -226,8 +226,8 @@ function RoutesList() {
 
   return ok_redirect ? <React.Fragment>
       <Route exact path="/" component={Home} />
-      <Route exact path="/stacking" component={StackingMain} />
-      <Route exact path="/stackingv2" component={Stackingv2Main} />
+      <Route exact path="/staking" component={StackingMain} />
+      <Route exact path="/stakingv2" component={Stackingv2Main} />
       <Route exact path="/rarity" component={RarityMain} />
       <Route exact path="/token" component={TokenMain} />
       <Route exact path="/:collection/gallery" component={Gallery} />

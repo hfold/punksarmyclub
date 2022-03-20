@@ -166,11 +166,11 @@ export default function Header(props) {
 				</p>
 				<p style={{textAlign: 'center'}}>
 				{UserState.logged && window.STACKING ? <Button id="back_to_home" color="primary" style={{color: '#fff', margin: '12px'}} className="mb-3" size="lg" 
-				onClick={async () => history.push("/stacking")}>
+				onClick={async () => history.push("/staking")}>
 					<b>GO TO STAKING</b>
 				</Button> : null }
 				{UserState.logged && window.STACKING_V2 ? <Button id="back_to_home" color="danger" style={{color: '#fff', margin: '12px'}} className="mb-3" size="lg" 
-				onClick={async () => history.push("/stackingv2")}>
+				onClick={async () => history.push("/stakingv2")}>
 					<b>GO TO STAKING V2</b>
 				</Button> : null }
 				</p>
