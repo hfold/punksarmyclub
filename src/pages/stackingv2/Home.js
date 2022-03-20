@@ -25,7 +25,7 @@ import ReadOnly from '../../common/utils/readonly';
 import Wrapper from '../../common/components/Wrapper';
 import MempoolTxs from '../../common/components/MempoolTxs';
 import globals from '../../common/utils/globals'
-import stacking from '../../common/utils/stacking'
+import stacking from '../../common/utils/stackingv2'
 import {
   	useParams,
   	useLocation,
@@ -118,12 +118,12 @@ function Home (props) {
 		<Row>
 		<Col sm={12}>
 			{window.STACKING ? <Button id="back_to_home" color="danger" style={{color: '#fff', marginBottom: '12px'}} className="mb-3" size="lg" 
-			onClick={async () => history.push("/stackingv2")}>
-				<b>GO TO STAKING V2</b>
+			onClick={async () => history.push("/stacking")}>
+				<b>GO TO STAKING V1</b>
 			</Button> : null }
 		</Col>
 		<Col sm={12}>
-			<MempoolTxs functions={['claim','stake']} contract={window.STACKING_CONTRACT} />
+			<MempoolTxs functions={['claim','stake']} contract={window.STACKING_CONTRACT_V2} />
 		</Col>
 		<Col xl={6} md={8} sm={12}>
 			<div  className="w_box">

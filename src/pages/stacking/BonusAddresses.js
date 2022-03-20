@@ -72,7 +72,7 @@ function BonusAddresses (props) {
 		
 		<Row>
 		<Col sm={12}>
-			<MempoolTxs functions={['add-address-to-bonus','remove-address-from-bonus','remove-multiple-address-from-bonus','set-bonus-percentage']} contract={window.TOKEN_CONTRACT} />
+			<MempoolTxs functions={['add-address-to-bonus','remove-address-from-bonus','remove-multiple-address-from-bonus','set-bonus-percentage']} contract={window.STACKING_CONTRACT} />
 		</Col>
 		<Col lg={6} md={6} sm={12}>
 			<h3 className="subtitle no-border">Add bonus addresses</h3>

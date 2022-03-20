@@ -25,7 +25,7 @@ import ReadOnly from '../../common/utils/readonly';
 import Wrapper from '../../common/components/Wrapper';
 import MempoolTxs from '../../common/components/MempoolTxs';
 import globals from '../../common/utils/globals'
-import stacking from '../../common/utils/stacking'
+import stacking from '../../common/utils/stackingv2'
 import {
   	useParams,
   	useLocation
@@ -79,7 +79,7 @@ function Collections (props) {
 		
 		<Row>
 		<Col sm={12}>
-			<MempoolTxs functions={['add-collection','remove-collection']} contract={window.STACKING_CONTRACT} />
+			<MempoolTxs functions={['add-collection','remove-collection']} contract={window.STACKING_CONTRACT_V2} />
 		</Col>
 		<Col lg={6} md={6} sm={12}>
 			<h3 className="subtitle no-border">Add collection</h3>

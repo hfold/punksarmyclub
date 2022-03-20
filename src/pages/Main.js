@@ -19,6 +19,7 @@ import Rarity from './Rarity';
 
 
 import StackingMain from './stacking/StackingMain';
+import Stackingv2Main from './stackingv2/StackingMain';
 import RarityMain from './rarity/RarityMain';
 import TokenMain from './token/TokenMain';
 import {
@@ -200,6 +201,7 @@ export default function Main (props) {
                 {UserState.modalContent.description}
                 {UserState.modalContent["rarity point"] ? <span style={{display: 'block'}}><b>Rarity:</b> {UserState.modalContent["rarity point"]}</span> : null }
                 {UserState.modalContent.rank ? <span style={{display: 'block'}}><b>Rank:</b> {UserState.modalContent.rank}</span> : null }
+                {UserState.modalContent["Rarity Points Bonus"] ? <span style={{display: 'block'}}><b>Rarity Points Bonus:</b> {UserState.modalContent["Rarity Points Bonus"]}</span> : null }
                 {UserState.modalContent.attributes && <><h3 className="subtitle no-border" style={{marginTop: 24}}>TRAITS</h3><List type="unstyled" style={{marginTop: 12}}>
                   {
                     UserState.modalContent.attributes.map((a,i,arr)=>{
@@ -225,6 +227,7 @@ function RoutesList() {
   return ok_redirect ? <React.Fragment>
       <Route exact path="/" component={Home} />
       <Route exact path="/stacking" component={StackingMain} />
+      <Route exact path="/stackingv2" component={Stackingv2Main} />
       <Route exact path="/rarity" component={RarityMain} />
       <Route exact path="/token" component={TokenMain} />
       <Route exact path="/:collection/gallery" component={Gallery} />

@@ -159,18 +159,24 @@ export default function Header(props) {
 			}
 				
 		</Row>
-		{window.STACKING ? <Row>
-			<Col lg={6} md={12} className="offset-lg-3 offset-md-0">
+		{window.STACKING || window.STACKING_V2 ? <Row>
+			<Col lg={6} md={6} className="offset-lg-3 offset-md-0">
 				<p style={{color: '#fff', fontSize: 44, textAlign: 'center', fontWeight: 'bold', marginTop: 50, marginBottom: 40}}>
 				Staking is now live
-				{UserState.logged ? <Button id="back_to_home" color="danger" style={{color: '#fff', margin: '12px auto', display: 'block'}} className="mb-3" size="lg" 
+				</p>
+				<p style={{textAlign: 'center'}}>
+				{UserState.logged && window.STACKING ? <Button id="back_to_home" color="primary" style={{color: '#fff', margin: '12px'}} className="mb-3" size="lg" 
 				onClick={async () => history.push("/stacking")}>
 					<b>GO TO STAKING</b>
 				</Button> : null }
+				{UserState.logged && window.STACKING_V2 ? <Button id="back_to_home" color="danger" style={{color: '#fff', margin: '12px'}} className="mb-3" size="lg" 
+				onClick={async () => history.push("/stackingv2")}>
+					<b>GO TO STAKING V2</b>
+				</Button> : null }
 				</p>
 			</Col>
-		</Row>
-		: null}
+		</Row>: null}
+		
 		{
 			!collection
 			?

@@ -144,7 +144,13 @@ export default function GetPunkByMetadata(props) {
 				              <h3>{el.name}</h3>
 				              <p>{el.description}</p>
 				              {
-				              	rarity_obj
+				              	rarity_obj && rarity_obj["Rarity Points Bonus"]
+				              	?
+				              	<p style={{overflow: 'auto', whiteSpace: 'inherit'}}><b>Rarity Points Bonus:</b> <span className="highlight">{rarity_obj["Rarity Points Bonus"]}</span></p>
+				              	: null
+				              }
+				              {
+				              	rarity_obj && rarity_obj["rarity point"] && rarity_obj.rank
 				              	?
 				              	<div className="ranking_container row">
 				              		<div className="col-6"><b>Rarity:</b> <span className="highlight">{rarity_obj["rarity point"]}</span></div>
@@ -152,6 +158,7 @@ export default function GetPunkByMetadata(props) {
 				              	</div>
 				              	: null
 				              }
+				              
 				            </div> : null
 }
 

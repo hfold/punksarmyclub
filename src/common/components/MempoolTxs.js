@@ -47,6 +47,7 @@ const MempoolTxs = (props) => {
 	          console.log('mem', result)
 	          let _txs = []
 	          await result.results.map(tx => {
+	          	console.log('tx', tx, props.functions, tx.contract_call.function_name)
 	            	if(tx.tx_type == 'contract_call' && 
 	            		tx.contract_call &&
 	            		tx.contract_call.contract_id == props.contract &&
@@ -56,7 +57,7 @@ const MempoolTxs = (props) => {
 	            	} 
 	            	return tx
             	}) 
-
+	          console.log('list', _txs)
 	          cb(_txs)
 	          
 	          setLoading(false)

@@ -25,14 +25,14 @@ import ReadOnly from '../../common/utils/readonly';
 import Wrapper from '../../common/components/Wrapper';
 import MempoolTxs from '../../common/components/MempoolTxs';
 import globals from '../../common/utils/globals'
-import stacking from '../../common/utils/stacking'
+import stacking from '../../common/utils/stackingv2'
 import {
   	useParams,
   	useLocation
 } from "react-router-dom";
 
 
-function Collections (props) {
+function AdminAddresses (props) {
 	
 	const [loaded, setLoaded] = React.useState(false)
 	
@@ -46,16 +46,6 @@ function Collections (props) {
 
 	const [total_to_add, setTotalToAdd] = React.useState(0)
 	const [added, setAdded] = React.useState(0)
-	
-	const [percentage, setPercentage] = React.useState(1)
-	const [daily, setDaily] = React.useState(5)
-	const [min, setMin] = React.useState(1)
-	const [max, setMax] = React.useState(5)
-	const [collection_total, setCollectionTotal] = React.useState(1000)
-	const [max_rank, setMaxRank] = React.useState(1000)
-	
-	
-
 	const [address, setAddress] = React.useState('')
 	const [raddress, setRAddress] = React.useState('')
 
@@ -79,50 +69,14 @@ function Collections (props) {
 		
 		<Row>
 		<Col sm={12}>
-			<MempoolTxs functions={['add-collection','remove-collection']} contract={window.STACKING_CONTRACT} />
+			<MempoolTxs functions={['add-address-to-administrative','remove-address-from-adminstrative']} contract={window.STACKING_CONTRACT_V2} />
 		</Col>
 		<Col lg={6} md={6} sm={12}>
-			<h3 className="subtitle no-border">Add collection</h3>
-			<FormGroup floating style={{marginTop: 24}}>
-				<Input type="number" value={percentage} id="add_percentage" onChange={(e)=>setPercentage(e.target.value)} />
-				<Label for="add_percentage">
-			        Bonus percentage (set 1 for 1%)
-		      	</Label>
-			</FormGroup>
-			<FormGroup floating style={{marginTop: 24}}>
-				<Input type="number" value={daily} id="daily" onChange={(e)=>setDaily(e.target.value)} />
-				<Label for="daily">
-			        Bonus daily step
-		      	</Label>
-			</FormGroup>
-			<FormGroup floating style={{marginTop: 24}}>
-				<Input type="number" value={collection_total} id="nft_n" onChange={(e)=>setCollectionTotal(e.target.value)} />
-				<Label for="nft_n">
-			        Collection nft number
-		      	</Label>
-			</FormGroup>
-			<FormGroup floating style={{marginTop: 24}}>
-				<Input type="number" value={max_rank} id="max_rank" onChange={(e)=>setMaxRank(e.target.value)} />
-				<Label for="max_rank">
-			        Max rank
-		      	</Label>
-			</FormGroup>
-			<FormGroup floating style={{marginTop: 24}}>
-				<Input type="number" value={min} id="min" onChange={(e)=>setMin(e.target.value)} />
-				<Label for="min">
-			        Min nft reward
-		      	</Label>
-			</FormGroup>
-			<FormGroup floating style={{marginTop: 24}}>
-				<Input type="number" value={max} id="max" onChange={(e)=>setMax(e.target.value)} />
-				<Label for="max">
-			        Max nft reward
-		      	</Label>
-			</FormGroup>
+			<h3 className="subtitle no-border">Add administrative addresses</h3>
 			<FormGroup floating style={{marginTop: 24}}>
 				<Input value={address} id="add_address" onChange={(e)=>setAddress(e.target.value)} />
 				<Label for="add_address">
-			        Contract
+			        Address
 		      	</Label>
 			</FormGroup>
 			<Button color="primary" block style={{color: '#fff'}} className="mt-3" size="lg" onClick={async () => {
@@ -130,27 +84,13 @@ function Collections (props) {
 
 				setAdding(true)
 				
-				stacking.addCollection(
-					{ 
-						contract: address, 
-						min: min,
-						max: max,
-						max_rank: max_rank,
-						collection_total: collection_total,
-						daily: daily,
-						percentage: percentage
-					},
+				stacking.addAdminAddress(
+					{ address: address },
 					UserState,
 					doContractCall,
 					(res)=>{
 						setAdding(false)
 						setAddress("")
-						setMin(1)
-						setMax(5)
-						setMaxRank(1000)
-						setDaily(5)
-						setCollectionTotal(1000)
-						setPercentage(null)
 						console.log('add res', res)
 					},
 					(err) => {
@@ -164,7 +104,7 @@ function Collections (props) {
 			</Button>
 		</Col>
 		<Col lg={6} md={6} sm={12}>
-			<h3 className="subtitle no-border">Remove collection</h3>
+			<h3 className="subtitle no-border">Remove administrative addresses</h3>
 			<FormGroup floating style={{marginTop: 24}}>
 				<Input value={raddress} id="add_address" onChange={(e)=>setRAddress(e.target.value)} />
 				<Label for="add_address">
@@ -177,7 +117,7 @@ function Collections (props) {
 				
 				setRemoving(true)
 				
-				stacking.removeCollection(
+				stacking.removeAdminAddress(
 					{ address: raddress },
 					UserState,
 					doContractCall,
@@ -201,4 +141,4 @@ function Collections (props) {
 
 
 
-export default Collections
+export default AdminAddresses
