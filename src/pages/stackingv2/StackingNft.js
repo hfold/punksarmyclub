@@ -119,11 +119,12 @@ function StackingNft (props) {
 			<div className="stacking_container white_content">
 				<p><b>EXPECTED DAILY GAIN:</b> {getValue(minted['nft-daily-value'].value)} $ROMA</p>
 				<p><b>CURRENT GAIN:</b> {getValue(minted.minted.value)} $ROMA</p>
-				<p><b>TIME BONUS*:</b> {getValue(minted['bonus'].value)} $ROMA</p>
-				<p>*Each 720 Blocks (about 5 days) you gain a 5% bonus on your total Reward</p>	
-				<p><b>OG BONUS**:</b> {getValue(minted['address-bonus'].value)} $ROMA</p>
-				<p>**If you are an OG, each 144 Blocks (about 1 day) you gain a 2% bonus on your total Reward</p>
-				<p><b>JUST CLAIMED:</b> {getValue(minted.claimed.value)} $ROMA</p>
+				<p><b>TIME BONUS*:</b> {getValue(minted['bonus'].value)} $ROMA <br></br>
+				   *Each 720 Blocks (about 5 days) you gain a 5% bonus on your total Reward <br></br>
+				<b>*Bonus is 15% in the first 2 weeks of Staking v2</b></p>	
+				<p><b>OG BONUS**:</b> {getValue(minted['address-bonus'].value)} $ROMA <br></br>
+				   **If you are an OG, each 144 Blocks (about 1 day) you gain a 2% bonus on your total Reward</p>
+				<p><b>ALREADY CLAIMED:</b> {getValue(minted.claimed.value)} $ROMA</p>
 				{!claimed ? <React.Fragment>
 					<Button id="confirm_add" color="primary" style={{color: '#fff', marginRight: 12}} className="mb-3" size="xs" 
 					onClick={async () => {
