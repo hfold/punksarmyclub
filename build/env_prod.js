@@ -1,4 +1,4 @@
-window.network = 'mainnet'
+window.network = 'mainnet'//'mainnet'
 window.CONTRACT_ADDRESS = 'SP2A665S3H6FVMZSY4VJ17ESXX21CGS0A32984B1H';//'ST1Y81WMHPCZ5Y92E6BAJDP0CR8PJXB53E2J71436'
 window.CONTRACT_NAME = 'punks' //punks-test
 window.COLLECTION_URL = 'https://punksarmynft.club/'
@@ -9,26 +9,36 @@ window.MAIN_URL = 'https://punksarmynft.com'
 window.MAIN_URL_TEXT = 'https://punksarmynft.com'
 window.GATEWAY = 'https://punksarmynft.mypinata.cloud/ipfs/'
 window.STACKING = true
+window.STACKING_V2 = true
+
 window.TOKEN_CONTRACT = 'SP2A665S3H6FVMZSY4VJ17ESXX21CGS0A32984B1H.romatoken'
 window.STACKING_CONTRACT = 'SP2A665S3H6FVMZSY4VJ17ESXX21CGS0A32984B1H.stacker'
+window.STACKING_CONTRACT_V2 = 'SP2A665S3H6FVMZSY4VJ17ESXX21CGS0A32984B1H.staker-v2'
 window.RARITY_CONTRACT = 'SP2A665S3H6FVMZSY4VJ17ESXX21CGS0A32984B1H.rarity'
+
+//window.TOKEN_CONTRACT = 'ST1HA10B13YSF47JXWGJCVNF94QPZ3GWWYSCZDDSS.romatoken'
+//window.STACKING_CONTRACT = 'ST1HA10B13YSF47JXWGJCVNF94QPZ3GWWYSCZDDSS.stackerv4'
+//window.STACKING_CONTRACT_V2 = 'ST1HA10B13YSF47JXWGJCVNF94QPZ3GWWYSCZDDSS.stakerevov2'
+//window.RARITY_CONTRACT = 'ST1HA10B13YSF47JXWGJCVNF94QPZ3GWWYSCZDDSS.rarity'
+
+
 window.COLLECTIONS = {
-	// 'PunksTest': {
-	// 	address: 'ST1HA10B13YSF47JXWGJCVNF94QPZ3GWWYSCZDDSS',//'ST2A665S3H6FVMZSY4VJ17ESXX21CGS0A32H41WXG', //
-	// 	ctr_name: 'punks',
-	// 	tkn: 'PunksArmyToken',
-	// 	name: 'Punks Army Test', 
-	// 	description: 'The invasion is ready',
-	// 	enabled: true,
-	// 	logo_image: 'logo.png',
-	// 	main_image: 'punklogo.png',
-	// 	full_gallery_name: 'Punks',
-	// 	has_rarity: true,
-	// 	gallery: [
-	// 		"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/13",
-	// 		"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/3"
-	// 	]
-	// },
+	 //'PunksTest': {
+	 	//address: 'ST1HA10B13YSF47JXWGJCVNF94QPZ3GWWYSCZDDSS',//'ST2A665S3H6FVMZSY4VJ17ESXX21CGS0A32H41WXG', //
+	 	//ctr_name: 'punks',
+	 	//tkn: 'PunksArmyToken',
+	 	//name: 'Punks Army Test', 
+	 	//description: 'The invasion is ready',
+	 	//enabled: true,
+	 	//logo_image: 'logo.png',
+	 	//main_image: 'punklogo.png',
+	 	//full_gallery_name: 'Punks',
+	 	//has_rarity: true,
+	 	//gallery: [
+	 		//"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/13",
+	 		//"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/3"
+	 	//]
+	 //},
 	'PunksUpgrade': {
 		address: 'SP2A665S3H6FVMZSY4VJ17ESXX21CGS0A32984B1H',//'ST2A665S3H6FVMZSY4VJ17ESXX21CGS0A32H41WXG', //
 		ctr_name: 'Punks-Army-Upgrade-NFTs',
@@ -41,32 +51,21 @@ window.COLLECTIONS = {
 		full_gallery_name: 'PunksUpgrade',
 		has_rarity: false,
 		gallery:  [
-		"ipfs//:QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/1",
-		"ipfs//:QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/2",
-		"ipfs//:QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/3",
-		"ipfs//:QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/4",
-		"ipfs//:QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/5",
-		"ipfs//:QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/6",
-		"ipfs//:QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/7",
-		"ipfs//:QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/8",
-		"ipfs//:QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/9",
-		"ipfs//:QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/10",
-		"ipfs//:QmS1Bzajtfr3MCwVhGWkdMQEKrH3fzWmiCGQETwZgGnccs/11", 
-		"ipfs//:QmS1Bzajtfr3MCwVhGWkdMQEKrH3fzWmiCGQETwZgGnccs/12", 
-		"ipfs//:QmS1Bzajtfr3MCwVhGWkdMQEKrH3fzWmiCGQETwZgGnccs/13", 
-		"ipfs//:QmS1Bzajtfr3MCwVhGWkdMQEKrH3fzWmiCGQETwZgGnccs/14", 
-		"ipfs//:QmS1Bzajtfr3MCwVhGWkdMQEKrH3fzWmiCGQETwZgGnccs/15",
-		"ipfs//:QmRbscvnVKotYHuA2qN9yUttGnuaFAKHbbbyyoVAv5VYtY/20", 
-		"ipfs//:QmRbscvnVKotYHuA2qN9yUttGnuaFAKHbbbyyoVAv5VYtY/21", 
-		"ipfs//:QmRbscvnVKotYHuA2qN9yUttGnuaFAKHbbbyyoVAv5VYtY/22", 
-		"ipfs//:QmRbscvnVKotYHuA2qN9yUttGnuaFAKHbbbyyoVAv5VYtY/23", 
-		"ipfs//:QmRbscvnVKotYHuA2qN9yUttGnuaFAKHbbbyyoVAv5VYtY/24", 
-		"ipfs//:QmRbscvnVKotYHuA2qN9yUttGnuaFAKHbbbyyoVAv5VYtY/25", 
-		"ipfs//:QmRbscvnVKotYHuA2qN9yUttGnuaFAKHbbbyyoVAv5VYtY/26", 
-		"ipfs//:QmRbscvnVKotYHuA2qN9yUttGnuaFAKHbbbyyoVAv5VYtY/27", 
-		"ipfs//:QmRbscvnVKotYHuA2qN9yUttGnuaFAKHbbbyyoVAv5VYtY/28", 
-		"ipfs//:QmRbscvnVKotYHuA2qN9yUttGnuaFAKHbbbyyoVAv5VYtY/29", 
-		"ipfs//:QmRbscvnVKotYHuA2qN9yUttGnuaFAKHbbbyyoVAv5VYtY/30"]
+			"ipfs://QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/1",
+			"ipfs://QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/2",
+			"ipfs://QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/3",
+			"ipfs://QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/4",
+			"ipfs://QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/5",
+			"ipfs://QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/6",
+			"ipfs://QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/7",
+			"ipfs://QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/8",
+			"ipfs://QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/9",
+			"ipfs://QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/10",
+			"ipfs://QmS1Bzajtfr3MCwVhGWkdMQEKrH3fzWmiCGQETwZgGnccs/11", 
+			"ipfs://QmS1Bzajtfr3MCwVhGWkdMQEKrH3fzWmiCGQETwZgGnccs/12", 
+			"ipfs://QmS1Bzajtfr3MCwVhGWkdMQEKrH3fzWmiCGQETwZgGnccs/13", 
+			"ipfs://QmS1Bzajtfr3MCwVhGWkdMQEKrH3fzWmiCGQETwZgGnccs/14", 
+			"ipfs://QmS1Bzajtfr3MCwVhGWkdMQEKrH3fzWmiCGQETwZgGnccs/15"]
 	},
 	'Punks': {
 		address: 'SP2A665S3H6FVMZSY4VJ17ESXX21CGS0A32984B1H',//'ST2A665S3H6FVMZSY4VJ17ESXX21CGS0A32H41WXG', //
