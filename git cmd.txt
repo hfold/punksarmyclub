@@ -22,3 +22,7 @@ git commit -a -m "messaggio del commit"
 
 
 git stash
+
+
+SSL certifcate problem resolution:
+git config --global http.sslbackend schannel
