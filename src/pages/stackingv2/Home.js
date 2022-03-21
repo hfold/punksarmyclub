@@ -149,7 +149,7 @@ function Home (props) {
 				}}>
 					{_loading ? <Spinner size="sm" /> : "Refresh balance"}
 				</Button>
-				<p><b>TOKEN BALANCE:</b> {getTokenBalance(account_balance)}</p>
+				<p><b>$ROMA BALANCE:</b> {getTokenBalance(account_balance)}</p>
 			</div>
 		</Col>
 		<Col xl={6} md={4} sm={12}>
