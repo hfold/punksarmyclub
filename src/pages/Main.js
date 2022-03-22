@@ -201,6 +201,7 @@ export default function Main (props) {
                 {UserState.modalContent.description}
                 {UserState.modalContent["rarity point"] ? <span style={{display: 'block'}}><b>Rarity:</b> {UserState.modalContent["rarity point"]}</span> : null }
                 {UserState.modalContent.rank ? <span style={{display: 'block'}}><b>Rank:</b> {UserState.modalContent.rank}</span> : null }
+                {UserState.modalContent["Rarity"] ? <span style={{display: 'block'}}><b>Rarity:</b> {UserState.modalContent["Rarity"]}</span> : null }
                 {UserState.modalContent["Rarity Points Bonus"] ? <span style={{display: 'block'}}><b>Rarity Points Bonus:</b> {UserState.modalContent["Rarity Points Bonus"]}</span> : null }
                 {UserState.modalContent.attributes && <><h3 className="subtitle no-border" style={{marginTop: 24}}>TRAITS</h3><List type="unstyled" style={{marginTop: 12}}>
                   {

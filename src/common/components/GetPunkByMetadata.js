@@ -144,6 +144,12 @@ export default function GetPunkByMetadata(props) {
 				              <h3>{el.name}</h3>
 				              <p>{el.description}</p>
 				              {
+				              	rarity_obj && rarity_obj["Rarity"]
+				              	?
+				              	<p style={{overflow: 'auto', whiteSpace: 'inherit'}}><b>Rarity:</b> <span className="highlight">{rarity_obj["Rarity"]}</span></p>
+				              	: null
+				              }
+				              {
 				              	rarity_obj && rarity_obj["Rarity Points Bonus"]
 				              	?
 				              	<p style={{overflow: 'auto', whiteSpace: 'inherit'}}><b>Rarity Points Bonus:</b> <span className="highlight">{rarity_obj["Rarity Points Bonus"]}</span></p>
