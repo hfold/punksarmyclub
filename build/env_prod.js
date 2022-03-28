@@ -104,11 +104,12 @@ window.COLLECTIONS = {
 		tkn: 'Punks-Army-Friends',
 		description: 'Stacks Friends of the Army',
 		enabled: true,
-		logo_image: 'Chimpanzee1.png',
+		logo_image: 'pfpfriends.png',
 		main_image: 'niccreations.jpg',
 		full_gallery_name: 'Friends',
 		gallery: [
-		// "ipfs://QmQ7MJqeEb1myuq8GvbFjREhNaehtJgbAgXnSxCjS4zf3W/2",
+		"ipfs://QmSFhcqFjcRjUaPT1ez7KEPAAwCZejsCCPRP1V36SsEjNs/1",
+		"ipfs://QmQ7MJqeEb1myuq8GvbFjREhNaehtJgbAgXnSxCjS4zf3W/2",
 		"ipfs://Qmet3qszE7fsnZaj9U3wp9JAUZrzCFTJb3AhpvgcHX3z6a/1",
 		"ipfs://Qme8GH3ZAEkUCobR9CnvuSSy1xE2C79LxNu6jxempN9HaU/1",
 		"ipfs://QmVdJ2Z3a7BfHooXqZYsxgdX9nR6aispJTBzBQ76div8Aw/4",
@@ -120,7 +121,8 @@ window.COLLECTIONS = {
 		"ipfs://QmXND9ouCHtL7HHHoyJNVbQcfeW9wLKmfDmj6cm3VZ24jB/2",
 		"ipfs://Qmbe3jnhTBMXe5LxyU7t9rGWjF3peL4VuFPbMwqTXerTTa/0",
 		"ipfs://Qmbe3jnhTBMXe5LxyU7t9rGWjF3peL4VuFPbMwqTXerTTa/1",
-		"ipfs://Qmbe3jnhTBMXe5LxyU7t9rGWjF3peL4VuFPbMwqTXerTTa/2"]
+		"ipfs://Qmbe3jnhTBMXe5LxyU7t9rGWjF3peL4VuFPbMwqTXerTTa/2",
+	]
 	},
 	'Ancestors': {
 		address: 'SP2A665S3H6FVMZSY4VJ17ESXX21CGS0A32984B1H',
