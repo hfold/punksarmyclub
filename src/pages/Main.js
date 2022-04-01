@@ -18,6 +18,7 @@ import ChangeMetadataUrl from './ChangeMetadataUrl';
 import Rarity from './Rarity';
 
 
+import UpgradeMain from './upgrade/UpgradeMain';
 import StackingMain from './stacking/StackingMain';
 import Stackingv2Main from './stackingv2/StackingMain';
 import RarityMain from './rarity/RarityMain';
@@ -227,6 +228,7 @@ function RoutesList() {
 
   return ok_redirect ? <React.Fragment>
       <Route exact path="/" component={Home} />
+      <Route exact path="/upgrade" component={UpgradeMain} />
       <Route exact path="/staking" component={StackingMain} />
       <Route exact path="/stakingv2" component={Stackingv2Main} />
       <Route exact path="/rarity" component={RarityMain} />

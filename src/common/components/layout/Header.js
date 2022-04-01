@@ -159,6 +159,18 @@ export default function Header(props) {
 			}
 				
 		</Row>
+		{
+			window.UPGRADE_CONTRACT && UserState.logged ? <Row>
+			<Col lg={6} md={6} className="offset-lg-3 offset-md-0">
+				<p style={{textAlign: 'center'}}>
+				<Button id="back_to_home" color="primary" style={{color: '#fff', margin: '12px'}} className="mb-3" size="lg" 
+				onClick={async () => history.push("/upgrade")}>
+					<b>GOT A PUNK AND AN HAND? LET'S GO TO UPGRADE!</b>
+				</Button>
+				</p>
+			</Col>
+		</Row>: null}
+
 		{window.STACKING || window.STACKING_V2 ? <Row>
 			<Col lg={6} md={6} className="offset-lg-3 offset-md-0">
 				<p style={{color: '#fff', fontSize: 44, textAlign: 'center', fontWeight: 'bold', marginTop: 50, marginBottom: 40}}>
@@ -176,6 +188,7 @@ export default function Header(props) {
 				</p>
 			</Col>
 		</Row>: null}
+		
 		
 		{
 			!collection

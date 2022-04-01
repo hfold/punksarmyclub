@@ -575,3 +575,19 @@ margin-top: 26px;
     font-size: 12px;
   }
 }
+
+
+.upgrade_avaible{
+  padding: 12px;
+  &:hover{
+    background: rgba(0,0,0,.4)
+  }
+  &.selected{
+    background: $secondary
+  }
+  img{
+    cursor: pointer;
+    
+    
+  }
+}

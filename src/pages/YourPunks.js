@@ -213,8 +213,7 @@ const YourPunks = (props) => {
 		}
 		</Col>
 	</Row>
-	<h3>{punks.length}</h3>
-  	<Row style={{overflow: 'visible'}}>
+	<Row style={{overflow: 'visible'}}>
   		{punks.map(id => 
   			<Col style={{padding: 20, overflow: 'visible', textAlign: 'center'}} sm={6} xs={12} md={4}>
   				<GetPunk id={id} key={"punk_id_"+id} collection={collection} />

@@ -72,14 +72,17 @@ const getImg = async (url, setUrl, setEl, setImageType, CacheState, CacheDispatc
 	    //fetchImage(result.image, setImageUrl, CacheState, CacheDispatch)
 
 	} else {
-
+		
 		let u = await formatters.ipfs_gateway( url );
 		console.log('-------------------------------------------ipfs url', u)
-
+		
 		fetch( u )
-		      .then(res => res.json())
+		      .then(res => {
+		      	return res.json()
+		      })
 		      .then(
 		        (result) => {
+		        	
 		          if(result.image) {
 		          	setUrl(result.image)
 		          	//fetchImage(result.image, setImageUrl, CacheState, CacheDispatch)
@@ -90,7 +93,7 @@ const getImg = async (url, setUrl, setEl, setImageType, CacheState, CacheDispatc
 		          setEl(result)
 		        },
 		        (error) => {
-		          console.log('e', error)
+		          console.log('e ipfs url '+url, error)
 		        }
 		      )
 	}

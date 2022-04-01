@@ -14,6 +14,10 @@ export default {
 			return url.replace(/ipfs:\/\//, window.GATEWAY )
 		}
 
+		if(url && url.match(/https:\/\/gateway.pinata.cloud\/ipfs\//) && window.GATEWAY) {
+			return url.replace(/https:\/\/gateway.pinata.cloud\/ipfs\//, window.GATEWAY )
+		}
+
 		return url;
 
 	},

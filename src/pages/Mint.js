@@ -46,6 +46,7 @@ const has_stx = (curr) => {
 }
 
 const can_mint_address = (curr) => {
+	console.log('CURR', curr)
 	return curr.can_mint_address?.value || false
 }
 
