@@ -161,21 +161,21 @@ export default function Header(props) {
 		</Row>
 		{
 			window.UPGRADE_CONTRACT && UserState.logged ? <Row>
-			<Col lg={6} md={6} className="offset-lg-3 offset-md-0">
+			<Col lg={8} md={12} className="offset-lg-2 offset-md-0">
+				<p style={{color: '#fff', fontSize: 44, textAlign: 'center', fontWeight: 'bold', marginTop: 50, marginBottom: 40}}>
+					Punks Army upgrade is now live!!!!
+				</p>
 				<p style={{textAlign: 'center'}}>
-				<Button id="back_to_home" color="primary" style={{color: '#fff', margin: '12px'}} className="mb-3" size="lg" 
+				<Button id="back_to_home" color="danger" style={{color: '#fff', margin: '12px', fontSize: 28}} className="mb-3 main-btn" size="lg" 
 				onClick={async () => history.push("/upgrade")}>
-					<b>GOT A PUNK AND AN HAND? LET'S GO TO UPGRADE!</b>
+					<b>UPGRADE YOUR PUNK</b>
 				</Button>
 				</p>
 			</Col>
 		</Row>: null}
-
+		
 		{window.STACKING || window.STACKING_V2 ? <Row>
 			<Col lg={6} md={6} className="offset-lg-3 offset-md-0">
-				<p style={{color: '#fff', fontSize: 44, textAlign: 'center', fontWeight: 'bold', marginTop: 50, marginBottom: 40}}>
-				Staking v2 is now live
-				</p>
 				<p style={{textAlign: 'center'}}>
 				{UserState.logged && window.STACKING ? <Button id="back_to_home" color="primary" style={{color: '#fff', margin: '12px'}} className="mb-3" size="lg" 
 				onClick={async () => history.push("/staking")}>
