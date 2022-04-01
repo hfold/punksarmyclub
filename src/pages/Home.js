@@ -14,6 +14,8 @@ import Wrapper from '../common/components/Wrapper';
 import {BsArrowUpCircle} from "react-icons/bs";
 function Home(props) {
   
+	
+
   const {UserState, UserDispatch} = React.useContext(UserContext)
   
   return (<Container>

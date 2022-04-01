@@ -77,6 +77,10 @@ function PunkElement (props) {
 
 					        			if(attr.trait_type == 'Hand') add = false;
 
+					        			if(attr.trait_type == 'Type' && 
+					        				!attr.value.toUpperCase().match(/girl/i) &&
+					        				!attr.value.toUpperCase().match(/man/i)) add = false;
+
 					        			return attr;
 					        		})
 					        	}
