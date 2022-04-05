@@ -84,8 +84,8 @@ const Rarity = (props) => {
 					</FormGroup>
 					<Button id="confirm_open" block color="primary" style={{color: '#fff'}} 
 						className="mb-3" size="lg" onClick={async () => {
-							if(id < 1 || id > 1000) {
-								alert("Set a number between 1 and 1000")
+							if(id < 1 || id > 2000) {
+								alert("Set a number between 1 and 2000")
 							} else {
 								setShowRarity(true)
 							}

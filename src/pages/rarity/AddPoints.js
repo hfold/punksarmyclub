@@ -76,9 +76,9 @@ function AddPoints (props) {
 			      language="js"
 			      placeholder={`Please enter a json list of metadata_url (es. 
 	[
-		{"id":"1", "rarity": "999", "rank": "1"},
-		{"id":"2", "rarity": "998", "rank": "2"},
-		{"id":"3", "rarity": "997", "rank": "3"}
+		{"id":"1", "rarity point": "999", "rank": "1"},
+		{"id":"2", "rarity point": "998", "rank": "2"},
+		{"id":"3", "rarity point": "997", "rank": "3"}
 	]
 )
 			      	`}

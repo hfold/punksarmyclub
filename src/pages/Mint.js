@@ -103,6 +103,10 @@ const loadMempool = (address, contract_id, setTxs, old_txs) => {
   
 }
 
+const getMax = (v) => {
+	return v > 1000 ? 1000 : v
+}
+
 
 function Mint (props) {
 
@@ -195,7 +199,7 @@ function Mint (props) {
 	const returnMessageMintElement = () => {
 		
 		if(collection_name == 'Punks-Army-Friends-NFTs' && !are_enough_to_mint(current) && current.last_nft_id?.value && current.last_nft_id?.value > 0) return <p className="text-danger">{globals.COLLECTIONS[collection].name} <br></br> ARE SOLD OUT </p>
-		if(!are_enough_to_mint(current) && current.last_nft_id?.value && current.last_nft_id?.value > 0) return <p className="text-danger">{globals.COLLECTIONS[collection].name} ARE SOLD OUT {parseInt(current.last_nft_id?.value || 0)}/{parseInt(current.last_nft_id?.value || 0)}</p>
+		if(!are_enough_to_mint(current) && current.last_nft_id?.value && current.last_nft_id?.value > 0) return <p className="text-danger">{globals.COLLECTIONS[collection].name} ARE SOLD OUT {getMax( parseInt(current.last_nft_id?.value || 0 ) )}/{ getMax( parseInt(current.last_nft_id?.value || 0 ) )}</p>
 
 		if(!is_open(current)) return <p className="text-danger">MINT IS CLOSED</p>
 
