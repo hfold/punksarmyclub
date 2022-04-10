@@ -121,7 +121,8 @@ function StackingNft (props) {
 				<p><b>CURRENT GAIN:</b> {getValue(minted.minted.value)} $ROMA</p>
 				<p><b>TIME BONUS*:</b> {getValue(minted['bonus'].value)} $ROMA <br></br>
 				   *Each 720 Blocks (about 5 days) you gain a 5% bonus on your total Reward <br></br>
-				<b>*Bonus is 15% in the first 2 weeks of Staking v2</b></p>	
+				{/* <b>*Bonus is 15% in the first 2 weeks of Staking v2</b> */}
+				</p>	
 				<p><b>OG BONUS**:</b> {getValue(minted['address-bonus'].value)} $ROMA <br></br>
 				   **If you are an OG, each 144 Blocks (about 1 day) you gain a 2% bonus on your total Reward</p>
 				<p><b>ALREADY CLAIMED:</b> {getValue(minted.claimed.value)} $ROMA</p>

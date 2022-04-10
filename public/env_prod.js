@@ -1,4 +1,4 @@
-window.network = 'mainnet'//'mainnet'
+window.network = 'mainnet'//'testnet'//'mainnet'
 window.CONTRACT_ADDRESS = 'SP2A665S3H6FVMZSY4VJ17ESXX21CGS0A32984B1H';//'ST1Y81WMHPCZ5Y92E6BAJDP0CR8PJXB53E2J71436'
 window.CONTRACT_NAME = 'punks' //punks-test
 window.COLLECTION_URL = 'https://punksarmynft.club/'
@@ -16,11 +16,25 @@ window.STACKING_CONTRACT = 'SP2A665S3H6FVMZSY4VJ17ESXX21CGS0A32984B1H.stacker'
 window.STACKING_CONTRACT_V2 = 'SP2A665S3H6FVMZSY4VJ17ESXX21CGS0A32984B1H.staker-v2'
 window.RARITY_CONTRACT = 'SP2A665S3H6FVMZSY4VJ17ESXX21CGS0A32984B1H.rarity'
 
+// UPGRADE TEST
+//window.UPGRADE_PUNK_CONTRACT = 'ST1HA10B13YSF47JXWGJCVNF94QPZ3GWWYSCZDDSS.punks'
+//window.UPGRADE_PUNK_CONTRACT_TOKEN = 'PunksArmyToken'
+//window.UPGRADE_WEAPONS_CONTRACT = 'ST1HA10B13YSF47JXWGJCVNF94QPZ3GWWYSCZDDSS.weapons'
+//window.UPGRADE_WEAPONS_CONTRACT_TOKEN = 'Weapons'
+//window.UPGRADE_CONTRACT = 'ST1HA10B13YSF47JXWGJCVNF94QPZ3GWWYSCZDDSS.upgradev9'
+
 //window.TOKEN_CONTRACT = 'ST1HA10B13YSF47JXWGJCVNF94QPZ3GWWYSCZDDSS.romatoken'
 //window.STACKING_CONTRACT = 'ST1HA10B13YSF47JXWGJCVNF94QPZ3GWWYSCZDDSS.stackerv4'
 //window.STACKING_CONTRACT_V2 = 'ST1HA10B13YSF47JXWGJCVNF94QPZ3GWWYSCZDDSS.stakerevov2'
 //window.RARITY_CONTRACT = 'ST1HA10B13YSF47JXWGJCVNF94QPZ3GWWYSCZDDSS.rarity'
 
+
+// UPGRADE MAIN
+window.UPGRADE_PUNK_CONTRACT = 'SP2A665S3H6FVMZSY4VJ17ESXX21CGS0A32984B1H.Punks-Army-NFTs'
+window.UPGRADE_PUNK_CONTRACT_TOKEN = 'Punks-Army'
+window.UPGRADE_WEAPONS_CONTRACT = 'SP2A665S3H6FVMZSY4VJ17ESXX21CGS0A32984B1H.Punks-Army-Upgrade-NFTs'
+window.UPGRADE_WEAPONS_CONTRACT_TOKEN = 'Punks-Army-Upgrade'
+window.UPGRADE_CONTRACT = 'SP2A665S3H6FVMZSY4VJ17ESXX21CGS0A32984B1H.upgrade'
 
 window.COLLECTIONS = {
 	 //'PunksTest': {
@@ -39,6 +53,64 @@ window.COLLECTIONS = {
 	 		//"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/3"
 	 	//]
 	 //},
+	//'PunksTest': {
+		//address: 'ST1HA10B13YSF47JXWGJCVNF94QPZ3GWWYSCZDDSS',//'ST2A665S3H6FVMZSY4VJ17ESXX21CGS0A32H41WXG', //
+		//ctr_name: 'punks',
+		//tkn: 'PunksArmyToken',
+		//name: 'Punks Army TEST',
+		//description: 'The invasion is accomplished',
+		//enabled: true,
+		//logo_image: 'logo.png',
+		//main_image: 'punklogo.png',
+		//full_gallery_name: 'Punks',
+		//has_rarity: true,
+		//gallery: [
+			//"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/13",
+			//"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/3",
+			//"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/5",
+			//"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/6",
+			//"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/10",
+			//"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/50",
+			//"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/34",
+			//"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/44",
+			//"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/43",
+			//"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/77",
+			//"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/36",
+			//"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/59",
+			//"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/99",
+			//"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/102",
+			//"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/122",
+			//"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/121",
+		//]
+	//},
+	//'PunksUpgradeTest': {
+		//address: 'ST1HA10B13YSF47JXWGJCVNF94QPZ3GWWYSCZDDSS',//'ST2A665S3H6FVMZSY4VJ17ESXX21CGS0A32H41WXG', //
+		//ctr_name: 'weapons',
+		//tkn: 'Weapons',
+		//name: 'Punks Army Weapons TEST',
+		//description: 'Unleash the Power of your Punk',
+		//enabled: true,
+		//logo_image: 'hammer2.png',
+		//main_image: 'pupgrade.gif',
+		//full_gallery_name: 'PunksUpgrade',
+		//has_rarity: false,
+		//gallery:  [
+			//"ipfs://QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/1",
+			//"ipfs://QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/2",
+			//"ipfs://QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/3",
+			//"ipfs://QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/4",
+			//"ipfs://QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/5",
+			//"ipfs://QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/6",
+			//"ipfs://QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/7",
+			//"ipfs://QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/8",
+			//"ipfs://QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/9",
+			//"ipfs://QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/10",
+			//"ipfs://QmS1Bzajtfr3MCwVhGWkdMQEKrH3fzWmiCGQETwZgGnccs/11", 
+			//"ipfs://QmS1Bzajtfr3MCwVhGWkdMQEKrH3fzWmiCGQETwZgGnccs/12", 
+			//"ipfs://QmS1Bzajtfr3MCwVhGWkdMQEKrH3fzWmiCGQETwZgGnccs/13", 
+			//"ipfs://QmS1Bzajtfr3MCwVhGWkdMQEKrH3fzWmiCGQETwZgGnccs/14", 
+			//"ipfs://QmS1Bzajtfr3MCwVhGWkdMQEKrH3fzWmiCGQETwZgGnccs/15"]
+	//},
 	'PunksUpgrade': {
 		address: 'SP2A665S3H6FVMZSY4VJ17ESXX21CGS0A32984B1H',//'ST2A665S3H6FVMZSY4VJ17ESXX21CGS0A32H41WXG', //
 		ctr_name: 'Punks-Army-Upgrade-NFTs',
@@ -108,6 +180,7 @@ window.COLLECTIONS = {
 		main_image: 'niccreations.jpg',
 		full_gallery_name: 'Friends',
 		gallery: [
+		"ipfs://QmRcH8HbEc3ByFQixya5kh785VBVXvTqfdv7pXe32Pxfk6/1",
 		"ipfs://QmSFhcqFjcRjUaPT1ez7KEPAAwCZejsCCPRP1V36SsEjNs/1",
 		"ipfs://QmQ7MJqeEb1myuq8GvbFjREhNaehtJgbAgXnSxCjS4zf3W/2",
 		"ipfs://Qmet3qszE7fsnZaj9U3wp9JAUZrzCFTJb3AhpvgcHX3z6a/1",
@@ -118,10 +191,7 @@ window.COLLECTIONS = {
 		"ipfs://QmZvvK4UmCRgK7PpwUKuHHiSvEgNe1Y3bVvCGxCFXpMz22/1",	
 		"ipfs://QmXWG2jC8ZSoUb7QEmSa8j5BtPjpSPH3h5Mu3Y3C96ixyy/3",
 		"ipfs://QmXND9ouCHtL7HHHoyJNVbQcfeW9wLKmfDmj6cm3VZ24jB/1",
-		"ipfs://QmXND9ouCHtL7HHHoyJNVbQcfeW9wLKmfDmj6cm3VZ24jB/2",
-		"ipfs://Qmbe3jnhTBMXe5LxyU7t9rGWjF3peL4VuFPbMwqTXerTTa/0",
-		"ipfs://Qmbe3jnhTBMXe5LxyU7t9rGWjF3peL4VuFPbMwqTXerTTa/1",
-		"ipfs://Qmbe3jnhTBMXe5LxyU7t9rGWjF3peL4VuFPbMwqTXerTTa/2",
+		"ipfs://QmXND9ouCHtL7HHHoyJNVbQcfeW9wLKmfDmj6cm3VZ24jB/2"
 	]
 	},
 	'Ancestors': {
