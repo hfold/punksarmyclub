@@ -121,7 +121,7 @@ window.COLLECTIONS = {
 		logo_image: 'hammer2.png',
 		main_image: 'pupgrade.gif',
 		full_gallery_name: 'PunksUpgrade',
-		has_rarity: false,
+		has_rarity: true,
 		gallery:  [
 			"ipfs://QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/1",
 			"ipfs://QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/2",

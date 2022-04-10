@@ -4,6 +4,8 @@ import logo from './logo.svg';
 import './App.scss';
 import 'react-slidy/lib/index.scss'
 
+import {uintCV, serializeCV} from '@stacks/transactions'
+
 import Main from './pages/Main';
 import {
 	UserContextProvider
@@ -20,6 +22,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 function App() {
+  
   return (
     <div className="App">
       <CacheContextProvider>

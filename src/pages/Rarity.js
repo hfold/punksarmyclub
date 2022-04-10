@@ -54,7 +54,7 @@ const Rarity = (props) => {
   return (<div style={{marginTop: '20vh'}}>
   	<Row style={{overflow: 'visible'}}>
   		<Col lg={6} md={12} className="offset-lg-3 offset-md-0">
-  			<h3 className="subtitle">PUNKS ARMY RARITY CHECK</h3>
+  			<h3 className="subtitle">{globals.COLLECTIONS[collection].name.toUpperCase()} RARITY CHECK</h3>
 		  	<Button id="back_to_home" color="primary" style={{color: '#fff', margin: '12px 0', display: 'block'}} className="mb-3" size="xs" 
 				onClick={async () => history.push("/")}>
 					GO TO HOME
@@ -75,7 +75,7 @@ const Rarity = (props) => {
 						Search another
 					</Button>
 					: <React.Fragment>
-					<p>Search punk rarity</p>
+					<p style={{color: '#fff'}}>Search NFT rarity</p>
 					<FormGroup floating>
 						<Input value={id} type="number" id="max_mint" onChange={(e)=>setId(e.target.value)} />
 						<Label for="max_mint">
@@ -90,7 +90,7 @@ const Rarity = (props) => {
 								setShowRarity(true)
 							}
 						}}>
-						Show punk
+						Show NFT
 					</Button>
 					</React.Fragment>
 
@@ -99,7 +99,7 @@ const Rarity = (props) => {
 				{
 		  			show_rarity ?
 					<div>
-						<p>punk</p>
+						<p>NFT</p>
 						<GetPunk id={id} key={"punk_id_"+id} collection={collection} />
 					</div>
 					: null

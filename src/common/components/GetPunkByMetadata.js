@@ -68,6 +68,7 @@ const getImg = async (url, setUrl, setEl, setImageType, CacheState, CacheDispatc
 	      	setImageType(result.image_type || 'image');
 	      	getRarity(result.image, setRarityObj);
 	    }
+	    
 	    setEl(result)
 	    //fetchImage(result.image, setImageUrl, CacheState, CacheDispatch)
 
