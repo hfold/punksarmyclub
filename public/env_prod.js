@@ -1,5 +1,4 @@
-window.network = 'mainnet'//'testnet'//'mainnet'
-window.CONTRACT_ADDRESS = 'SP2A665S3H6FVMZSY4VJ17ESXX21CGS0A32984B1H';//'ST1Y81WMHPCZ5Y92E6BAJDP0CR8PJXB53E2J71436'
+window.network = 'mainnet'//'testnet'//'mainnet'window.CONTRACT_ADDRESS = 'SP2A665S3H6FVMZSY4VJ17ESXX21CGS0A32984B1H';//'ST1Y81WMHPCZ5Y92E6BAJDP0CR8PJXB53E2J71436'
 window.CONTRACT_NAME = 'punks' //punks-test
 window.COLLECTION_URL = 'https://punksarmynft.club/'
 window.MAX_PUNK = 2500
@@ -121,7 +120,7 @@ window.COLLECTIONS = {
 		logo_image: 'hammer2.png',
 		main_image: 'pupgrade.gif',
 		full_gallery_name: 'PunksUpgrade',
-		has_rarity: false,
+		has_rarity: true,
 		gallery:  [
 			"ipfs://QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/1",
 			"ipfs://QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/2",
@@ -151,6 +150,7 @@ window.COLLECTIONS = {
 		full_gallery_name: 'Punks',
 		has_rarity: true,
 		gallery: [
+			
 			"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/13",
 			"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/3",
 			"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/5",
@@ -180,6 +180,9 @@ window.COLLECTIONS = {
 		main_image: 'niccreations.jpg',
 		full_gallery_name: 'Friends',
 		gallery: [
+		"ipfs://QmcV7tzHhankXgLjZcY27a2UwvinMFb4Q2ru5bVZgCkX4J/1",
+		"ipfs://QmdexNw2yPrasLm2NQfAcUGTxB8sYDvCDoJ8fob5UkzqDK/2",
+		"ipfs://QmYBszpBvX8mA7WhRDEDinEVCEFVmne43qPMK3A9eLKXuE/1",
 		"ipfs://QmRcH8HbEc3ByFQixya5kh785VBVXvTqfdv7pXe32Pxfk6/1",
 		"ipfs://QmSFhcqFjcRjUaPT1ez7KEPAAwCZejsCCPRP1V36SsEjNs/1",
 		"ipfs://QmQ7MJqeEb1myuq8GvbFjREhNaehtJgbAgXnSxCjS4zf3W/2",
@@ -189,9 +192,7 @@ window.COLLECTIONS = {
 		"ipfs://QmScSJ2khofXtihLMbT3u1YtpidrJ8Vo8MscSdeAJVQYAF/3",
 		"ipfs://QmX7cw22HoXEEWuuNHJZRN3Jvs7PrF8dgJc23NRSdiM9Jv/2",
 		"ipfs://QmZvvK4UmCRgK7PpwUKuHHiSvEgNe1Y3bVvCGxCFXpMz22/1",	
-		"ipfs://QmXWG2jC8ZSoUb7QEmSa8j5BtPjpSPH3h5Mu3Y3C96ixyy/3",
-		"ipfs://QmXND9ouCHtL7HHHoyJNVbQcfeW9wLKmfDmj6cm3VZ24jB/1",
-		"ipfs://QmXND9ouCHtL7HHHoyJNVbQcfeW9wLKmfDmj6cm3VZ24jB/2"
+		"ipfs://QmXWG2jC8ZSoUb7QEmSa8j5BtPjpSPH3h5Mu3Y3C96ixyy/3"
 	]
 	},
 	'Ancestors': {
