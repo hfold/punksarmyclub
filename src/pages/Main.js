@@ -23,6 +23,7 @@ import StackingMain from './stacking/StackingMain';
 import Stackingv2Main from './stackingv2/StackingMain';
 import RarityMain from './rarity/RarityMain';
 import TokenMain from './token/TokenMain';
+import StakingTokenMain from './tokenstaking/Main';
 import {
   HashRouter as Router,
   Switch,
@@ -228,6 +229,7 @@ function RoutesList() {
 
   return ok_redirect ? <React.Fragment>
       <Route exact path="/" component={Home} />
+      <Route exact path="/tokenstaking" component={StakingTokenMain} />
       <Route exact path="/upgrade" component={UpgradeMain} />
       <Route exact path="/staking" component={StackingMain} />
       <Route exact path="/stakingv2" component={Stackingv2Main} />
