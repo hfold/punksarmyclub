@@ -98,6 +98,8 @@ function Home (props) {
 	const [delegating, setDelegating] = React.useState(false)
 	const [stopping, setStopping] = React.useState(false)
 	const [number_of_cycles, setNumberOfCycles] = React.useState(1)
+
+	const [has_delegated, setHasDelegated] = React.useState(false)
 	React.useEffect(() => {
 		if(!loaded) {
 			
@@ -377,7 +379,7 @@ function Home (props) {
 									<span style={{fontSize: 39, fontWeight: 'bold'}} className="text-success">$ROMA</span><br />
 									<span style={{fontWeight: 900, color: '#aaaaaa', position: 'relative', top: -10}}>YOUR STAKE</span></Col>
 									<Col xs={6}>
-										<span style={{lineHeight: '70px', fontSize: 22}}>{getTokenBalance(parseInt(is_staking['staking-data'].value.amount.value))}</span>
+										<span style={{lineHeight: '70px', fontSize: 22}}>{getTokenBalance(parseInt(is_staking['staking-data'].value.value.amount.value))}</span>
 									</Col>
 								</Row>
 								<Row>
@@ -388,7 +390,7 @@ function Home (props) {
 										<span style={{lineHeight: '70px', fontSize: 22}}>{getTokenBalance(
 											parseInt(gain) /
 											parseInt(
-												parseInt(current_staking['total-staked'].value) / parseInt(is_staking['staking-data'].value.amount.value)
+												parseInt(current_staking['total-staked'].value) / parseInt(is_staking['staking-data'].value.value.amount.value)
 											)
 										)}</span>
 									</Col>
@@ -397,7 +399,7 @@ function Home (props) {
 							: null
 						}
 
-						{can_delegate ? 
+						{can_delegate && !has_delegated ? 
 						<React.Fragment>
 						<b>DELEGATE $ROMA</b>
 						<FormGroup floating>
@@ -457,7 +459,8 @@ function Home (props) {
 					      			UserState, 
 					      			doContractCall, (result)=>{
 					      			
-					      			setDelegating(true)
+					      			setDelegating(false)
+					      			setHasDelegated(true)
 
 					      		}, (result)=>{
 					      			setDelegating(false)
@@ -482,7 +485,7 @@ function Home (props) {
 
 					      		let amount = 0;
 					      		try {
-					      			amount = parseInt(is_staking['staking-data'].value.amount.value)
+					      			amount = parseInt(is_staking['staking-data'].value.value.amount.value)
 					      		} catch(e) {
 
 					      		}
