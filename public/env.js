@@ -4,6 +4,7 @@ window.COLLECTION_URL = 'https://punksarmynft.club/'
 window.MAX_PUNK = 2500
 window.DISCORD_URL = 'https://discord.gg/rpFju7cPt9'
 window.TWITTER_URL = 'https://twitter.com/punksarmynft/' 
+window.MEDIUM_URL = 'https://medium.com/punks-army/'
 window.MAIN_URL = 'https://punksarmynft.com'
 window.MAIN_URL_TEXT = 'https://punksarmynft.com'
 window.GATEWAY = 'https://punksarmynft.mypinata.cloud/ipfs/'

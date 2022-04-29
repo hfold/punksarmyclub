@@ -12,7 +12,7 @@ import {
 import Navbar from './Navbar'
 import globals from '../../utils/globals'
 
-import { BsDiscord, BsTwitter } from "react-icons/bs";
+import { BsDiscord, BsTwitter, BsMedium } from "react-icons/bs";
 import { userSession, authOptions } from '../../utils/auth';
 
 import galleries from '../../utils/collections_gallery';
@@ -88,6 +88,7 @@ export default function Header(props) {
 					<h1 className="title" style={{textAlign: collection ? 'right' : 'center'}}>Punks Army<br />NFTs Club</h1>	
 					<a className="social_url" href={window.TWITTER_URL} target="_blank"><BsTwitter /></a> 
 					<a className="social_url" href={window.DISCORD_URL} target="_blank"><BsDiscord /></a>
+					<a className="social_url" href={window.MEDIUM_URL} target="_blank"><BsMedium /></a> 
 				</div>
 			</Col>
 			{
