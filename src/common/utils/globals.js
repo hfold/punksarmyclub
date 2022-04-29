@@ -36,5 +36,6 @@ export default {
 	STACKS_API_BASE_URL: api_url,
 	STACKS_SOCKET_URL: socket_url,
 	TOKEN_STR: 'PUNK_ARMY_NFT_TKN_STR',
-	COLLECTIONS: window.COLLECTIONS
+	COLLECTIONS: window.COLLECTIONS,
+	DAPPS: window.DAPPS
 }

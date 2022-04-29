@@ -258,20 +258,20 @@ function Home (props) {
 					<Row>
 						<Col xs={6}>
 						<span style={{fontSize: 39, fontWeight: 'bold'}}>STX</span><br />
-						<span style={{fontWeight: 900, color: '#aaaaaa', position: 'relative', top: -10}}>CONTRACT</span></Col>
+						<span style={{fontWeight: 900, color: '#aaaaaa', position: 'relative', top: -10}}>COMMUNITY TREASURY</span></Col>
 						<Col xs={6}>
 							<span style={{lineHeight: '70px', fontSize: 22}}>{getTokenBalance(parseInt(contract_balance))}</span>
 						</Col>
 					</Row>
 					<Row>
 						<Col xs={6}>
-						<span style={{fontSize: 39, fontWeight: 'bold'}}>$ROMA</span><br />
-						<span style={{fontWeight: 900, color: '#aaaaaa', position: 'relative', top: -10}}>ACCOUNT</span></Col>
+						<span style={{fontSize: 39, fontWeight: 'bold'}}>ROMA</span><br />
+						<span style={{fontWeight: 900, color: '#aaaaaa', position: 'relative', top: -10}}>IN YOUR WALLET</span></Col>
 						<Col xs={6}>
 							<span style={{lineHeight: '70px', fontSize: 22}}>{getTokenBalance(parseInt(balance.token.value))}</span>
 						</Col>
 					</Row>
-					<p><b>CURRENT BLOCK HEIGHT: {current_height}</b></p>
+					<p><b>CURRENT BLOCK: {current_height}</b></p>
 					{
 						is_admin
 						?
@@ -340,8 +340,9 @@ function Home (props) {
 					?
 					<div className="w_box">
 						<h3><b>#{idxs['current-stake-cycle-id'].value}</b></h3>
-						<p><b>START AT BLOCK</b> {current_staking['start-block-height'].value}<br />
-							<b>END AT BLOCK</b> {current_staking['end-block-height'].value}</p>
+						<p><b>START BLOCK: {current_staking['start-block-height'].value}</b><br />
+							<b>END BLOCK: {current_staking['end-block-height'].value}</b></p>
+							{/* <b>CURRENT BLOCK: {current_height}</b></p> */}
 						<p>
 							{
 								current_height >= parseInt(current_staking['start-block-height'].value) && current_height <= parseInt(current_staking['end-block-height'].value)
@@ -349,23 +350,25 @@ function Home (props) {
 								: <React.Fragment>{
 									parseInt(current_staking['start-block-height'].value) > 
 									parseInt(current_height) &&
-									current_staking['open-registration'] == 'true'
-									? <b className="text-success">REGISTRATIONS ARE OPEN</b> : <b>CLOSED</b>
-								}</React.Fragment>
+									current_staking['open-registration'].value == true
+									? <b className="text-success">STAKING REGISTRATIONS ARE OPEN</b> : <b>CLOSED</b>	
+								}
+								{console.log('registration', current_staking['open-registration'])}
+								</React.Fragment>
 							}
 						</p>
 						<Row>
 							<Col xs={6}>
 							<span style={{fontSize: 39, fontWeight: 'bold'}}>STX</span><br />
-							<span style={{fontWeight: 900, color: '#aaaaaa', position: 'relative', top: -10}}>DISTRIBUTION</span></Col>
+							<span style={{fontWeight: 900, color: '#aaaaaa', position: 'relative', top: -10}}>TREASURY CYCLE DISTRIBUTION</span></Col>
 							<Col xs={6}>
 								<span style={{lineHeight: '70px', fontSize: 22}}>{getTokenBalance(parseInt(gain))}</span>
 							</Col>
 						</Row>
 						<Row>
 							<Col xs={6}>
-							<span style={{fontSize: 39, fontWeight: 'bold'}}>$ROMA</span><br />
-							<span style={{fontWeight: 900, color: '#aaaaaa', position: 'relative', top: -10}}>TOTALLY STAKED</span></Col>
+							<span style={{fontSize: 39, fontWeight: 'bold'}}>ROMA</span><br />
+							<span style={{fontWeight: 900, color: '#aaaaaa', position: 'relative', top: -10}}>TOTAL ROMA STAKED</span></Col>
 							<Col xs={6}>
 								<span style={{lineHeight: '70px', fontSize: 22}}>{getTokenBalance(parseInt(current_staking['total-staked'].value))}</span>
 							</Col>
@@ -376,8 +379,8 @@ function Home (props) {
 							<React.Fragment>
 								<Row>
 									<Col xs={6}>
-									<span style={{fontSize: 39, fontWeight: 'bold'}} className="text-success">$ROMA</span><br />
-									<span style={{fontWeight: 900, color: '#aaaaaa', position: 'relative', top: -10}}>YOUR STAKE</span></Col>
+									<span style={{fontSize: 39, fontWeight: 'bold'}} className="text-success">ROMA</span><br />
+									<span style={{fontWeight: 900, color: '#aaaaaa', position: 'relative', top: -10}}>YOUR STAKED ROMA</span></Col>
 									<Col xs={6}>
 										<span style={{lineHeight: '70px', fontSize: 22}}>{getTokenBalance(parseInt(is_staking['staking-data'].value.value.amount.value))}</span>
 									</Col>
@@ -385,7 +388,7 @@ function Home (props) {
 								<Row>
 									<Col xs={6}>
 									<span style={{fontSize: 39, fontWeight: 'bold'}} className="text-success">STX</span><br />
-									<span style={{fontWeight: 900, color: '#aaaaaa', position: 'relative', top: -10}}>EXT. GAIN</span></Col>
+									<span style={{fontWeight: 900, color: '#aaaaaa', position: 'relative', top: -10}}>EXPECTED GAIN</span></Col>
 									<Col xs={6}>
 										<span style={{lineHeight: '70px', fontSize: 22}}>{getTokenBalance(
 											parseInt(gain) /
@@ -401,7 +404,7 @@ function Home (props) {
 
 						{can_delegate && !has_delegated ? 
 						<React.Fragment>
-						<b>DELEGATE $ROMA</b>
+						<b>STAKE ROMA</b>
 						<FormGroup floating>
 							<CurrencyInput 
 							decimalSeparator="." groupSeparator=","
@@ -410,7 +413,7 @@ function Home (props) {
 
 							}} />
 							<Label for="fee">
-						        $ROMA amount
+						        ROMA amount
 					      	</Label>
 						</FormGroup>
 						<FormGroup floating>
@@ -468,14 +471,14 @@ function Home (props) {
 					      		})
 
 							      	}}>
-								{delegating ? <Spinner size="sm" /> : <b>DELEGATE $ROMA</b>}
+								{delegating ? <Spinner size="sm" /> : <b>STAKE ROMA</b>}
 						</Button>
 						</React.Fragment>
 						: null}
 
 						{can_undelegate ? 
 						<React.Fragment>
-						<b>UNDELEGATE $ROMA</b>
+						<b>UNSTAKE ROMA</b>
 						<Button id="fund_account" block color="primary" style={{color: '#fff'}} 
 							className="mb-3" size="lg" onClick={async () => {
 
@@ -506,15 +509,16 @@ function Home (props) {
 					      		})
 
 							      	}}>
-								{delegating ? <Spinner size="sm" /> : <b>UNDELEGATE $ROMA</b>}
+								{delegating ? <Spinner size="sm" /> : <b>UNSTAKE ROMA</b>}
 						</Button>
 						</React.Fragment>
 						: null}
 
 						{is_staking['is-staking'].value ? 
 						<React.Fragment>
-							<b>END STAKING TILL NEXT CYCLE</b><br />
-							<small>* this will take effect at the end of current cycle</small>
+							<p><br /></p>
+							{/* <b>END STAKING TILL NEXT CYCLE</b><br /> */}
+							{/* <small>* this will take effect at the end of current cycle</small> */}
 							<Button id="fund_account" block color="primary" style={{color: '#fff'}} 
 								className="mb-3" size="lg" onClick={async () => {
 
@@ -536,8 +540,9 @@ function Home (props) {
 						      		})
 
 								      	}}>
-									{stopping ? <Spinner size="sm" /> : <b>STOP STAKING $ROMA</b>}
+									{stopping ? <Spinner size="sm" /> : <b>STOP STAKING ROMA*</b>}
 							</Button>
+							<small>* This will take effect at the end of current cycle</small>
 						</React.Fragment>
 						: null}
 
@@ -546,12 +551,23 @@ function Home (props) {
 					: null
 				}
 			</Col>
-			<Col xl={4} md={6} sm={12} style={{marginTop: 12}}>
+
+			<Col xl={4} md={12} sm={12} style={{marginTop: 12}}>
+				<h3 className="subtitle no-border" style={{marginTop: 24}}>NEXT CYCLE</h3>
+				<div className="w_box">
+				<h3><b>#{parseInt(idxs['current-stake-cycle-id'].value)+1}</b></h3>
+						<p><b>START BLOCK: {next_staking['start-block-height'].value}</b><br />
+							<b>END BLOCK: {next_staking['end-block-height'].value}</b></p>
+					</div>
+					</Col>
+
+
+			{/* <Col xl={4} md={6} sm={12} style={{marginTop: 12}}>
 				<h3 className="subtitle no-border superbig">NEXT CYCLE #{parseInt(idxs['current-stake-cycle-id'].value)+1}
 					{parseInt(next_staking['start-block-height'].value) > 0 ? 
 					' WILL START AT ' + next_staking['start-block-height'].value : ' TBD'}
 				</h3>
-			</Col>
+			</Col> */}
 	</Row> 
 	</div>
 }

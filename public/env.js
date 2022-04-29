@@ -119,7 +119,7 @@ window.COLLECTIONS = {
 		address: 'SP2A665S3H6FVMZSY4VJ17ESXX21CGS0A32984B1H',//'ST2A665S3H6FVMZSY4VJ17ESXX21CGS0A32H41WXG', //
 		ctr_name: 'Punks-Army-Upgrade-NFTs',
 		tkn: 'Punks-Army-Upgrade',
-		name: 'Punks Army Upgrade',
+		name: 'Punks Army Upgrade NFTs',
 		description: 'Unleash the Power of your Punk',
 		enabled: true,
 		logo_image: 'hammer2.png',
@@ -203,7 +203,7 @@ window.COLLECTIONS = {
 	'Ancestors': {
 		address: 'SP2A665S3H6FVMZSY4VJ17ESXX21CGS0A32984B1H',
 		ctr_name: 'Punks-Army-Ancestors-NFTs',
-		name: 'Ancestors',
+		name: 'Punks Army Ancestors',
 		description: 'The Ancestors of the Punks Army',
 		tkn: 'Punks-Army-Ancestors',
 		enabled: true,
@@ -223,4 +223,48 @@ window.COLLECTIONS = {
 			"ipfs://QmYyh6ijf9zHPzvvi3r8LrtFHk2LqaHVvPGXmfgVLYWsDH/9"
 		]	
 	}
+}
+
+window.DAPPS = {'Upgrade': {
+	url: 'upgrade',
+	address: '',
+	ctr_name: '',
+	name: 'Punks Upgrade Laboratory',
+	description: 'Upgrade your Punks and increase his Rarity!',
+	tkn: '',
+	enabled: true,
+	logo_image: '',
+	main_image: 'pupgrade2.gif',
+	full_gallery_name: '',
+	gallery: [
+	]	
+},
+	'RomaStaking': {
+		url: 'tokenstaking',
+		address: '',
+		ctr_name: '',
+		name: 'Roma Staking',
+		description: 'Stake your ROMA and gain STX',
+		tkn: '',
+		enabled: true,
+		logo_image: '',
+		main_image: 'ROMA.gif',
+		full_gallery_name: '',
+		gallery: [
+		]	
+},
+'PunkStaking': {
+	url: 'stakingv2',
+	address: '',
+	ctr_name: '',
+	name: 'Punks Army NFTs Staking',
+	description: 'Stake your Punks to get ROMA',
+	tkn: '',
+	enabled: true,
+	logo_image: '',
+	main_image: 'stake2.jpg',
+	full_gallery_name: '',
+	gallery: [
+	]	
+}
 }

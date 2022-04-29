@@ -160,7 +160,7 @@ export default function Header(props) {
 				
 		</Row>
 		
-		<Row>
+		{/* <Row>
 			<Col lg={8} md={12} className="offset-lg-2 offset-md-0">
 				<p style={{textAlign: 'center'}}>
 				{window.STAKING_TOKEN_CONTRACT && UserState.logged ?
@@ -177,24 +177,24 @@ export default function Header(props) {
 				}
 				</p>
 			</Col>
-		</Row>
+		</Row> */}
 
-		{/*
+		
 			window.UPGRADE_CONTRACT && UserState.logged ? <Row>
 			<Col lg={8} md={12} className="offset-lg-2 offset-md-0">
 				<p style={{color: '#fff', fontSize: 44, textAlign: 'center', fontWeight: 'bold', marginTop: 50, marginBottom: 40}}>
-					Punks Army upgrade is now live!!!!
+					Roma Staking is live!!
 				</p>
-				<p style={{textAlign: 'center'}}>
+				{/* <p style={{textAlign: 'center'}}>
 				<Button id="back_to_home" color="danger" style={{color: '#fff', margin: '12px', fontSize: 28}} className="mb-3 main-btn" size="lg" 
 				onClick={async () => history.push("/upgrade")}>
 					<b>UPGRADE YOUR PUNK</b>
 				</Button>
-				</p>
+				</p> */}
 			</Col>
-		</Row>: null*/}
+		</Row>: null
 		
-		{window.STACKING || window.STACKING_V2 ? <Row>
+		{/* {window.STACKING || window.STACKING_V2 ? <Row>
 			<Col lg={6} md={6} className="offset-lg-3 offset-md-0">
 				<p style={{textAlign: 'center'}}>
 				{UserState.logged && window.STACKING ? <Button id="back_to_home" color="primary" style={{color: '#fff', margin: '12px'}} className="mb-3" size="lg" 
@@ -207,7 +207,7 @@ export default function Header(props) {
 				</Button> : null }
 				</p>
 			</Col>
-		</Row>: null}
+		</Row>: null} */}
 
 		
 		
@@ -217,6 +217,64 @@ export default function Header(props) {
 			?
 			<React.Fragment>
 				{UserState.logged ?
+				<h3 className="call_to_action_choose_collection" style={{padding: 20}}>
+			        
+			        <TweenOne
+			          animation={{ 
+			            y: -5, 
+			            yoyo: true, 
+			            repeat: -1, 
+			            duration: 500
+			          }}
+			          paused={false}
+			          
+			          className="code-box-shape"
+			        >
+			        Choose a DApp
+			        </TweenOne>
+			        <TweenOne
+			          animation={{ 
+			            y: -5, 
+			            yoyo: true, 
+			            repeat: -1, 
+			            duration: 500
+			          }}
+			          paused={false}
+			          
+			          className="code-box-shape"
+			        ><BsArrowDownCircle /></TweenOne>
+		        </h3>
+		        : <SignIn />
+		    	}
+
+
+				<Row>
+					{
+						Object.keys(globals.DAPPS).map((dapps_key, i, list) => {
+							
+							let _dapps = globals.DAPPS[dapps_key]
+							let cls = 'collection_info'
+							if(!_dapps.enabled) cls += ' disabled';
+							
+							return <Col md={4} sm={12} style={{overflow: 'visible'}} key={"dapps_"+i}>
+				            <div className={cls} onClick={()=>{
+				            	if(!_dapps.enabled) return;
+
+				            	history.push("/"+globals.DAPPS[dapps_key].url);
+				            }}>
+				              <div className="img_container">
+				              	<img src={"images/"+_dapps.main_image} />
+				              </div>
+				              {/* <div className="logo_image_container" 
+				              ><img src={"images/"+_dapps.logo_image} /></div> */}
+				              <h3>{_dapps.name}</h3>
+				              <p>{_dapps.description}</p>
+				            </div>				       
+				          </Col>
+						})
+					}
+				</Row>
+
 				<h3 className="call_to_action_choose_collection" style={{padding: 20}}>
 			        
 			        <TweenOne
@@ -244,8 +302,7 @@ export default function Header(props) {
 			          className="code-box-shape"
 			        ><BsArrowDownCircle /></TweenOne>
 		        </h3>
-		        : <SignIn />
-		    	}
+
 				<Row>
 					{
 						Object.keys(globals.COLLECTIONS).map((collection_key, i, list) => {
