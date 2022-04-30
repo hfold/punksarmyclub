@@ -196,7 +196,7 @@ function Home (props) {
 					UserState,
 					(res)=>{
 						console.log('CAN UNDELEGATE', res)
-						setCanUndelegate(res == 'true' ? true : false)
+						setCanUndelegate(res == 1 ? true : false)
 					},
 					(err) => {
 						console.log('err', err)
@@ -478,7 +478,8 @@ function Home (props) {
 
 						{can_undelegate ? 
 						<React.Fragment>
-						<b>UNSTAKE ROMA</b>
+						<b>UNSTAKE ROMA</b><br />
+						* Avaible only before first cycle stake
 						<Button id="fund_account" block color="primary" style={{color: '#fff'}} 
 							className="mb-3" size="lg" onClick={async () => {
 
@@ -514,7 +515,7 @@ function Home (props) {
 						</React.Fragment>
 						: null}
 
-						{is_staking['is-staking'].value ? 
+						{!can_undelegate && is_staking['is-staking'].value ? 
 						<React.Fragment>
 							<p><br /></p>
 							{/* <b>END STAKING TILL NEXT CYCLE</b><br /> */}
