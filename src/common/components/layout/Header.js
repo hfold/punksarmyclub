@@ -181,19 +181,19 @@ export default function Header(props) {
 		</Row> */}
 
 		
-			window.UPGRADE_CONTRACT && UserState.logged ? <Row>
+			{/* window.UPGRADE_CONTRACT && UserState.logged ? <Row>
 			<Col lg={8} md={12} className="offset-lg-2 offset-md-0">
 				<p style={{color: '#fff', fontSize: 44, textAlign: 'center', fontWeight: 'bold', marginTop: 50, marginBottom: 40}}>
 					Roma Staking is live!!
-				</p>
+				</p> */}
 				{/* <p style={{textAlign: 'center'}}>
 				<Button id="back_to_home" color="danger" style={{color: '#fff', margin: '12px', fontSize: 28}} className="mb-3 main-btn" size="lg" 
 				onClick={async () => history.push("/upgrade")}>
 					<b>UPGRADE YOUR PUNK</b>
 				</Button>
 				</p> */}
-			</Col>
-		</Row>: null
+			{/* </Col>
+		</Row>: null */}
 		
 		{/* {window.STACKING || window.STACKING_V2 ? <Row>
 			<Col lg={6} md={6} className="offset-lg-3 offset-md-0">
@@ -217,6 +217,9 @@ export default function Header(props) {
 			!collection
 			?
 			<React.Fragment>
+				<p style={{color: '#fff', fontSize: 44, textAlign: 'center', fontWeight: 'bold', marginTop: 50, marginBottom: 40}}>
+					Roma Staking is live!!
+				</p>
 				{UserState.logged ?
 				<h3 className="call_to_action_choose_collection" style={{padding: 20}}>
 			        

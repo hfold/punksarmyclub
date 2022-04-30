@@ -478,8 +478,7 @@ function Home (props) {
 
 						{can_undelegate ? 
 						<React.Fragment>
-						<b>UNSTAKE ROMA</b><br />
-						* Avaible only before first cycle stake
+						{/* <b>UNSTAKE ROMA</b><br /> */}
 						<Button id="fund_account" block color="primary" style={{color: '#fff'}} 
 							className="mb-3" size="lg" onClick={async () => {
 
@@ -512,6 +511,8 @@ function Home (props) {
 							      	}}>
 								{delegating ? <Spinner size="sm" /> : <b>UNSTAKE ROMA</b>}
 						</Button>
+						* Only before the start of this 1st Cycle, your ROMA will be returned immediately<br />
+						Afterwards the Unstake will return your ROMA after the End of the Cycle 
 						</React.Fragment>
 						: null}
 
