@@ -117,34 +117,34 @@ window.COLLECTIONS = {
 			//"ipfs://QmS1Bzajtfr3MCwVhGWkdMQEKrH3fzWmiCGQETwZgGnccs/14", 
 			//"ipfs://QmS1Bzajtfr3MCwVhGWkdMQEKrH3fzWmiCGQETwZgGnccs/15"]
 	//},
-	// 'PunksUpgrade': {
-	// 	address: 'SP2A665S3H6FVMZSY4VJ17ESXX21CGS0A32984B1H',//'ST2A665S3H6FVMZSY4VJ17ESXX21CGS0A32H41WXG', //
-	// 	ctr_name: 'Punks-Army-Upgrade-NFTs',
-	// 	tkn: 'Punks-Army-Upgrade',
-	// 	name: 'Punks Army Upgrade NFTs',
-	// 	description: 'Unleash the Power of your Punk',
-	// 	enabled: true,
-	// 	logo_image: 'hammer2.png',
-	// 	main_image: 'pupgrade.gif',
-	// 	full_gallery_name: 'PunksUpgrade',
-	// 	has_rarity: true,
-	// 	gallery:  [
-	// 		"ipfs://QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/1",
-	// 		"ipfs://QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/2",
-	// 		"ipfs://QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/3",
-	// 		"ipfs://QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/4",
-	// 		"ipfs://QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/5",
-	// 		"ipfs://QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/6",
-	// 		"ipfs://QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/7",
-	// 		"ipfs://QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/8",
-	// 		"ipfs://QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/9",
-	// 		"ipfs://QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/10",
-	// 		"ipfs://QmS1Bzajtfr3MCwVhGWkdMQEKrH3fzWmiCGQETwZgGnccs/11", 
-	// 		"ipfs://QmS1Bzajtfr3MCwVhGWkdMQEKrH3fzWmiCGQETwZgGnccs/12", 
-	// 		"ipfs://QmS1Bzajtfr3MCwVhGWkdMQEKrH3fzWmiCGQETwZgGnccs/13", 
-	// 		"ipfs://QmS1Bzajtfr3MCwVhGWkdMQEKrH3fzWmiCGQETwZgGnccs/14", 
-	// 		"ipfs://QmS1Bzajtfr3MCwVhGWkdMQEKrH3fzWmiCGQETwZgGnccs/15"]
-	// },
+	'PunksUpgrade': {
+		address: 'SP2A665S3H6FVMZSY4VJ17ESXX21CGS0A32984B1H',//'ST2A665S3H6FVMZSY4VJ17ESXX21CGS0A32H41WXG', //
+		ctr_name: 'Punks-Army-Upgrade-NFTs',
+		tkn: 'Punks-Army-Upgrade',
+		name: 'Punks Army Upgrade NFTs',
+		description: 'Unleash the Power of your Punk',
+		enabled: true,
+		logo_image: 'hammer2.png',
+		main_image: 'pupgrade.gif',
+		full_gallery_name: 'PunksUpgrade',
+		has_rarity: true,
+		gallery:  [
+			"ipfs://QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/1",
+			"ipfs://QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/2",
+			"ipfs://QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/3",
+			"ipfs://QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/4",
+			"ipfs://QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/5",
+			"ipfs://QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/6",
+			"ipfs://QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/7",
+			"ipfs://QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/8",
+			"ipfs://QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/9",
+			"ipfs://QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/10",
+			"ipfs://QmS1Bzajtfr3MCwVhGWkdMQEKrH3fzWmiCGQETwZgGnccs/11", 
+			"ipfs://QmS1Bzajtfr3MCwVhGWkdMQEKrH3fzWmiCGQETwZgGnccs/12", 
+			"ipfs://QmS1Bzajtfr3MCwVhGWkdMQEKrH3fzWmiCGQETwZgGnccs/13", 
+			"ipfs://QmS1Bzajtfr3MCwVhGWkdMQEKrH3fzWmiCGQETwZgGnccs/14", 
+			"ipfs://QmS1Bzajtfr3MCwVhGWkdMQEKrH3fzWmiCGQETwZgGnccs/15"]
+	},
 	'Punks': {
 		address: 'SP2A665S3H6FVMZSY4VJ17ESXX21CGS0A32984B1H',//'ST2A665S3H6FVMZSY4VJ17ESXX21CGS0A32H41WXG', //
 		ctr_name: 'Punks-Army-NFTs',

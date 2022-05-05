@@ -386,7 +386,7 @@ export default function Header(props) {
 							if(collection && collection == collection_key) cls += ' current';
 							if(collection && _collection.enabled && collection != collection_key) cls += ' not_current';
 							
-							return <Col md={4} sm={12} style={{overflow: 'visible'}} key={"collection_"+i}>
+							return <Col md={3} sm={12} style={{overflow: 'visible'}} key={"collection_"+i}>
 				            <div className={cls} onClick={()=>{
 				            	if(!_collection.enabled || collection == collection_key) return;
 
