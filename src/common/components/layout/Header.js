@@ -218,8 +218,77 @@ export default function Header(props) {
 			?
 			<React.Fragment>
 				<p style={{color: '#fff', fontSize: 44, textAlign: 'center', fontWeight: 'bold', marginTop: 50, marginBottom: 40}}>
-					Roma Staking is live!!
+					Upgrade NFTs Public Mint is coming soon!
 				</p>
+				{UserState.logged ?
+				<h1 className="call_to_action_choose_collection" style={{padding: 20}}>
+			        <TweenOne
+			          animation={{ 
+			            y: -5, 
+			            yoyo: true, 
+			            repeat: -1, 
+			            duration: 500
+			          }}
+			          paused={false}
+			          className="code-box-shape"
+			        >Start date: Friday 6 May at 9:00 AM GMT <br/><BsArrowDownCircle /></TweenOne>
+		        </h1>
+		        : <SignIn />
+		    	}
+				
+				<Row>
+					{
+						Object.keys(globals.COLLECTIONS2).map((collection_key, i, list) => {
+							
+							let _collection = globals.COLLECTIONS2[collection_key]
+							let cls = 'collection_info'
+							if(!_collection.enabled) cls += ' disabled';
+							if(collection && collection == collection_key) cls += ' current';
+							if(collection && _collection.enabled && collection != collection_key) cls += ' not_current';
+							
+							return <Col md={4} sm={12} className="offset-lg-4" style={{overflow: 'visible'}} key={"collection_"+i}>
+				            <div className={cls} onClick={()=>{
+				            	if(!_collection.enabled || collection == collection_key) return;
+
+				            	history.push("/"+collection_key+"/mint");
+				            }}>
+				              <div className="img_container">
+				              	<img src={"images/"+_collection.main_image} />
+				              </div>
+				              <div className="logo_image_container" 
+				              ><img src={"images/"+_collection.logo_image} /></div>
+				              <h3>{_collection.name}</h3>
+				              <p>{_collection.description}</p>
+				            </div>
+				            {
+				            	has_full_gallery(collection_key)
+				            	?
+				            	<Button id="open_full_gallery" color="primary" style={{
+				            		color: '#fff', margin: '-24px auto', display: 'block'}} className="mb-3" size="xs" 
+								onClick={async () => history.push("/"+collection_key+"/gallery")}>
+									GALLERY
+								</Button>
+				            	: null
+				            }
+				            {
+				            	has_rarity(collection_key)
+				            	?
+				            	<Button id="open_full_gallery" color="primary" style={{
+				            		color: '#fff', margin: '-24px auto', display: 'block', 
+				            		marginTop: 12
+				            	}} className="mb-3" size="xs" 
+								onClick={async () => history.push("/"+collection_key+"/rarity")}>
+									RARITY CHECK
+								</Button>
+				            	: null
+				            }
+				          </Col>
+						})
+					}
+				</Row>
+
+
+
 				{UserState.logged ?
 				<h3 className="call_to_action_choose_collection" style={{padding: 20}}>
 			        
@@ -317,7 +386,7 @@ export default function Header(props) {
 							if(collection && collection == collection_key) cls += ' current';
 							if(collection && _collection.enabled && collection != collection_key) cls += ' not_current';
 							
-							return <Col md={3} sm={12} style={{overflow: 'visible'}} key={"collection_"+i}>
+							return <Col md={4} sm={12} style={{overflow: 'visible'}} key={"collection_"+i}>
 				            <div className={cls} onClick={()=>{
 				            	if(!_collection.enabled || collection == collection_key) return;
 
