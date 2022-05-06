@@ -218,7 +218,7 @@ export default function Header(props) {
 			?
 			<React.Fragment>
 				<p style={{color: '#fff', fontSize: 44, textAlign: 'center', fontWeight: 'bold', marginTop: 50, marginBottom: 40}}>
-					Upgrade NFTs Public Mint is coming soon!
+					Upgrade NFTs Public Mint is live!
 				</p>
 				{UserState.logged ?
 				<h1 className="call_to_action_choose_collection" style={{padding: 20}}>
