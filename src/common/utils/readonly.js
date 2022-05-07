@@ -225,4 +225,112 @@ export default {
 				if(ecb) ecb(e)
 			}
 		},
+
+
+	/**
+	 * Extended functions
+	 */
+	getAvaibleTokens: async (args = {}, UserState, ctx, cb = null, ecb = null) => {
+			
+			try {
+				
+				let result = await callReadOnlyFunction({
+				  contractAddress: ctx.address,
+				  contractName: ctx.ctr_name,
+				  functionName: 'get-avaible-tokens',
+				  network: globals.NETWORK,
+				  functionArgs: [],
+				  senderAddress: UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK_CALLER]
+				})
+				console.log('TOKEN RESULT', result)
+				if(cb) cb( result.list )
+
+			} catch(e) {
+				//console.log('error', e, args)
+				if(ecb) ecb(e)
+			}
+		},
+
+	getPackages: async (args = {}, UserState, ctx, cb = null, ecb = null) => {
+			
+			try {
+				
+				let result = await callReadOnlyFunction({
+				  contractAddress: ctx.address,
+				  contractName: ctx.ctr_name,
+				  functionName: 'get-packages-list',
+				  network: globals.NETWORK,
+				  functionArgs: [],
+				  senderAddress: UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK_CALLER]
+				})
+				console.log('TOKEN RESULT', result)
+				if(cb) cb( cvToJSON( result ) )
+
+			} catch(e) {
+				//console.log('error', e, args)
+				if(ecb) ecb(e)
+			}
+		},
+
+	getTokenDecimals: async (args = {ctx: null}, UserState, ctx, cb = null, ecb = null) => {
+			
+			try {
+				
+				let result = await callReadOnlyFunction({
+				  contractAddress: args.ctx.split(".")[0],
+				  contractName: args.ctx.split(".")[1],
+				  functionName: 'get-decimals',
+				  network: globals.NETWORK,
+				  functionArgs: [],
+				  senderAddress: UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK_CALLER]
+				})
+				console.log('TKN DECIMALS', cvToJSON( result ))
+				if(cb) cb( cvToJSON( result ) )
+
+			} catch(e) {
+				//console.log('error', e, args)
+				if(ecb) ecb(e)
+			}
+		},
+
+	getTokenBalance: async (args = {ctx: null}, UserState, ctx, cb = null, ecb = null) => {
+			
+			try {
+				
+				let result = await callReadOnlyFunction({
+				  contractAddress: args.ctx.split(".")[0],
+				  contractName: args.ctx.split(".")[1],
+				  functionName: 'get-balance-of',
+				  network: globals.NETWORK,
+				  functionArgs: [standardPrincipalCV(UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK_CALLER])],
+				  senderAddress: UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK_CALLER]
+				})
+				console.log('TKN DECIMALS', cvToJSON( result ))
+				if(cb) cb( cvToJSON( result ) )
+
+			} catch(e) {
+				//console.log('error', e, args)
+				if(ecb) ecb(e)
+			}
+		},
+
+	getCommissionAddresses: async (args = [], UserState, ctx, cb = null, ecb = null) => {
+			//console.log('calling whitelist')
+			try {
+				
+				let result = await callReadOnlyFunction({
+				  contractAddress: ctx.address,
+				  contractName: ctx.ctr_name,
+				  functionName: 'list-commission-addresses',
+				  network: globals.NETWORK,
+				  functionArgs: [],
+				  senderAddress: UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK_CALLER]
+				})
+				if(cb) cb( cvToJSON(result).value.value )
+
+			} catch(e) {
+				//console.log('error', e)
+				if(ecb) ecb(e)
+			}
+		},
 }

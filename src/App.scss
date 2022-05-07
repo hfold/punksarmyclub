@@ -602,6 +602,34 @@ margin-top: 26px;
 
 
 
+.buy_options{
+  margin: 40px 0;
+  .tit{
+    font-size: 24px;
+  }
+  .selectable{
+    font-size: 38px;
+    font-weight: 900;
+    margin: 10px 24px;
+    cursor: pointer;
+    &.selected {
+      color: $secondary;
+      cursor: default;
+    }
+  }
+}
 
-
+.package_list{
+  .tit{
+    font-size: 24px;
+    margin-bottom: 24px;
+  }
+  margin-top: 24px;
+  text-align: left !important;
+  font-weight: bold;
+  p{
+  text-align: left !important;
+    color: #333;
+  }
+}
 

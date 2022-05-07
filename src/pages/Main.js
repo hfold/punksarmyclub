@@ -6,6 +6,8 @@ import {
 } from '../store/UserContext';
 
 import Home from './Home';
+import Tokens from './Tokens';
+import Packages from './Packages';
 import Mint from './Mint';
 import Whitelist from './Whitelist';
 import YourPunks from './YourPunks';
@@ -16,6 +18,7 @@ import SignIn from './SignIn';
 import Gallery from './Gallery';
 import ChangeMetadataUrl from './ChangeMetadataUrl';
 import Rarity from './Rarity';
+import Commission from './Commission';
 
 
 import UpgradeMain from './upgrade/UpgradeMain';
@@ -23,6 +26,7 @@ import StackingMain from './stacking/StackingMain';
 import Stackingv2Main from './stackingv2/StackingMain';
 import RarityMain from './rarity/RarityMain';
 import TokenMain from './token/TokenMain';
+import BuyTokenMain from './tokenbuy/Main';
 import StakingTokenMain from './tokenstaking/Main';
 import {
   HashRouter as Router,
@@ -235,6 +239,12 @@ function RoutesList() {
       <Route exact path="/stakingv2" component={Stackingv2Main} />
       <Route exact path="/rarity" component={RarityMain} />
       <Route exact path="/token" component={TokenMain} />
+      <Route exact path="/buytoken" component={BuyTokenMain} />
+
+      <Route exact path="/:collection/tokens" component={Tokens} />
+      <Route exact path="/:collection/packages" component={Packages} />
+      <Route exact path="/:collection/commission" component={Commission} />
+
       <Route exact path="/:collection/gallery" component={Gallery} />
       <Route exact path="/:collection/mint" component={Mint} />{/* mettiamo qui la lista */}
       <Route exact path="/:collection/nft" component={YourPunks} />

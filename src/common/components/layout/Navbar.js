@@ -17,6 +17,9 @@ import {
 } from '../../../store/UserContext';
 import globals from '../../utils/globals'
 
+
+const isExtended = (collection) => globals.COLLECTIONS[collection].is_extended
+
 export default function Navbar(props) {
 	const {UserState, UserDispatch} = React.useContext(UserContext)
   
@@ -78,13 +81,50 @@ export default function Navbar(props) {
                     Mint event
                   </NavLink>
                 </NavItem> : null}
+                {
+                  isExtended(collection) && is_owner
+                  ?
+                  <NavItem>
+                    <NavLink 
+                    className={useRouteMatch("/:collection/packages") ? 'active' : ''}
+                    to={"/"+collection+"/packages"}>
+                      Packages
+                    </NavLink>
+                  </NavItem>
+                  : null
+                }
+                {
+                  isExtended(collection) && is_owner
+                  ?
+                  <NavItem>
+                    <NavLink 
+                    className={useRouteMatch("/:collection/commission") ? 'active' : ''}
+                    to={"/"+collection+"/commission"}>
+                      Commissions
+                    </NavLink>
+                  </NavItem>
+                  : null
+                }
+                {
+                  isExtended(collection) && is_owner
+                  ?
+                  <NavItem>
+                    <NavLink 
+                    className={useRouteMatch("/:collection/tokens") ? 'active' : ''}
+                    to={"/"+collection+"/tokens"}>
+                      Tokens and prices
+                    </NavLink>
+                  </NavItem>
+                  : null
+                }
                 {is_owner ? <NavItem>
                   <NavLink 
                   className={useRouteMatch("/:collection/add") ? 'active' : ''}
                   to={"/"+collection+"/add"}>
                     Add nfts
                   </NavLink>
-                  <NavLink 
+                  </NavItem> : null}
+                {is_owner ? <NavItem><NavLink 
                   className={useRouteMatch("/:collection/meta") ? 'active' : ''}
                   to={"/"+collection+"/meta"}>CH meta
                   </NavLink>

@@ -12,58 +12,25 @@ Row, Col
 import NumberFormat from 'react-number-format';
 import CurrencyInput from 'react-currency-input-field';
 
-import Stx from '../common/components/Stx';
-import contractCall from '../common/utils/contractCall';
+import Stx from '../../common/components/Stx';
 import {
   UserContext
-} from '../store/UserContext';
+} from '../../store/UserContext';
 
 import { useConnect } from "@stacks/connect-react";
 
-import ReadOnly from '../common/utils/readonly';
-import formatter from '../common/utils/formatter';
+import tokenBuy from '../../common/utils/tokenBuy';
+import formatter from '../../common/utils/formatter';
 
-import Wrapper from '../common/components/Wrapper';
-import globals from '../common/utils/globals'
+import globals from '../../common/utils/globals'
 import {
   	useParams,
   	useLocation
 } from "react-router-dom";
 
-const loadMempool = (address, contract_id, setTxs, old_txs) => {
 
-	const function_names = ['open_mint_event', 'close_mint_event','edit_mint_event']
+import MempoolTxs from '../../common/components/MempoolTxs';
 
-	
-	
-	fetch(globals.STACKS_API_BASE_URL+"/extended/v1/address/"+
-    	address
-    	+"/mempool?limit=50&unanchored=true")
-        .then(res => res.json())
-        .then(
-          async (result) => {
-            console.log('-----------------MEMPOOL TRANSACTIONS------------------', result)
-            let txs = []
-            
-            await result.results.map(tx => {
-            	if(tx.tx_type == 'contract_call' && 
-            		tx.contract_call &&
-            		tx.contract_call.contract_id == contract_id &&
-            		function_names.indexOf(tx.contract_call.function_name) !== -1
-            		) {
-            		txs.push(tx)
-            		
-            	} 
-            })
-            setTxs(txs)
-
-          },
-          (error) => {
-            
-          }
-        )
-  
-}
 
 
 function MintEvent (props) {
@@ -88,18 +55,11 @@ function MintEvent (props) {
 	const location = useLocation();
 	const [txs, setTxs] = React.useState([]);
 
-	const load_pool = () => loadMempool(
-		UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK_CALLER],
-		globals.COLLECTIONS[collection].address+'.'+globals.COLLECTIONS[collection].ctr_name,
-		setTxs,
-		txs
-	);
-
 	const loadCurrentEvent = () => {
 		if(loading) return;
 		
 		setLoading(true)
-		ReadOnly.currentMintEvent([], UserState, globals.COLLECTIONS[collection], (result) => {
+		tokenBuy.currentMintEvent([], UserState, (result) => {
 			console.log('-------------EVENT------------', result)
 
 			if(!loaded) setLoaded(true)
@@ -127,15 +87,16 @@ function MintEvent (props) {
 	React.useEffect(() => {
 		
 		loadCurrentEvent();
-		load_pool();
-		let pool = setInterval(()=>load_pool(), 1000*5);
-		return ()=>clearInterval(pool);
+		
 
 	}, [collection, location]);	
 
 	
 	
 	return loaded ? <><Row>
+			<Col sm={12}>
+				<MempoolTxs functions={['open_mint_event', 'close_mint_event','edit_mint_event']} contract={window.BUY_TOKEN_CTX} />
+			</Col>
 			<Col lg={6} md={12} className="offset-lg-3 offset-md-0">
 				{
 					txs.length > 0 && <div className="pending">
@@ -162,23 +123,23 @@ function MintEvent (props) {
 		  			current && current.is_open.value ? <div className="bg_black_el">
 		  				<h3>#{current.id?.value}</h3>
 		  				<p>
-		  				{!globals.COLLECTIONS[collection].is_extended ? <React.Fragment>
+		  				<React.Fragment>
 		  					<span style={{fontSize: 46}}>
 		  					<Stx dim={40} style={{marginRight: 6}} />
 		  					<b>STX:</b> 
 		  					<span className="currency">{formatter.format_stx_integers(current.mint_price.value)}</span>
 		  					</span>
-		  					<br /></React.Fragment> : null }
+		  					<br /></React.Fragment>
 		  					<b>Public:</b> {parseInt(current.public_value.value) === 0 ? 'NO' : 'YES'}<br />
-		  					<b>Max per address:</b> {parseInt(current.address_mint.value)}
+		  					<b>Max token delivery:</b> {parseInt(current['max-token'].value)}
 		  				</p>
 		  				<Button color="danger" style={{color: '#fff'}} className="mt-3" size="lg" onClick={async () => {
 		  					if(removing) return;
 				      		setRemoving(true)
-				      		contractCall.closeMintEvent({}, UserState, globals.COLLECTIONS[collection], doContractCall, (result)=>{
+				      		tokenBuy.closeMintEvent({}, UserState, doContractCall, (result)=>{
 				      			setRemoving(false)
 				      			
-				      			load_pool();
+				      			
 				      		}, (result)=>{
 				      			setRemoving(false)
 				      		})
@@ -192,16 +153,16 @@ function MintEvent (props) {
 				<h3 className="subtitle">{current && current.is_open.value ? "Edit mint event" : "Open mint event"}</h3>
 				<div className="w_box">
 					<p>Fill in the form and confirm</p>
-					{globals.COLLECTIONS[collection].is_extended ? null : <FormGroup floating>
+					<FormGroup floating>
 						<CurrencyInput 
 						decimalSeparator="." groupSeparator=","
 						className="form-control" id="fee" value={stx} onValueChange={(value, name) => {
 							setStx(value)
 						}} />
 						<Label for="fee">
-					        STX Fee
+					        STX Exchange RATE
 				      	</Label>
-					</FormGroup>}
+					</FormGroup>
 					
 					<FormGroup floating>
 						<Input type="select" value={_private} id="import" onChange={(e)=>setPrivate(e.target.value)}>
@@ -220,32 +181,32 @@ function MintEvent (props) {
 					<FormGroup floating>
 						<Input value={addrm} type="number" id="max_mint" onChange={(e)=>setAddrm(e.target.value)} />
 						<Label for="max_mint">
-					        MAX mint per address
+					        MAX token delivery (will be multiplied by 1000000)
 				      	</Label>
 					</FormGroup>
 					<Button id="confirm_open" block color="primary" style={{color: '#fff'}} 
 					className="mb-3" size="lg" onClick={async () => {
 					      		let stx_full_value = 0;
 
-								if(!globals.COLLECTIONS[collection].is_extended){
-						      		let full_value = ""
-						      		let _stx = stx || "0";
-						      		let value = _stx.split(".");
-						      		console.log('splitted', value)
+								
+					      		let full_value = ""
+					      		let _stx = stx || "0";
+					      		let value = _stx.split(".");
+					      		console.log('splitted', value)
 
-						      		full_value += String(value[0]);
-						      		if(value[1]) {
-						      			let decimals = String(value[1]);
-						      			if(decimals.length == 1) decimals += "0";
-						      		
-						      			full_value += decimals
-						      		} else {
-						      			full_value += "00";
-						      		}
-						      		
+					      		full_value += String(value[0]);
+					      		if(value[1]) {
+					      			let decimals = String(value[1]);
+					      			if(decimals.length == 1) decimals += "0";
+					      		
+					      			full_value += decimals
+					      		} else {
+					      			full_value += "00";
+					      		}
+					      		
 
-						      		stx_full_value = parseInt(full_value*10000)
-						      	}
+					      		stx_full_value = parseInt(full_value*10000)
+						      	
 					      		
 					      		if(adding) return;
 					      		setAdding(true)
@@ -253,14 +214,14 @@ function MintEvent (props) {
 					      		let fn = 'openMintEvent';
 					      		if(current && current.is_open.value) fn = 'editMintEvent'
 					      		
-					      		contractCall[fn](
-					      			{mint_price: stx_full_value, public_value: _private, address_mint: addrm}, 
+					      		tokenBuy[fn](
+					      			{mint_price: stx_full_value, public_value: _private, address_mint: addrm*1000000}, 
 					      			UserState, 
-					      			globals.COLLECTIONS[collection], 
+					      			
 					      			doContractCall, (result)=>{
 					      			
 					      			setAdding(false)
-					      			load_pool();
+					      			
 
 					      		}, (result)=>{
 					      			setAdding(false)
@@ -278,6 +239,4 @@ function MintEvent (props) {
 
 
 
-export default Wrapper({route: 'MintEvent', 
-  hasHeader: true
-}, MintEvent)
+export default MintEvent

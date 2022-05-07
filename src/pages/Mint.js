@@ -13,6 +13,9 @@ CarouselIndicators,
 CarouselCaption,
 } from 'reactstrap';
 
+import { 
+	cvToJSON
+} from '@stacks/transactions';
 
 import Wrapper from '../common/components/Wrapper';
 
@@ -26,7 +29,8 @@ import {
 import globals from '../common/utils/globals'
 import {
   	useParams,
-  	useLocation
+  	useLocation,
+  	useHistory
 } from "react-router-dom";
 
 import ReadOnly from '../common/utils/readonly';
@@ -35,6 +39,83 @@ import GetPunk from '../common/components/GetPunk';
 import GetPunkByMetadata from '../common/components/GetPunkByMetadata';
 import ReactSlidy from 'react-slidy'
 
+const getCurrentUnitPrice = (collection, current, tokens = [], token_decimals = {}, current_selected_buy_option = null, multiplier = 1) => {
+	console.log('tokens units', tokens, current_selected_buy_option)
+	try {
+		if(globals.COLLECTIONS[collection].is_extended) {
+			if(current_selected_buy_option == 'STACKS'){
+				// get stx price from mint_event
+				return formatter.format_stx_integers2((parseInt(current['stx-price'].value) || 0) * multiplier ) + " STX"
+			} else {
+				console.log('PARSO TOKEN')
+				let selected_token = tokens.find(t => t.tokenContract === current_selected_buy_option)
+				if(!selected_token){
+					console.log('NOT FOUND TOKEN', tokens, current_selected_buy_option)
+					return 0
+				} else {
+					console.log(token_decimals)
+					return formatter.format_stx_integers2_with_pow(
+						(parseInt(selected_token.amount || 0) * multiplier), 
+						token_decimals[selected_token.tokenContract] || 0) + " " + selected_token.tokenName
+				}
+			}
+		} else {
+			return formatter.format_stx_integers2(parseInt(current.mint_event?.value?.mint_price?.value || 0) * multiplier) + " STX"
+		}
+	} catch(e) {
+		return "-"
+	}
+}
+
+const getCurrentUnitPriceNumber = (collection, current, tokens = [], token_decimals = {}, current_selected_buy_option = null, multiplier = 1) => {
+	try {
+		if(globals.COLLECTIONS[collection].is_extended) {
+			if(current_selected_buy_option == 'STACKS'){
+				// get stx price from mint_event
+				return (parseInt(current['stx-price'].value) || 0) * multiplier
+			} else {
+				let selected_token = tokens.find(t => t.tokenContract === current_selected_buy_option)
+				if(!selected_token){
+					return 0
+				} else {
+					return (parseInt(selected_token.amount || 0) * multiplier)
+				}
+			}
+		} else {
+			return parseInt(current.mint_event?.value?.mint_price?.value || 0) * multiplier
+		}
+	} catch(e) {
+		console.log('e', e)
+		return "-"
+	}
+}
+
+
+
+const getBalance = (collection, current, tokens = [], token_decimals = {}, current_selected_buy_option = null, token_balance = 1) => {
+	console.log('tokens units', tokens, current_selected_buy_option)
+	try {
+		if(globals.COLLECTIONS[collection].is_extended) {
+			if(current_selected_buy_option == 'STACKS'){
+				// get stx price from mint_event
+				return formatter.format_stx_integers2_with_pow(current.balance?.value, 6) + " STX"
+			} else {
+				let selected_token = tokens.find(t => t.tokenContract === current_selected_buy_option)
+				if(!selected_token){
+					return 0
+				} else {
+					return formatter.format_stx_integers2_with_pow(
+						parseInt(token_balance[selected_token.tokenContract] || 0), 
+						token_decimals[selected_token.tokenContract] || 0) + " " + selected_token.tokenName
+				}
+			}
+		} else {
+			return formatter.format_stx_integers2_with_pow(current.balance?.value, 6) + " STX"
+		}
+	} catch(e) {
+		return "-"
+	}
+}
 
 const is_open = (curr) => {
 	let v = curr.mint_event?.value?.is_open?.value || false	
@@ -46,7 +127,6 @@ const has_stx = (curr) => {
 }
 
 const can_mint_address = (curr) => {
-	console.log('CURR', curr)
 	return curr.can_mint_address?.value || false
 }
 
@@ -59,7 +139,13 @@ const can_mint = (curr) => {
 }
 
 
-
+const can_select_buy_option = (tokens, locked_stx) => {
+	try {
+		return tokens.length > 1 || (tokens.length > 0 && !locked_stx)
+	} catch(e) {
+		return false
+	}
+}
 
 
 const getGalleryElements = (collection) => {
@@ -70,7 +156,7 @@ const getGalleryElements = (collection) => {
 
 const loadMempool = (address, contract_id, setTxs, old_txs) => {
 
-	const function_names = ['claim_punk', 'claim_multiple']
+	const function_names = ['claim_punk', 'claim_multiple', 'buy_package', 'buy_package_with_token', 'claim_multiple_with_token', 'claim_punk_with_token']
 
 	
 	
@@ -110,7 +196,7 @@ const getMax = (v) => {
 
 function Mint (props) {
 
-	
+	const history = useHistory();
 	const [loaded, setLoaded] = React.useState(false)
 	const [loading, setLoading] = React.useState(false)
 	const [loaded_full, setLoadedFull] = React.useState(false)
@@ -139,18 +225,34 @@ function Mint (props) {
 		txs
 	);
 
+	// only for extended
+	const [avaible_stacks_buy, setAvaibleStacksBuy] = React.useState(false)
+	const [current_selected_buy_option, setCurrentSelectedBuyOption] = React.useState(null);
+	const [loading_minting_resume, setLoadingMintingResume] = React.useState(false)
 	const loadMintingResume = () => {
-		if(loading) return;
-		setLoading(true)
+		if(loading_minting_resume) return;
+		setLoadingMintingResume(true)
 		ReadOnly.mintingResume([], UserState, globals.COLLECTIONS[collection],  (result) => {
 	    	console.log('mint resume result', result)
 	    	setCurrent(result)
 	    	setLoaded(true)
-	    	setLoading(false)
+	    	setLoadingMintingResume(false)
+
+	    	if(globals.COLLECTIONS[collection].is_extended){
+	    		// load tokens and set if avaible stx buy
+	    		console.log('IS LOCKED STX', result['locked-stx-buy'], result['locked-stx-buy'].value)
+	    		if(!result['locked-stx-buy'].value) {
+	    			setCurrentSelectedBuyOption('STACKS');
+	    			setAvaibleStacksBuy(true)
+	    			loadTokens();
+	    		} else {
+	    			loadTokens(true);
+	    		}
+	    	}
 	    	
 	    }, (err)=>{
 	    	setLoaded(true)
-	    	setLoading(false)
+	    	setLoadingMintingResume(false)
 	    })
 	}
 
@@ -159,11 +261,94 @@ function Mint (props) {
 		setLoading(true)
 		ReadOnly.hasAvaibleMultipleMint([], UserState, globals.COLLECTIONS[collection],  (result) => {
 	    	console.log('multi result', result)
+	    	if(!loaded) setLoaded(true)
+
+	    	setLoading(false)
 	    	setHasAvaibleMultiple(result)
 	    	
 	    }, (err)=>{
 	    	console.log('err multi', err)
+	    	setLoading(false)
 	    	setHasAvaibleMultiple(false)
+	    })
+	}
+
+	
+	const [packages, setPackages] = React.useState([]);
+	const [loading_packages, setLoadingPackages] = React.useState(false)
+	const loadPackages = () => {
+
+		if(!globals.COLLECTIONS[collection].is_extended) return;
+
+		if(loading_packages) return;
+		setLoadingPackages(true)
+		ReadOnly.getPackages({}, UserState, globals.COLLECTIONS[collection], (result) => {
+			setPackages(result.value)
+			setLoadingPackages(false)
+	    }, (err) => {
+	    	setLoadingPackages(false)
+	    })
+	}
+
+	const [tokens, setTokens] = React.useState([])
+	const [token_decimals, setTokenDecimals] = React.useState({})
+	const [token_balance, setTokenBalance] = React.useState({})
+	const [loading_tokens, setLoadingTokens] = React.useState()
+	const loadTokens = (select_first = false) => {
+		if(loading_tokens) return;
+		
+		setLoadingTokens(true)
+		ReadOnly.getAvaibleTokens({}, UserState, globals.COLLECTIONS[collection], async (result) => {
+			
+			
+			let at = await result.map((a,i,arr)=>{
+						console.log('TOKEN', cvToJSON(a))
+						let t = cvToJSON(a);
+
+						// get token decimals
+						ReadOnly.getTokenDecimals({ctx: t.value.value['token-contract'].value}, UserState, globals.COLLECTIONS[collection], (result) => {
+							console.log('DECIMAL', result)
+							setTokenDecimals({
+								...token_decimals,
+								[t.value.value['token-contract'].value]: parseInt(result.value.value)
+							})
+						}, (err)=>{
+							setTokenDecimals({
+								...token_decimals,
+								[t.value.value['token-contract'].value]: 6
+							})
+						})
+
+						ReadOnly.getTokenBalance({ctx: t.value.value['token-contract'].value}, UserState, globals.COLLECTIONS[collection], (result) => {
+							console.log('BALANCE RESULT', result)
+							setTokenBalance({
+								...token_decimals,
+								[t.value.value['token-contract'].value]: result.value.value
+							})
+						}, (err)=>{
+							setTokenBalance({
+								...token_decimals,
+								[t.value.value['token-contract'].value]: 6
+							})
+						})
+
+						return {
+							tokenContract: t.value.value['token-contract'].value,
+							tokenName: t.value.value['token-name'].value,
+							amount: t.value.value['amount'].value
+						}
+					})
+
+			console.log('tkns', at)
+			setTokens( at )
+
+			if(select_first) setCurrentSelectedBuyOption(at[0].tokenContract)
+			
+	    	setLoadingTokens(false)
+
+	    }, (err) => {
+	    	
+	    	setLoadingTokens(false)
 	    })
 	}
 
@@ -172,6 +357,8 @@ function Mint (props) {
 		
 		loadMintingResume();
 		loadAvaibleMultipleMint();
+		loadPackages();
+		
 
 		load_pool();
 
@@ -183,6 +370,7 @@ function Mint (props) {
 	const getStxMultiplier = (price) => {
 		return multiple_mint ? price * multiple_mint : price
 	}
+
 
 	const max_to_mint = () => {
 		let avaible_punks = parseInt(current.last_punk_id.value) - parseInt(current.last_nft_id.value);
@@ -211,9 +399,43 @@ function Mint (props) {
 
 		return can_mint(current) 
 			? <React.Fragment>
+				{
+					can_select_buy_option(tokens, current['locked-stx-buy'].value)
+					?
+					<div className="buy_options" style={{textAlign: 'center'}}>
+						<b className="tit">SELECT BUY OPTIONS</b><br />
+						{
+							!current['locked-stx-buy'].value
+							? <span className={current_selected_buy_option == 'STACKS' ? "selectable selected" : "selectable"} onClick={()=>setCurrentSelectedBuyOption("STACKS")}>STX</span> : null
+						}
+						{
+							tokens.map((t,i,a) => {
+								return <span key={"tkn_"+i} className={current_selected_buy_option == t.tokenContract ? "selectable selected" : "selectable"}
+								onClick={()=>setCurrentSelectedBuyOption(t.tokenContract)}>{t.tokenName}</span>
+							})
+						}
+						{
+							window.BUY_TOKEN_MAIN_TOKEN_CTX && window.BUY_TOKEN_MAIN_TOKEN_CTX === current_selected_buy_option
+							?
+							<div>
+							<Button color="primary" className="main-btn" size="lg" 
+						    onClick={() => {
+						      history.push("/buytoken");
+						    }}><b>BUY {tokens.find(t => t.tokenContract === current_selected_buy_option)?.tokenName}</b></Button>
+						    </div>
+							: null
+						}
+					</div>
+					: null
+				}
 				<p className="mint_price"> UNIT PRICE: <b>{
-					formatter.format_stx_integers2(current.mint_event?.value?.mint_price?.value || 0) 
-					} STX</b></p>
+					getCurrentUnitPrice(
+						collection, 
+						current, 
+						tokens,
+						token_decimals,
+						current_selected_buy_option) 
+					}</b></p>
 				<p className="mint_price"> MAX NFTs ALLOWED FOR WALLET:<b> {
 					parseInt(current.mint_event?.value.address_mint?.value) > 0
 					? current.mint_event?.value.address_mint?.value
@@ -250,12 +472,22 @@ function Mint (props) {
 					: null
 				}
 				{
-					formatter.format_stx_integers(current.mint_event?.value?.mint_price?.value || 0) > 0 ?
+					getCurrentUnitPriceNumber(
+						collection, 
+						current, 
+						tokens,
+						token_decimals,
+						current_selected_buy_option) > 0 ?
 					<p className="big_text">TOTAL PRICE: {
-						getStxMultiplier( 
-							formatter.format_stx_integers(current.mint_event?.value?.mint_price?.value || 0)
+						getCurrentUnitPrice(
+							collection, 
+							current, 
+							tokens,
+							token_decimals,
+							current_selected_buy_option,
+							multiple_mint || 1
 						)
-					} STX</p>
+					}</p>
 					: <p className="big_text">FREE MINTING</p>
 				}
 				<Button color="danger" style={{color: '#fff'}} size="lg" className="mt-3" onClick={async () => {
@@ -264,6 +496,14 @@ function Mint (props) {
 						return;
 					}
 		      		setClaiming(true)
+
+		      		let tkn = null;
+		      		if(current_selected_buy_option != 'STX'){
+		      			let selected_token = tokens.find(t => t.tokenContract === current_selected_buy_option)
+		      			tkn = selected_token
+		      		}
+
+
 		      		if(multiple_mint && multiple_mint > 1) {
 			      		
 			      		let max = max_to_mint();
@@ -275,7 +515,17 @@ function Mint (props) {
 			      				to_add_value = 1;
 			      			}
 
-			      		contractCall.mintMultiple({amount: to_add_value}, UserState, globals.COLLECTIONS[collection], (current.mint_event?.value?.mint_price?.value || 0), doContractCall, (result)=>{
+			      		contractCall.mintMultiple({amount: to_add_value, token: tkn}, 
+			      			UserState, 
+			      			globals.COLLECTIONS[collection], 
+			      			getCurrentUnitPriceNumber(
+								collection, 
+								current, 
+								tokens,
+								token_decimals,
+								current_selected_buy_option,
+								1
+							), doContractCall, (result)=>{
 			      			
 			      			console.log('res mint', result)
 			      			setClaiming(false)
@@ -289,7 +539,15 @@ function Mint (props) {
 			      			
 			      		})
 			      	} else {
-			      		contractCall.mint({}, UserState, globals.COLLECTIONS[collection], (current.mint_event?.value?.mint_price?.value || 0), doContractCall, (result)=>{
+			      		contractCall.mint({token: tkn}, UserState, globals.COLLECTIONS[collection], 
+			      			getCurrentUnitPriceNumber(
+								collection, 
+								current, 
+								tokens,
+								token_decimals,
+								current_selected_buy_option,
+								1
+							), doContractCall, (result)=>{
 			      			
 			      			console.log('res mint', result)
 			      			setClaiming(false)
@@ -305,6 +563,82 @@ function Mint (props) {
 		      	}}>
 					{claiming ? <Spinner color="#000" size="lg" /> : <b>CLAIM YOUR NFT</b>}
 				</Button>
+				<div className="package_list">
+				<Row>
+				{packages && packages.length > 0 ?
+					<React.Fragment><b className="tit">SELECT DISCOUNT PACKAGE</b><br /></React.Fragment>
+				: null}
+				{
+					packages.sort((a,b) => a.value.order > b.value.order ? 1 : -1).map((a,i,arr)=>{
+						return <Col sm="2" md="4" key={"pack_"+i}>
+							<div className="w_box">
+								<h3 style={{color: '#000'}}>#{a.value.id.value}</h3>
+								<p>NFT YOU GET: {a.value.nftget.value}<br />
+								NFT YOU PAY: {a.value.nftpaid.value}<br />
+								QTY LEFT: {a.value.qty.value - a.value.bought.value}</p>
+								<p><b style={{color: '#000'}}>PRICE:</b> {getCurrentUnitPrice(
+																collection, 
+																current, 
+																tokens,
+																token_decimals,
+																current_selected_buy_option,
+																a.value.nftpaid.value
+															)}</p>
+								{
+									(parseInt(a.value.qty.value) - parseInt(a.value.bought.value)) <= 0
+									? <p className="text-danger" style={{fontSize: 12, lineHeight: '45px'}}>NOT AVAIBLE</p>
+									: (
+										(parseInt(current.last_punk_id.value) - parseInt(current.last_nft_id.value) < a.value.nftget.value)
+										? <p className="text-danger" style={{fontSize: 12, lineHeight: '45px'}}>NOT ENOUGH NFTs</p>
+										: (<Button id="confirm_open" block color="primary" style={{color: '#fff'}} 
+											className="mb-3" size="lg" onClick={async () => {
+											      		
+														if(claiming) return;
+											      		setClaiming(true)
+
+											      		let tkn = null;
+											      		if(current_selected_buy_option != 'STX'){
+											      			let selected_token = tokens.find(t => t.tokenContract === current_selected_buy_option)
+											      			tkn = selected_token
+											      		}
+
+											      		contractCall.buyPackage(
+											      			{
+											      				id: a.value.id.value,
+											      				token: tkn,
+											      				amount: a.value.nftget.value
+											      			}, 
+											      			UserState, 
+											      			globals.COLLECTIONS[collection],
+											      			getCurrentUnitPriceNumber(
+																collection, 
+																current, 
+																tokens,
+																token_decimals,
+																current_selected_buy_option,
+																a.value.nftpaid.value
+															), 
+											      			doContractCall, (result)=>{
+											      			
+											      			setClaiming(false);
+
+											      		}, (result)=>{
+											      			setClaiming(false);
+											      			
+											      		})
+
+											      	}}>
+												{claiming ? <Spinner size="sm" /> : <b>SELECT</b>}
+											</Button>)
+									)
+								}
+								
+							</div>
+						</Col>
+					})
+				}
+				</Row>
+				</div>
 			</React.Fragment>
 			: <p className="text-danger">SORRY YOU CANNOT MINT</p>
 	}
@@ -312,7 +646,7 @@ function Mint (props) {
 	return loaded ? <>
 		<div className="bg_black_el" style={{minHeight: 100}}>
 			<Row>
-				<Col lg={6} md={12} className="offset-lg-3 offset-md-0">
+				<Col lg={10} md={12} className="offset-lg-1 offset-md-0">
 					{
 						txs.length > 0 && <div className="pending">
 							<h3 className="subtitle">Pending transactions</h3>
@@ -348,7 +682,13 @@ function Mint (props) {
 							{loading ? <Spinner size="sm" /> : "Refresh"}
 						</Button>
 						<p>NFTs REMAINING: <b>{parseInt(current.last_punk_id?.value || 0) - parseInt(current.last_nft_id?.value || 0)} </b> </p>
-						<p className="big_text"><Stx dim={36} style={{marginRight: 6}} /> BALANCE: <span className="currency">{formatter.format_stx_integers(current.balance?.value || 0)}</span></p>
+						<p className="big_text"><Stx dim={36} style={{marginRight: 6}} /> BALANCE: <span className="currency">{getBalance(
+						collection, 
+						current, 
+						tokens,
+						token_decimals,
+						current_selected_buy_option,
+						token_balance) }</span></p>
 						<div className="block_element" >
 						{
 							returnMessageMintElement(current)

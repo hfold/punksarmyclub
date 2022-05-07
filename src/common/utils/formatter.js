@@ -7,6 +7,12 @@ export default {
 	format_stx_integers2: (n) => {
 		return String(parseFloat(n/1000000).toFixed(0))
 	},
+	format_stx_integers2_with_pow: (n, decimals) => {
+
+		let divisor = Math.pow(10, decimals)
+		console.log('formatto', n, decimals)
+		return String(parseFloat(n/divisor).toFixed(6))
+	},
 	ipfs_gateway: (url) => {
 		if(!window.GATEWAY) return url;
 

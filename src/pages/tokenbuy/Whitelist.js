@@ -6,68 +6,22 @@ PopoverBody,
 List,
 Row, Col} from 'reactstrap';
 
-import contractCall from '../common/utils/contractCall';
 import {
   UserContext
-} from '../store/UserContext';
+} from '../../store/UserContext';
 
 import { useConnect } from "@stacks/connect-react";
-import ReadOnly from '../common/utils/readonly';
 
-import Wrapper from '../common/components/Wrapper';
+import tokenBuy from '../../common/utils/tokenBuy';
 
-import globals from '../common/utils/globals'
+import globals from '../../common/utils/globals'
 import {
   	useParams,
   	useLocation
 } from "react-router-dom";
 
 import CodeEditor from '@uiw/react-textarea-code-editor';
-
-const loadMempool = (address, contract_id, setTxs, old_txs, refresh) => {
-
-	const function_names = ['empty_whitelist', 'add_multiple_addresses_to_mint_event','add_address_to_mint_event','remove_address_to_mint_event','has_multiple_whitelist']
-
-	let ids = old_txs.map(t => t.tx_id);
-	console.log('ids', ids)
-	fetch(globals.STACKS_API_BASE_URL+"/extended/v1/address/"+
-    	address
-    	+"/mempool?limit=50&unanchored=true")
-        .then(res => res.json())
-        .then(
-          async (result) => {
-            console.log('-----------------MEMPOOL TRANSACTIONS------------------', result)
-            let txs = []
-            let new_ids = []
-            await result.results.map(tx => {
-            	if(tx.tx_type == 'contract_call' && 
-            		tx.contract_call &&
-            		tx.contract_call.contract_id == contract_id &&
-            		function_names.indexOf(tx.contract_call.function_name) !== -1
-            		) {
-            		txs.push(tx)
-            		console.log('metto transazione', tx)
-            		new_ids[tx.tx_id] = true
-            	} 
-            })
-            console.log('imposto nuove txs', txs)
-            setTxs(txs)
-
-            let same = true;
-            
-            await ids.map(i => {
-            	if(!new_ids[i]) same = false;
-            })
-            console.log('is the same', same)
-            if(!same) refresh()
-
-          },
-          (error) => {
-            
-          }
-        )
-  
-}
+import MempoolTxs from '../../common/components/MempoolTxs';
 
 function Whitelist (props) {
 	const {doContractCall} = useConnect();
@@ -93,19 +47,12 @@ function Whitelist (props) {
 	const [txs, setTxs] = React.useState([]);
 
 
-	const load_pool = () => loadMempool(
-					UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK_CALLER],
-					globals.COLLECTIONS[collection].address+'.'+globals.COLLECTIONS[collection].ctr_name,
-					setTxs,
-					txs,
-					getAddesses
-				);
 
 	const getAddesses = () => {
 		if(loading) return;
 
 		setLoading(true)
-		ReadOnly.getWhiteListAddresses([], UserState, globals.COLLECTIONS[collection], (result) => {
+		tokenBuy.getWhiteListAddresses([], UserState, (result) => {
 				console.log('addresses', result);
 				setAddresses(result)
 				setLoaded(true)
@@ -122,13 +69,7 @@ function Whitelist (props) {
 		if(loading) return;
 
 		setLoading(true)
-		ReadOnly.getCanAddMultipleWhitelist([], UserState, globals.COLLECTIONS[collection], (result) => {
-				console.log('can_add_multiple', result);
-				setCanAddMultiple(result)
-			}, (result) => {
-				console.log('errore can_add_multiple', result)
-				setCanAddMultiple(false)
-			})
+		setCanAddMultiple(true)
 	}
 
 
@@ -136,37 +77,18 @@ function Whitelist (props) {
 		if(!loaded) {
 			
 			setLoaded(true)
-			
 
 			getAddesses();
 			canAddMultipleWhitelist();
-			load_pool();
-
-			let pool = setInterval(()=>load_pool(), 1000*5);
-			return ()=>clearInterval(pool);
 
 		}
 
 	}, [collection, location]);	
 	
 	return <div>
-		{
-			txs.length > 0 && <div className="pending">
-				<h3 className="subtitle">Pending transactions</h3>
-				{
-					<List type="unstyled">
-						{
-							txs.map((a,i,arr)=>{
-								return <li key={"list_a_"+i} style={{color:'#a5a3a3'}}>
-									{a.tx_id}<br />
-									<b>{a.contract_call.function_name}</b>
-								</li>
-							})
-						}
-					</List>
-				}
-			</div>
-		}
+		<Col sm={12}>
+			<MempoolTxs functions={['empty_whitelist', 'add_multiple_addresses_to_mint_event','add_address_to_mint_event','remove_address_to_mint_event','has_multiple_whitelist']} contract={window.BUY_TOKEN_CTX} />
+		</Col>
 		<Row>
 		<Col md={12} lg={6}>	
 			<div className="w_box">
@@ -182,10 +104,10 @@ function Whitelist (props) {
 			      		if(adding || address.length == '') return;
 
 			      		setAdding(true)
-			      		contractCall.addAddress({principal: address}, UserState, globals.COLLECTIONS[collection], doContractCall, (result)=>{
+			      		tokenBuy.addAddress({principal: address}, UserState, doContractCall, (result)=>{
 			      			setAdding(false)
 			      			setAddress('')
-			      			load_pool();
+			      			
 			      		}, (result)=>{
 			      			setAdding(false)
 			      		})
@@ -221,10 +143,10 @@ function Whitelist (props) {
 			      		if(adding || addresses.length == 0) return;
 
 			      		setAdding(true)
-			      		contractCall.addMultipleAddresses({list: addresses}, UserState, globals.COLLECTIONS[collection], doContractCall, (result)=>{
+			      		tokenBuy.addMultipleAddresses({list: addresses}, UserState, doContractCall, (result)=>{
 			      			setAdding(false)
 			      			setMultipleAddresses('')
-			      			load_pool();
+			      			
 			      		}, (result)=>{
 			      			setAdding(false)
 			      		})
@@ -244,10 +166,10 @@ function Whitelist (props) {
 				can_add_multiple ?
 			<Button id="remove_all" color="danger" style={{color: '#fff', marginLeft: 12}} className="mb-3" size="xs" 
 				onClick={async () => {
-					contractCall.emptyAddresses({}, UserState, globals.COLLECTIONS[collection], doContractCall, (result)=>{
+					tokenBuy.emptyAddresses({}, UserState, doContractCall, (result)=>{
 			      			setRemoving(false)
 			      			setMultipleAddresses('')
-			      			load_pool();
+			      			
 			      		}, (result)=>{
 			      			setRemoving(false)
 			      		})
@@ -262,9 +184,9 @@ function Whitelist (props) {
 							if(removing) return;
 
 							setRemoving(true)
-				      		contractCall.removeAddress({principal: a.value}, UserState, globals.COLLECTIONS[collection], doContractCall, (result)=>{
+				      		tokenBuy.removeAddress({principal: a.value}, UserState, doContractCall, (result)=>{
 				      			setRemoving(false)
-				      			load_pool();
+				      			
 
 				      		}, (result)=>{
 				      			setRemoving(false)
@@ -279,6 +201,4 @@ function Whitelist (props) {
 }
 
 
-export default Wrapper({route: 'Whitelist', 
-  hasHeader: true
-}, Whitelist)
+export default Whitelist
