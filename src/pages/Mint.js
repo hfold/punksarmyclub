@@ -404,7 +404,10 @@ function Mint (props) {
 			? <React.Fragment>
 				
 				{
-					has_avaible_multiple
+					has_avaible_multiple && (
+						parseInt(current.mint_event?.value.address_mint?.value) > 1 ||
+						parseInt(current.mint_event?.value.address_mint?.value) == 0
+					)
 					?
 					<div className="w_box multiple_mint_select" style={{margin: '10px auto'}}>
 						<FormGroup floating>
@@ -436,7 +439,7 @@ function Mint (props) {
 
 				<div className="mint_block">
 					<Row>
-						<Col xs={4}>
+						{/*<Col xs={4}>
 							<span className="number">{
 								getCurrentUnitPrice(
 									collection, 
@@ -446,6 +449,14 @@ function Mint (props) {
 									current_selected_buy_option) 
 								}</span>
 							<span className="txt">UNIT PRICE</span>
+						</Col>*/}
+						<Col xs={4}>
+							<span className="number">{parseInt(current.last_punk_id?.value || 0)}</span>
+							<span className="txt">TOTAL Nfts</span>
+						</Col>
+						<Col xs={4}>
+							<span className="number">{parseInt(current.last_punk_id?.value || 0) - parseInt(current.last_nft_id?.value || 0)}</span>
+							<span className="txt">REMAINING Nfts</span>
 						</Col>
 						<Col xs={4}>
 							<span className="number">{
@@ -454,10 +465,6 @@ function Mint (props) {
 								: '∞'
 								}</span>
 							<span className="txt">MAX ALLOWED</span>
-						</Col>
-						<Col xs={4}>
-							<span className="number">{parseInt(current.last_punk_id?.value || 0) - parseInt(current.last_nft_id?.value || 0)}</span>
-							<span className="txt">REMAINING Nfts</span>
 						</Col>
 					</Row>
 					<Row>
