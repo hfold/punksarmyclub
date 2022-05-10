@@ -273,45 +273,60 @@ export default {
 		},
 
 	getTokenDecimals: async (args = {ctx: null}, UserState, ctx, cb = null, ecb = null) => {
-			
-			try {
-				
-				let result = await callReadOnlyFunction({
-				  contractAddress: args.ctx.split(".")[0],
-				  contractName: args.ctx.split(".")[1],
-				  functionName: 'get-decimals',
-				  network: globals.NETWORK,
-				  functionArgs: [],
-				  senderAddress: UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK_CALLER]
-				})
-				console.log('TKN DECIMALS', cvToJSON( result ))
-				if(cb) cb( cvToJSON( result ) )
+			return new Promise(async (resolve, reject)=>{
+				try {
+					
+					let result = await callReadOnlyFunction({
+					  contractAddress: args.ctx.split(".")[0],
+					  contractName: args.ctx.split(".")[1],
+					  functionName: 'get-decimals',
+					  network: globals.NETWORK,
+					  functionArgs: [],
+					  senderAddress: UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK_CALLER]
+					})
+					console.log('TKN DECIMALS', cvToJSON( result ))
+					if(cb) {
+						cb( cvToJSON( result ) )
+					} 
 
-			} catch(e) {
-				//console.log('error', e, args)
-				if(ecb) ecb(e)
-			}
+					resolve( cvToJSON( result ) )
+
+				} catch(e) {
+					//console.log('error', e, args)
+					if(ecb) ecb(e)
+
+					reject(e)
+				}
+			})
 		},
 
 	getTokenBalance: async (args = {ctx: null}, UserState, ctx, cb = null, ecb = null) => {
-			
-			try {
+			return new Promise(async (resolve, reject)=>{
+				try {
 				
-				let result = await callReadOnlyFunction({
-				  contractAddress: args.ctx.split(".")[0],
-				  contractName: args.ctx.split(".")[1],
-				  functionName: 'get-balance-of',
-				  network: globals.NETWORK,
-				  functionArgs: [standardPrincipalCV(UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK_CALLER])],
-				  senderAddress: UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK_CALLER]
-				})
-				console.log('TKN DECIMALS', cvToJSON( result ))
-				if(cb) cb( cvToJSON( result ) )
+					let result = await callReadOnlyFunction({
+					  contractAddress: args.ctx.split(".")[0],
+					  contractName: args.ctx.split(".")[1],
+					  functionName: 'get-balance',
+					  network: globals.NETWORK,
+					  functionArgs: [standardPrincipalCV(UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK_CALLER])],
+					  senderAddress: UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK_CALLER]
+					})
+					console.log('TKN DECIMALS', cvToJSON( result ))
+					if(cb) {
+						cb( cvToJSON( result ) )
+					} 
 
-			} catch(e) {
-				//console.log('error', e, args)
-				if(ecb) ecb(e)
-			}
+					resolve( cvToJSON( result ) )
+
+				} catch(e) {
+					//console.log('error', e, args)
+					if(ecb) ecb(e)
+
+					reject(e)
+				}
+			})
+			
 		},
 
 	getCommissionAddresses: async (args = [], UserState, ctx, cb = null, ecb = null) => {

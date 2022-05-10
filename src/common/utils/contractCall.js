@@ -340,7 +340,7 @@ export default {
 					if(args.token) {
 
 						const postConditionAddress = UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK_CALLER];
-						const postConditionCode = FungibleConditionCode.GreaterEqual;
+						const postConditionCode = FungibleConditionCode.LessEqual;
 						const postConditionAmount = parseInt(amount);
 						const assetAddress = args.token.tokenContract.split(".")[0];
 						const assetContractName = args.token.tokenContract.split(".")[1];
@@ -434,7 +434,7 @@ export default {
 					if(args.token) {
 
 						const postConditionAddress = UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK_CALLER];
-						const postConditionCode = FungibleConditionCode.GreaterEqual;
+						const postConditionCode = FungibleConditionCode.LessEqual;
 						const postConditionAmount = parseInt(amount*token_amount);
 						const assetAddress = args.token.tokenContract.split(".")[0];
 						const assetContractName = args.token.tokenContract.split(".")[1];
@@ -906,7 +906,7 @@ export default {
 					if(args.token) {
 
 						const postConditionAddress = UserState.userData.profile.stxAddress[globals.SELECTED_NETWORK_CALLER];
-						const postConditionCode = FungibleConditionCode.GreaterEqual;
+						const postConditionCode = FungibleConditionCode.LessEqual;
 						const postConditionAmount = parseInt(amount);
 						const assetAddress = args.token.tokenContract.split(".")[0];
 						const assetContractName = args.token.tokenContract.split(".")[1];

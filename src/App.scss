@@ -214,6 +214,8 @@ body{
   margin: 20px;
   font-size: 18px;
   transition: all ease-in-out .5s;
+  border-bottom: 2px solid transparent;
+  line-height: 30px;
 }
 .nav li a:hover{
   color: #8a1a9d;
@@ -633,3 +635,35 @@ margin-top: 26px;
   }
 }
 
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6{
+  line-height: inherit !important;
+}
+
+.mint_block{
+  * {text-align: center;}
+  .col-4{
+    border: 1px solid #311d34;
+    padding: 12px;
+  }
+  border: 1px solid #311d34;
+  background: #2a0830;
+  .number{
+    display: block;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  button{
+  margin: 12px;
+  }
+}
+
+.multiple_mint_select{
+  * {
+  text-align: center;
+  }
+}
+
+.big-text{
+  font-size: 32px;
+  font-weight: 900;
+}
