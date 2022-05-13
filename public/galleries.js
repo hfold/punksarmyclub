@@ -1,3 +1,9 @@
+window.MonkeysGallery = [
+	"ipfs://QmULpYmCJf5V7VznvWsEeHk58qSFp6edfBVscb223fzSjz/1",
+	"ipfs://QmULpYmCJf5V7VznvWsEeHk58qSFp6edfBVscb223fzSjz/2",
+   "ipfs://QmULpYmCJf5V7VznvWsEeHk58qSFp6edfBVscb223fzSjz/3"
+];
+
 window.AncestorsGallery = [
 	"ipfs://QmYyh6ijf9zHPzvvi3r8LrtFHk2LqaHVvPGXmfgVLYWsDH/0",
 	"ipfs://QmYyh6ijf9zHPzvvi3r8LrtFHk2LqaHVvPGXmfgVLYWsDH/1",	

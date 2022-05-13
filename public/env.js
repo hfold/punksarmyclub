@@ -45,29 +45,30 @@ window.STAKING_TOKEN_NAME = 'ROMA'
 
 
 // for buy token options
-window.BUY_TOKEN_CTX = 'ST1HA10B13YSF47JXWGJCVNF94QPZ3GWWYSCZDDSS.romabuyv8'
+// window.BUY_TOKEN_CTX = 'ST1HA10B13YSF47JXWGJCVNF94QPZ3GWWYSCZDDSS.romabuyv8'
+window.BUY_TOKEN_CTX = 'SP2A665S3H6FVMZSY4VJ17ESXX21CGS0A32984B1H.romabuy-v4'
 window.BUY_TOKEN_MAIN_TOKEN_CTX = 'SP2A665S3H6FVMZSY4VJ17ESXX21CGS0A32984B1H.romatoken'
 window.BUY_TOKEN_MAIN_TOKEN_NAME = 'ROMA'
 
 
 
 window.COLLECTIONS = {
-	 'PunksTest': {
-	 	address: 'ST1HA10B13YSF47JXWGJCVNF94QPZ3GWWYSCZDDSS',//'ST2A665S3H6FVMZSY4VJ17ESXX21CGS0A32H41WXG', //
-	 	ctr_name: 'punks',
-	 	tkn: 'PunksArmyToken',
-	 	name: 'Punks Army Test', 
-	 	description: 'The invasion is ready',
-	 	enabled: true,
-	 	logo_image: 'logo.png',
-	 	main_image: 'punklogo.png',
-	 	full_gallery_name: 'Punks',
-	 	has_rarity: true,
-	 	gallery: [
-	 		"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/13",
-	 		"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/3"
-	 	]
-	 },
+	//  'PunksTest': {
+	//  	address: 'ST1HA10B13YSF47JXWGJCVNF94QPZ3GWWYSCZDDSS',//'ST2A665S3H6FVMZSY4VJ17ESXX21CGS0A32H41WXG', //
+	//  	ctr_name: 'punks',
+	//  	tkn: 'PunksArmyToken',
+	//  	name: 'Punks Army Test', 
+	//  	description: 'The invasion is ready',
+	//  	enabled: true,
+	//  	logo_image: 'logo.png',
+	//  	main_image: 'punklogo.png',
+	//  	full_gallery_name: 'Punks',
+	//  	has_rarity: true,
+	//  	gallery: [
+	//  		"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/13",
+	//  		"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/3"
+	//  	]
+	//  },
 	 'NewPunksTest': {
 	 	address: 'SP2PC9SBXTY48EF118RGF1PQAVVHVY8PESRB8PQZN',//'ST2A665S3H6FVMZSY4VJ17ESXX21CGS0A32H41WXG', //
 	 	ctr_name: 'nft-token-extended-test',
@@ -75,16 +76,17 @@ window.COLLECTIONS = {
 	 	hide_single_mint: false,
 	 	is_extended: true,
 	 	tkn: 'NFTTOKENNAME',
-	 	name: 'Punks Army Extended', 
-	 	description: 'The invasion is ready',
+	 	name: 'Punks Army Monkeys', 
+	 	description: '50 Ultra-Badasses Bitcoin Monkeys',
 	 	enabled: true,
-	 	logo_image: 'logo.png',
-	 	main_image: 'punklogo.png',
-	 	full_gallery_name: 'Punks',
-	 	has_rarity: true,
+	 	logo_image: 'logomonkey.jpg',
+	 	main_image: 'zombiemonkey.jpg',
+	 	full_gallery_name: 'Monkeys',
+	 	has_rarity: false,
 	 	gallery: [
-	 		"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/13",
-	 		"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/3"
+	 		"ipfs://QmULpYmCJf5V7VznvWsEeHk58qSFp6edfBVscb223fzSjz/1",
+	 		"ipfs://QmULpYmCJf5V7VznvWsEeHk58qSFp6edfBVscb223fzSjz/2",
+			"ipfs://QmULpYmCJf5V7VznvWsEeHk58qSFp6edfBVscb223fzSjz/3"
 	 	]
 	 },
 	//'PunksTest': {
@@ -184,8 +186,7 @@ window.COLLECTIONS = {
 		main_image: 'punklogo.png',
 		full_gallery_name: 'Punks',
 		has_rarity: true,
-		gallery: [
-			
+		gallery: [	
 			"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/13",
 			"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/3",
 			"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/5",
@@ -298,7 +299,6 @@ window.DAPPS = {'Upgrade': {
 	]	
 }
 }
-
 
 window.COLLECTIONS2 = {
    'PunksUpgrade': {
