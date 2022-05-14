@@ -76,18 +76,19 @@ window.COLLECTIONS = {
 	 	hide_single_mint: false,
 	 	is_extended: true,
 	 	tkn: 'NFTTOKENNAME',
-	 	name: 'Punks Army Monkeys', 
-	 	description: '50 Ultra-Badasses Bitcoin Monkeys',
-	 	enabled: true,
+	 	name: 'Punks Army BTC Monkeys', 
+		description: 'Coming soon',
+	 	// description: '50 Ultra-Badasses Bitcoin Monkeys',
+	 	enabled: false,
 	 	logo_image: 'logomonkey.jpg',
 	 	main_image: 'zombiemonkey.jpg',
-	 	full_gallery_name: 'Monkeys',
+	 	// full_gallery_name: 'Monkeys',
 	 	has_rarity: false,
-	 	gallery: [
-	 		"ipfs://QmULpYmCJf5V7VznvWsEeHk58qSFp6edfBVscb223fzSjz/1",
-	 		"ipfs://QmULpYmCJf5V7VznvWsEeHk58qSFp6edfBVscb223fzSjz/2",
-			"ipfs://QmULpYmCJf5V7VznvWsEeHk58qSFp6edfBVscb223fzSjz/3"
-	 	]
+	 	// gallery: [
+	 	// 	// "ipfs://QmULpYmCJf5V7VznvWsEeHk58qSFp6edfBVscb223fzSjz/1",
+	 	// 	// "ipfs://QmULpYmCJf5V7VznvWsEeHk58qSFp6edfBVscb223fzSjz/2",
+		// 	// "ipfs://QmULpYmCJf5V7VznvWsEeHk58qSFp6edfBVscb223fzSjz/3"
+	 	// ]
 	 },
 	//'PunksTest': {
 		//address: 'ST1HA10B13YSF47JXWGJCVNF94QPZ3GWWYSCZDDSS',//'ST2A665S3H6FVMZSY4VJ17ESXX21CGS0A32H41WXG', //
@@ -159,10 +160,6 @@ window.COLLECTIONS = {
 		full_gallery_name: 'PunksUpgrade',
 		has_rarity: true,
 		gallery:  [
-			"ipfs://QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/1",
-			"ipfs://QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/2",
-			"ipfs://QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/3",
-			"ipfs://QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/4",
 			"ipfs://QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/5",
 			"ipfs://QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/6",
 			"ipfs://QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/7",
@@ -216,6 +213,10 @@ window.COLLECTIONS = {
 		main_image: 'niccreations.jpg',
 		full_gallery_name: 'Friends',
 		gallery: [
+		"ipfs://QmXXWXwMPJGgi99pv61y8NMJNjUn6zc6zGniKHvpsHgmfx/4",	
+		"ipfs://QmXXWXwMPJGgi99pv61y8NMJNjUn6zc6zGniKHvpsHgmfx/3",
+		"ipfs://QmXXWXwMPJGgi99pv61y8NMJNjUn6zc6zGniKHvpsHgmfx/1",
+		"ipfs://QmXXWXwMPJGgi99pv61y8NMJNjUn6zc6zGniKHvpsHgmfx/2",	
 		"ipfs://QmcV7tzHhankXgLjZcY27a2UwvinMFb4Q2ru5bVZgCkX4J/1",
 		"ipfs://QmdexNw2yPrasLm2NQfAcUGTxB8sYDvCDoJ8fob5UkzqDK/2",
 		"ipfs://QmYBszpBvX8mA7WhRDEDinEVCEFVmne43qPMK3A9eLKXuE/1",
@@ -224,11 +225,7 @@ window.COLLECTIONS = {
 		"ipfs://QmQ7MJqeEb1myuq8GvbFjREhNaehtJgbAgXnSxCjS4zf3W/2",
 		"ipfs://Qmet3qszE7fsnZaj9U3wp9JAUZrzCFTJb3AhpvgcHX3z6a/1",
 		"ipfs://Qme8GH3ZAEkUCobR9CnvuSSy1xE2C79LxNu6jxempN9HaU/1",
-		"ipfs://QmVdJ2Z3a7BfHooXqZYsxgdX9nR6aispJTBzBQ76div8Aw/4",
-		"ipfs://QmScSJ2khofXtihLMbT3u1YtpidrJ8Vo8MscSdeAJVQYAF/3",
-		"ipfs://QmX7cw22HoXEEWuuNHJZRN3Jvs7PrF8dgJc23NRSdiM9Jv/2",
-		"ipfs://QmZvvK4UmCRgK7PpwUKuHHiSvEgNe1Y3bVvCGxCFXpMz22/1",	
-		"ipfs://QmXWG2jC8ZSoUb7QEmSa8j5BtPjpSPH3h5Mu3Y3C96ixyy/3"
+		"ipfs://QmVdJ2Z3a7BfHooXqZYsxgdX9nR6aispJTBzBQ76div8Aw/4"
 	]
 	},
 	'Ancestors': {

@@ -217,11 +217,11 @@ export default function Header(props) {
 			!collection
 			?
 			<React.Fragment>
-				<p style={{color: '#fff', fontSize: 44, textAlign: 'center', fontWeight: 'bold', marginTop: 50, marginBottom: 40}}>
+				{/* <p style={{color: '#fff', fontSize: 44, textAlign: 'center', fontWeight: 'bold', marginTop: 50, marginBottom: 40}}>
 					Upgrade NFTs Public Mint is live!
-				</p>
+				</p> */}
 				{UserState.logged ?
-				<h1 className="call_to_action_choose_collection" style={{padding: 20}}>
+				<h2 className="call_to_action_choose_collection" style={{padding: 20}}>
 			        <TweenOne
 			          animation={{ 
 			            y: -5, 
@@ -230,9 +230,10 @@ export default function Header(props) {
 			            duration: 500
 			          }}
 			          paused={false}
-			          className="code-box-shape"
-			        >Start date: Friday 6 May at 9:00 AM GMT <br/><BsArrowDownCircle /></TweenOne>
-		        </h1>
+			          className="code-box-shape">
+						  Upgrade NFTs Public Mint is live! <br/>
+					<BsArrowDownCircle /></TweenOne>
+		        </h2>
 		        : <SignIn />
 		    	}
 				

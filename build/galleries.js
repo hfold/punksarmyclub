@@ -1,3 +1,9 @@
+window.MonkeysGallery = [
+	"ipfs://QmULpYmCJf5V7VznvWsEeHk58qSFp6edfBVscb223fzSjz/1",
+	"ipfs://QmULpYmCJf5V7VznvWsEeHk58qSFp6edfBVscb223fzSjz/2",
+   "ipfs://QmULpYmCJf5V7VznvWsEeHk58qSFp6edfBVscb223fzSjz/3"
+];
+
 window.AncestorsGallery = [
 	"ipfs://QmYyh6ijf9zHPzvvi3r8LrtFHk2LqaHVvPGXmfgVLYWsDH/0",
 	"ipfs://QmYyh6ijf9zHPzvvi3r8LrtFHk2LqaHVvPGXmfgVLYWsDH/1",	
@@ -11,6 +17,10 @@ window.AncestorsGallery = [
 	"ipfs://QmYyh6ijf9zHPzvvi3r8LrtFHk2LqaHVvPGXmfgVLYWsDH/9"
 ];
 window.FriendsGallery = [
+	"ipfs://QmXXWXwMPJGgi99pv61y8NMJNjUn6zc6zGniKHvpsHgmfx/1",
+	"ipfs://QmXXWXwMPJGgi99pv61y8NMJNjUn6zc6zGniKHvpsHgmfx/2",
+	"ipfs://QmXXWXwMPJGgi99pv61y8NMJNjUn6zc6zGniKHvpsHgmfx/3",
+	"ipfs://QmXXWXwMPJGgi99pv61y8NMJNjUn6zc6zGniKHvpsHgmfx/4",
 	"ipfs://QmcV7tzHhankXgLjZcY27a2UwvinMFb4Q2ru5bVZgCkX4J/1",
 	"ipfs://QmdexNw2yPrasLm2NQfAcUGTxB8sYDvCDoJ8fob5UkzqDK/2",
 	"ipfs://QmYBszpBvX8mA7WhRDEDinEVCEFVmne43qPMK3A9eLKXuE/1",
@@ -29,8 +39,8 @@ window.FriendsGallery = [
 	"ipfs://QmXND9ouCHtL7HHHoyJNVbQcfeW9wLKmfDmj6cm3VZ24jB/2",
 	"ipfs://Qmbe3jnhTBMXe5LxyU7t9rGWjF3peL4VuFPbMwqTXerTTa/0",
 	"ipfs://Qmbe3jnhTBMXe5LxyU7t9rGWjF3peL4VuFPbMwqTXerTTa/1",
-	"ipfs://Qmbe3jnhTBMXe5LxyU7t9rGWjF3peL4VuFPbMwqTXerTTa/2"
-];
+	"ipfs://Qmbe3jnhTBMXe5LxyU7t9rGWjF3peL4VuFPbMwqTXerTTa/2"]
+;
 window.PunksGallery = [
 "ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/13",
 		"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/3",
