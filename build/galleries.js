@@ -23,6 +23,7 @@ window.AncestorsGallery = [
 	"ipfs://QmYyh6ijf9zHPzvvi3r8LrtFHk2LqaHVvPGXmfgVLYWsDH/9"
 ];
 window.FriendsGallery = [
+	"ipfs://QmUrSBi5hwvUq4LyQ9EAqa1SEmn8UjfyyU8EDLkfxYMtyZ/3",
 	"ipfs://QmXXWXwMPJGgi99pv61y8NMJNjUn6zc6zGniKHvpsHgmfx/1",
 	"ipfs://QmXXWXwMPJGgi99pv61y8NMJNjUn6zc6zGniKHvpsHgmfx/2",
 	"ipfs://QmXXWXwMPJGgi99pv61y8NMJNjUn6zc6zGniKHvpsHgmfx/3",
