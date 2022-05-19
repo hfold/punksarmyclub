@@ -82,13 +82,19 @@ window.COLLECTIONS = {
 	 	enabled: false,
 	 	logo_image: 'logomonkey.jpg',
 	 	main_image: 'zombiemonkey.jpg',
-	 	// full_gallery_name: 'Monkeys',
+	 	full_gallery_name: 'Monkeys',
 	 	has_rarity: false,
-	 	// gallery: [
-	 	// 	// "ipfs://QmULpYmCJf5V7VznvWsEeHk58qSFp6edfBVscb223fzSjz/1",
-	 	// 	// "ipfs://QmULpYmCJf5V7VznvWsEeHk58qSFp6edfBVscb223fzSjz/2",
-		// 	// "ipfs://QmULpYmCJf5V7VznvWsEeHk58qSFp6edfBVscb223fzSjz/3"
-	 	// ]
+	 	gallery: [
+	 		"ipfs://QmY1W2GTD1zV5e5xLvqELwJTVWMWVCQqtQL653f3PaLF6H/1",
+	 		"ipfs://QmY1W2GTD1zV5e5xLvqELwJTVWMWVCQqtQL653f3PaLF6H/2",
+			"ipfs://QmY1W2GTD1zV5e5xLvqELwJTVWMWVCQqtQL653f3PaLF6H/3",
+			"ipfs://QmY1W2GTD1zV5e5xLvqELwJTVWMWVCQqtQL653f3PaLF6H/4",
+	 		"ipfs://QmY1W2GTD1zV5e5xLvqELwJTVWMWVCQqtQL653f3PaLF6H/5",
+			"ipfs://QmY1W2GTD1zV5e5xLvqELwJTVWMWVCQqtQL653f3PaLF6H/6",
+			"ipfs://QmY1W2GTD1zV5e5xLvqELwJTVWMWVCQqtQL653f3PaLF6H/7",
+	 		"ipfs://QmY1W2GTD1zV5e5xLvqELwJTVWMWVCQqtQL653f3PaLF6H/8",
+			"ipfs://QmY1W2GTD1zV5e5xLvqELwJTVWMWVCQqtQL653f3PaLF6H/9"
+	 	]
 	 },
 	//'PunksTest': {
 		//address: 'ST1HA10B13YSF47JXWGJCVNF94QPZ3GWWYSCZDDSS',//'ST2A665S3H6FVMZSY4VJ17ESXX21CGS0A32H41WXG', //
@@ -213,6 +219,7 @@ window.COLLECTIONS = {
 		main_image: 'niccreations.jpg',
 		full_gallery_name: 'Friends',
 		gallery: [
+		"ipfs://QmUrSBi5hwvUq4LyQ9EAqa1SEmn8UjfyyU8EDLkfxYMtyZ/3",
 		"ipfs://QmXXWXwMPJGgi99pv61y8NMJNjUn6zc6zGniKHvpsHgmfx/4",	
 		"ipfs://QmXXWXwMPJGgi99pv61y8NMJNjUn6zc6zGniKHvpsHgmfx/3",
 		"ipfs://QmXXWXwMPJGgi99pv61y8NMJNjUn6zc6zGniKHvpsHgmfx/1",

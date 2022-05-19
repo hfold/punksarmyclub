@@ -1,7 +1,13 @@
 window.MonkeysGallery = [
-	"ipfs://QmULpYmCJf5V7VznvWsEeHk58qSFp6edfBVscb223fzSjz/1",
-	"ipfs://QmULpYmCJf5V7VznvWsEeHk58qSFp6edfBVscb223fzSjz/2",
-   "ipfs://QmULpYmCJf5V7VznvWsEeHk58qSFp6edfBVscb223fzSjz/3"
+	"ipfs://QmY1W2GTD1zV5e5xLvqELwJTVWMWVCQqtQL653f3PaLF6H/1",
+	 		"ipfs://QmY1W2GTD1zV5e5xLvqELwJTVWMWVCQqtQL653f3PaLF6H/2",
+			"ipfs://QmY1W2GTD1zV5e5xLvqELwJTVWMWVCQqtQL653f3PaLF6H/3",
+			"ipfs://QmY1W2GTD1zV5e5xLvqELwJTVWMWVCQqtQL653f3PaLF6H/4",
+	 		"ipfs://QmY1W2GTD1zV5e5xLvqELwJTVWMWVCQqtQL653f3PaLF6H/5",
+			"ipfs://QmY1W2GTD1zV5e5xLvqELwJTVWMWVCQqtQL653f3PaLF6H/6",
+			"ipfs://QmY1W2GTD1zV5e5xLvqELwJTVWMWVCQqtQL653f3PaLF6H/7",
+	 		"ipfs://QmY1W2GTD1zV5e5xLvqELwJTVWMWVCQqtQL653f3PaLF6H/8",
+			"ipfs://QmY1W2GTD1zV5e5xLvqELwJTVWMWVCQqtQL653f3PaLF6H/9"
 ];
 
 window.AncestorsGallery = [
