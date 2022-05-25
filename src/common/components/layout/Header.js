@@ -220,7 +220,7 @@ export default function Header(props) {
 				{/* <p style={{color: '#fff', fontSize: 44, textAlign: 'center', fontWeight: 'bold', marginTop: 50, marginBottom: 40}}>
 					Upgrade NFTs Public Mint is live!
 				</p> */}
-				{UserState.logged ?
+				{/* {UserState.logged ?
 				<h2 className="call_to_action_choose_collection" style={{padding: 20}}>
 			        <TweenOne
 			          animation={{ 
@@ -235,9 +235,9 @@ export default function Header(props) {
 					<BsArrowDownCircle /></TweenOne>
 		        </h2>
 		        : <SignIn />
-		    	}
+		    	} */}
 				
-				<Row>
+				{/* <Row>
 					{
 						Object.keys(globals.COLLECTIONS2).map((collection_key, i, list) => {
 							
@@ -286,7 +286,7 @@ export default function Header(props) {
 				          </Col>
 						})
 					}
-				</Row>
+				</Row> */}
 
 
 

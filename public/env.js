@@ -69,17 +69,17 @@ window.COLLECTIONS = {
 	//  		"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/3"
 	//  	]
 	//  },
-	 'NewPunksTest': {
-	 	address: 'SP2PC9SBXTY48EF118RGF1PQAVVHVY8PESRB8PQZN',//'ST2A665S3H6FVMZSY4VJ17ESXX21CGS0A32H41WXG', //
-	 	ctr_name: 'nft-token-extended-test',
+	 'Monkeys': {
+	 	address: 'SP2A665S3H6FVMZSY4VJ17ESXX21CGS0A32984B1H', //'SP2PC9SBXTY48EF118RGF1PQAVVHVY8PESRB8PQZN',//'ST2A665S3H6FVMZSY4VJ17ESXX21CGS0A32H41WXG', //
+	 	ctr_name:'Punks-Army-Monkeys-NFTs', //'nft-token-extended-test',
 	 	hide_multiple: false,
 	 	hide_single_mint: false,
 	 	is_extended: true,
-	 	tkn: 'NFTTOKENNAME',
-	 	name: 'Punks Army BTC Monkeys', 
-		description: 'Coming soon',
+	 	tkn: 'Punks-Army-Monkeys',
+	 	name: 'Punks Army Monkeys', 
+		description: 'Mint Date: 27 of May',
 	 	// description: '50 Ultra-Badasses Bitcoin Monkeys',
-	 	enabled: false,
+	 	enabled: true,
 	 	logo_image: 'logomonkey.jpg',
 	 	main_image: 'zombiemonkey.jpg',
 	 	full_gallery_name: 'Monkeys',
@@ -219,6 +219,7 @@ window.COLLECTIONS = {
 		main_image: 'niccreations.jpg',
 		full_gallery_name: 'Friends',
 		gallery: [
+		"ipfs://QmUMYfDDi7EE3u6zCMSxutwEP7yP4QDi33ft4jncGiZ4pc/1",
 		"ipfs://QmUrSBi5hwvUq4LyQ9EAqa1SEmn8UjfyyU8EDLkfxYMtyZ/3",
 		"ipfs://QmXXWXwMPJGgi99pv61y8NMJNjUn6zc6zGniKHvpsHgmfx/4",	
 		"ipfs://QmXXWXwMPJGgi99pv61y8NMJNjUn6zc6zGniKHvpsHgmfx/3",
