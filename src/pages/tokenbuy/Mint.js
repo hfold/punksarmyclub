@@ -174,12 +174,12 @@ function Mint (props) {
 					</p>
 					: null
 				}	
-					<p> STILL AVAILABLE TOKENS: <b>{
+					<p>TOKENS STILL AVAILABLES: <b>{
 							current.mint_event?.value['max-token']?.value > 0 ?
 							formatter.format_stx_integers2( parseInt(current.mint_event?.value['max-token']?.value || 0) - parseInt(current.minted_tokens?.value || 0) )
 							: '∞'
 						} </b> </p>
-						
+
 					<p className="mint_price"> <h2> 1 STX = 700 ROMA </h2>
 				{/* <b>{
 					getCurrentUnitPrice(
