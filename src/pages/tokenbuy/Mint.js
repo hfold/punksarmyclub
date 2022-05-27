@@ -180,7 +180,7 @@ function Mint (props) {
 							: '∞'
 						} </b> </p>
 
-					<p className="mint_price"> <h2> 1 STX = 700 ROMA </h2>
+					<p className="mint_price"> <h2> 1 STX = 143 ROMA </h2>
 				{/* <b>{
 					getCurrentUnitPrice(
 						current
