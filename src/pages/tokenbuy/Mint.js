@@ -174,7 +174,7 @@ function Mint (props) {
 					</p>
 					: null
 				}	
-					<p>TOKENS STILL AVAILABLES: <b>{
+					<p>TOKENS STILL AVAILABLE: <b>{
 							current.mint_event?.value['max-token']?.value > 0 ?
 							formatter.format_stx_integers2( parseInt(current.mint_event?.value['max-token']?.value || 0) - parseInt(current.minted_tokens?.value || 0) )
 							: '∞'

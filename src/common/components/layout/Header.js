@@ -218,7 +218,7 @@ export default function Header(props) {
 			?
 			<React.Fragment>
 				{/* <p style={{color: '#fff', fontSize: 44, textAlign: 'center', fontWeight: 'bold', marginTop: 50, marginBottom: 40}}>
-					PA Monkeys: Mint start at 10AM GMT+0 🔥
+					PA Monkeys: Mint start at 11AM GMT+0 🔥
 				</p> */}
 				{UserState.logged ?
 				<h2 className="call_to_action_choose_collection" style={{padding: 20}}>
@@ -231,7 +231,7 @@ export default function Header(props) {
 			          }}
 			          paused={false}
 			          className="code-box-shape">
-						 27/05 at 10AM GMT+0 <br/>
+						 27/05 at 11AM GMT+0 <br/>
 						 🔥 Start of Punks Army Monkeys Mint 🔥 <br/>
 					<BsArrowDownCircle /></TweenOne>
 		        </h2>
