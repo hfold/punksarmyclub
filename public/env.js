@@ -275,6 +275,20 @@ window.DAPPS = {'Upgrade': {
 	gallery: [
 	]	
 },
+'Buy $ROMA': {
+	url: 'buytoken',
+	address: '',
+	ctr_name: '',
+	name: 'Buy ROMA with STX',
+	description: 'The Utility token of the Army',
+	tkn: '',
+	enabled: true,
+	logo_image: '',
+	main_image: 'stxroma.gif',
+	full_gallery_name: '',
+	gallery: [
+	]	
+},
 	'RomaStaking': {
 		url: 'tokenstaking',
 		address: '',

@@ -331,7 +331,7 @@ export default function Header(props) {
 							let cls = 'collection_info'
 							if(!_dapps.enabled) cls += ' disabled';
 							
-							return <Col md={4} sm={12} style={{overflow: 'visible'}} key={"dapps_"+i}>
+							return <Col md={3} sm={12} style={{overflow: 'visible'}} key={"dapps_"+i}>
 				            <div className={cls} onClick={()=>{
 				            	if(!_dapps.enabled) return;
 
