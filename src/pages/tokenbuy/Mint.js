@@ -163,15 +163,10 @@ function Mint (props) {
 
 		return can_mint(current) 
 			? <React.Fragment>
-				<p className="mint_price"> UNIT PRICE: <b>{
-					getCurrentUnitPrice(
-						current
-						) 
-					}</b></p>
 				{
 					current.mint_event?.value['max-token']?.value
 					?
-					<p className="mint_price"> MAX TOKEN ALLOWED:<b> {
+					<p className="mint_price"> TOKEN ON SALE:<b> {
 						parseInt(current.mint_event?.value['max-token']?.value) > 0
 						? formatter.format_stx_integers2(current.mint_event?.value['max-token']?.value)
 						: '∞'
@@ -179,6 +174,19 @@ function Mint (props) {
 					</p>
 					: null
 				}	
+					<p> STILL AVAILABLE TOKENS: <b>{
+							current.mint_event?.value['max-token']?.value > 0 ?
+							formatter.format_stx_integers2( parseInt(current.mint_event?.value['max-token']?.value || 0) - parseInt(current.minted_tokens?.value || 0) )
+							: '∞'
+						} </b> </p>
+						
+					<p className="mint_price"> <h2> 1 STX = 700 ROMA </h2>
+				{/* <b>{
+					getCurrentUnitPrice(
+						current
+						) 
+					}</b> */}
+					</p>
 				{
 					has_avaible_multiple
 					?
@@ -271,13 +279,13 @@ function Mint (props) {
 						onClick={async () => loadMintingResume()}>
 							{loading_minting_resume ? <Spinner size="sm" /> : "Refresh"}
 						</Button>
-						<p>AVAIBLE TOKENS: <b>{
+						{/* <p> STILL AVAILABLE TOKENS: <b>{
 							current.mint_event?.value['max-token']?.value > 0 ?
 							formatter.format_stx_integers2( parseInt(current.mint_event?.value['max-token']?.value || 0) - parseInt(current.minted_tokens?.value || 0) )
 							: '∞'
-						} </b> </p>
-						<p className="big_text"><Stx dim={36} style={{marginRight: 6}} /> BALANCE: <span className="currency">{getBalance(
-						current) }</span></p>
+						} </b> </p> */}
+						{/* <p className="big_text"><Stx dim={36} style={{marginRight: 6}} /> BALANCE: <span className="currency">{getBalance(
+						current) }</span></p> */}
 						<div className="block_element" >
 						{
 							returnMessageMintElement(current)

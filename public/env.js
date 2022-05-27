@@ -79,7 +79,7 @@ window.COLLECTIONS = {
 	 	name: 'Punks Army Monkeys', 
 		description: 'Mint Date: 27 of May',
 	 	// description: '50 Ultra-Badasses Bitcoin Monkeys',
-	 	enabled: true,
+	 	enabled: false,
 	 	logo_image: 'logomonkey.jpg',
 	 	main_image: 'zombiemonkey.jpg',
 	 	full_gallery_name: 'Monkeys',
@@ -306,32 +306,32 @@ window.DAPPS = {'Upgrade': {
 }
 
 window.COLLECTIONS2 = {
-   'PunksUpgrade': {
-	   address: 'SP2A665S3H6FVMZSY4VJ17ESXX21CGS0A32984B1H',//'ST2A665S3H6FVMZSY4VJ17ESXX21CGS0A32H41WXG', //
-	   ctr_name: 'Punks-Army-Upgrade-NFTs',
-	   tkn: 'Punks-Army-Upgrade',
-	   name: 'Punks Army Upgrade NFTs',
-	   description: 'Unleash the Power of your Punk',
-	   enabled: true,
-	   logo_image: 'hammer2.png',
-	   main_image: 'pupgrade.gif',
-	   full_gallery_name: 'PunksUpgrade',
-	   has_rarity: true,
-	   gallery:  [
-		   "ipfs://QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/1",
-		   "ipfs://QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/2",
-		   "ipfs://QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/3",
-		   "ipfs://QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/4",
-		   "ipfs://QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/5",
-		   "ipfs://QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/6",
-		   "ipfs://QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/7",
-		   "ipfs://QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/8",
-		   "ipfs://QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/9",
-		   "ipfs://QmNhnHqNdCDykvciYHz48axHxDZoCfPy45MmAhSWKt8BAN/10",
-		   "ipfs://QmS1Bzajtfr3MCwVhGWkdMQEKrH3fzWmiCGQETwZgGnccs/11", 
-		   "ipfs://QmS1Bzajtfr3MCwVhGWkdMQEKrH3fzWmiCGQETwZgGnccs/12", 
-		   "ipfs://QmS1Bzajtfr3MCwVhGWkdMQEKrH3fzWmiCGQETwZgGnccs/13", 
-		   "ipfs://QmS1Bzajtfr3MCwVhGWkdMQEKrH3fzWmiCGQETwZgGnccs/14", 
-		   "ipfs://QmS1Bzajtfr3MCwVhGWkdMQEKrH3fzWmiCGQETwZgGnccs/15"]
-   }
+	'Monkeys': {
+		address: 'SP2A665S3H6FVMZSY4VJ17ESXX21CGS0A32984B1H', //'SP2PC9SBXTY48EF118RGF1PQAVVHVY8PESRB8PQZN',//'ST2A665S3H6FVMZSY4VJ17ESXX21CGS0A32H41WXG', //
+		ctr_name:'Punks-Army-Monkeys-NFTs', //'nft-token-extended-test',
+		hide_multiple: false,
+		hide_single_mint: false,
+		is_extended: true,
+		tkn: 'Punks-Army-Monkeys',
+		name: 'Punks Army Monkeys', 
+	   description: 'Mint Date: 27 of May',
+		// description: '50 Ultra-Badasses Bitcoin Monkeys',
+		enabled: false,
+		logo_image: 'logomonkey.jpg',
+		main_image: 'zombiemonkey.jpg',
+		full_gallery_name: 'Monkeys',
+		has_rarity: false,
+		gallery: [
+			"ipfs://QmY1W2GTD1zV5e5xLvqELwJTVWMWVCQqtQL653f3PaLF6H/1",
+			"ipfs://QmY1W2GTD1zV5e5xLvqELwJTVWMWVCQqtQL653f3PaLF6H/2",
+		   "ipfs://QmY1W2GTD1zV5e5xLvqELwJTVWMWVCQqtQL653f3PaLF6H/3",
+		   "ipfs://QmY1W2GTD1zV5e5xLvqELwJTVWMWVCQqtQL653f3PaLF6H/4",
+			"ipfs://QmY1W2GTD1zV5e5xLvqELwJTVWMWVCQqtQL653f3PaLF6H/5",
+		   "ipfs://QmY1W2GTD1zV5e5xLvqELwJTVWMWVCQqtQL653f3PaLF6H/6",
+		   "ipfs://QmY1W2GTD1zV5e5xLvqELwJTVWMWVCQqtQL653f3PaLF6H/7",
+			"ipfs://QmY1W2GTD1zV5e5xLvqELwJTVWMWVCQqtQL653f3PaLF6H/8",
+		   "ipfs://QmY1W2GTD1zV5e5xLvqELwJTVWMWVCQqtQL653f3PaLF6H/9"
+		]
+	}
+   
 }
