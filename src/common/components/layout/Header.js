@@ -231,8 +231,8 @@ export default function Header(props) {
 			          }}
 			          paused={false}
 			          className="code-box-shape">
-						 27/05 at 11AM GMT+0 <br/>
-						 🔥 Start of Punks Army Monkeys Mint 🔥 <br/>
+						 30/05 at 12:30AM GMT+0 <br/>
+						 🔥 Punks Army Monkeys Public Mint 🔥 <br/>
 					<BsArrowDownCircle /></TweenOne>
 		        </h2>
 		        : <SignIn />
