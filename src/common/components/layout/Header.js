@@ -231,7 +231,7 @@ export default function Header(props) {
 			          }}
 			          paused={false}
 			          className="code-box-shape">
-						 30/05 at 12:30AM GMT+0 <br/>
+						 30/05 at 12:30PM GMT+0 <br/>
 						 🔥 Punks Army Monkeys Public Mint 🔥 <br/>
 					<BsArrowDownCircle /></TweenOne>
 		        </h2>
