@@ -3,5 +3,6 @@ export default {
 	Friends: window.FriendsGallery,
 	Punks: window.PunksGallery,
 	PunksUpgrade: window.PunksUpgradeGallery,
-	Monkeys: window.MonkeysGallery
+	Monkeys: window.MonkeysGallery,
+	Celebrities: window.CelebritiesGallery
 }

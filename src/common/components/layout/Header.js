@@ -231,8 +231,7 @@ export default function Header(props) {
 			          }}
 			          paused={false}
 			          className="code-box-shape">
-						 30/05 at 12:30PM GMT+0 <br/>
-						 🔥 Punks Army Monkeys Public Mint 🔥 <br/>
+						 🧟‍♂️ Zombies and Apes are now upgradable 🐵 <br/>
 					<BsArrowDownCircle /></TweenOne>
 		        </h2>
 		        : <SignIn />
@@ -251,8 +250,8 @@ export default function Header(props) {
 							return <Col md={4} sm={12} className="offset-lg-4" style={{overflow: 'visible'}} key={"collection_"+i}>
 				            <div className={cls} onClick={()=>{
 				            	if(!_collection.enabled || collection == collection_key) return;
-
-				            	history.push("/"+collection_key+"/mint");
+								history.push("/"+collection_key);
+				            	// history.push("/"+collection_key+"/mint");
 				            }}>
 				              <div className="img_container">
 				              	<img src={"images/"+_collection.main_image} />

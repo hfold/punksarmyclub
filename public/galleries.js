@@ -1,15 +1,17 @@
-window.MonkeysGallery = [
-	"ipfs://QmY1W2GTD1zV5e5xLvqELwJTVWMWVCQqtQL653f3PaLF6H/1",
-	 		"ipfs://QmY1W2GTD1zV5e5xLvqELwJTVWMWVCQqtQL653f3PaLF6H/2",
-			"ipfs://QmY1W2GTD1zV5e5xLvqELwJTVWMWVCQqtQL653f3PaLF6H/3",
-			"ipfs://QmY1W2GTD1zV5e5xLvqELwJTVWMWVCQqtQL653f3PaLF6H/4",
-	 		"ipfs://QmY1W2GTD1zV5e5xLvqELwJTVWMWVCQqtQL653f3PaLF6H/5",
-			"ipfs://QmY1W2GTD1zV5e5xLvqELwJTVWMWVCQqtQL653f3PaLF6H/6",
-			"ipfs://QmY1W2GTD1zV5e5xLvqELwJTVWMWVCQqtQL653f3PaLF6H/7",
-	 		"ipfs://QmY1W2GTD1zV5e5xLvqELwJTVWMWVCQqtQL653f3PaLF6H/8",
-			"ipfs://QmY1W2GTD1zV5e5xLvqELwJTVWMWVCQqtQL653f3PaLF6H/9"
+window.CelebritiesGallery = [
+	"ipfs://QmZ8DBqJgh1SWz2VJ44XSibd5saTHUpS6LJsFLTCJJpgTR/1"
 ];
-
+window.MonkeysGallery = [
+	"ipfs://QmZWU6CMUzYZ6MnTR71ABtg4rWrtEYSqdzniMu2qqrMCaf/1",
+	"ipfs://QmZWU6CMUzYZ6MnTR71ABtg4rWrtEYSqdzniMu2qqrMCaf/2",
+   "ipfs://QmZWU6CMUzYZ6MnTR71ABtg4rWrtEYSqdzniMu2qqrMCaf/3",
+   "ipfs://QmZWU6CMUzYZ6MnTR71ABtg4rWrtEYSqdzniMu2qqrMCaf/4",
+	"ipfs://QmZWU6CMUzYZ6MnTR71ABtg4rWrtEYSqdzniMu2qqrMCaf/5",
+   "ipfs://QmZWU6CMUzYZ6MnTR71ABtg4rWrtEYSqdzniMu2qqrMCaf/6",
+   "ipfs://QmZWU6CMUzYZ6MnTR71ABtg4rWrtEYSqdzniMu2qqrMCaf/7",
+   "ipfs://QmZWU6CMUzYZ6MnTR71ABtg4rWrtEYSqdzniMu2qqrMCaf/8",
+   "ipfs://QmZWU6CMUzYZ6MnTR71ABtg4rWrtEYSqdzniMu2qqrMCaf/9"
+];
 window.AncestorsGallery = [
 	"ipfs://QmYyh6ijf9zHPzvvi3r8LrtFHk2LqaHVvPGXmfgVLYWsDH/0",
 	"ipfs://QmYyh6ijf9zHPzvvi3r8LrtFHk2LqaHVvPGXmfgVLYWsDH/1",	

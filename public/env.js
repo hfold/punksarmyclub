@@ -69,6 +69,25 @@ window.COLLECTIONS = {
 	//  		"ipfs://QmSanhQ5jitF1PakuQhoB4kVNi5FYx2ZqFkHxtNduD2PQi/3"
 	//  	]
 	//  },
+	'Celebrities': {
+		address: 'SP2A665S3H6FVMZSY4VJ17ESXX21CGS0A32984B1H', //'SP2PC9SBXTY48EF118RGF1PQAVVHVY8PESRB8PQZN',//'ST2A665S3H6FVMZSY4VJ17ESXX21CGS0A32H41WXG', //
+		ctr_name:'Punks-Army-Celebrities-NFTs', //'nft-token-extended-test',
+		hide_multiple: false,
+		hide_single_mint: false,
+		is_extended: true,
+		tkn: 'Punks-Army-Celebrities',
+		name: 'Punks Army Celebrities', 
+	   description: 'Unique Punk interpretations of Sport and Arts Celebrities',
+		// description: '50 Ultra-Badasses Bitcoin Monkeys',
+		enabled: true,
+		logo_image: 'josepunk.png',
+		main_image: 'josepunk.png',
+		full_gallery_name: 'Celebrities',
+		has_rarity: false,
+		gallery: [
+			"ipfs://QmZ8DBqJgh1SWz2VJ44XSibd5saTHUpS6LJsFLTCJJpgTR/1"
+		]
+	},
 	 'Monkeys': {
 	 	address: 'SP2A665S3H6FVMZSY4VJ17ESXX21CGS0A32984B1H', //'SP2PC9SBXTY48EF118RGF1PQAVVHVY8PESRB8PQZN',//'ST2A665S3H6FVMZSY4VJ17ESXX21CGS0A32H41WXG', //
 	 	ctr_name:'Punks-Army-Monkeys-NFTs', //'nft-token-extended-test',
@@ -77,24 +96,24 @@ window.COLLECTIONS = {
 	 	is_extended: true,
 	 	tkn: 'Punks-Army-Monkeys',
 	 	name: 'Punks Army Monkeys', 
-		description: 'Mint Date: 27 of May',
+		description: '50 Ultra-Badasses BTC Monkeys',
 	 	// description: '50 Ultra-Badasses Bitcoin Monkeys',
 	 	enabled: true,
 	 	logo_image: 'logomonkey.jpg',
 	 	main_image: 'zombiemonkey.jpg',
 	 	full_gallery_name: 'Monkeys',
 	 	has_rarity: false,
-	 	gallery: [
-	 		"ipfs://QmY1W2GTD1zV5e5xLvqELwJTVWMWVCQqtQL653f3PaLF6H/1",
-	 		"ipfs://QmY1W2GTD1zV5e5xLvqELwJTVWMWVCQqtQL653f3PaLF6H/2",
-			"ipfs://QmY1W2GTD1zV5e5xLvqELwJTVWMWVCQqtQL653f3PaLF6H/3",
-			"ipfs://QmY1W2GTD1zV5e5xLvqELwJTVWMWVCQqtQL653f3PaLF6H/4",
-	 		"ipfs://QmY1W2GTD1zV5e5xLvqELwJTVWMWVCQqtQL653f3PaLF6H/5",
-			"ipfs://QmY1W2GTD1zV5e5xLvqELwJTVWMWVCQqtQL653f3PaLF6H/6",
-			"ipfs://QmY1W2GTD1zV5e5xLvqELwJTVWMWVCQqtQL653f3PaLF6H/7",
-	 		"ipfs://QmY1W2GTD1zV5e5xLvqELwJTVWMWVCQqtQL653f3PaLF6H/8",
-			"ipfs://QmY1W2GTD1zV5e5xLvqELwJTVWMWVCQqtQL653f3PaLF6H/9"
-	 	]
+		gallery: [
+			"ipfs://QmZWU6CMUzYZ6MnTR71ABtg4rWrtEYSqdzniMu2qqrMCaf/1",
+			"ipfs://QmZWU6CMUzYZ6MnTR71ABtg4rWrtEYSqdzniMu2qqrMCaf/2",
+		   "ipfs://QmZWU6CMUzYZ6MnTR71ABtg4rWrtEYSqdzniMu2qqrMCaf/3",
+		   "ipfs://QmZWU6CMUzYZ6MnTR71ABtg4rWrtEYSqdzniMu2qqrMCaf/4",
+			"ipfs://QmZWU6CMUzYZ6MnTR71ABtg4rWrtEYSqdzniMu2qqrMCaf/5",
+		   "ipfs://QmZWU6CMUzYZ6MnTR71ABtg4rWrtEYSqdzniMu2qqrMCaf/6",
+		   "ipfs://QmZWU6CMUzYZ6MnTR71ABtg4rWrtEYSqdzniMu2qqrMCaf/7",
+			"ipfs://QmZWU6CMUzYZ6MnTR71ABtg4rWrtEYSqdzniMu2qqrMCaf/8",
+		   "ipfs://QmZWU6CMUzYZ6MnTR71ABtg4rWrtEYSqdzniMu2qqrMCaf/9"
+		]
 	 },
 	//'PunksTest': {
 		//address: 'ST1HA10B13YSF47JXWGJCVNF94QPZ3GWWYSCZDDSS',//'ST2A665S3H6FVMZSY4VJ17ESXX21CGS0A32H41WXG', //
@@ -320,32 +339,18 @@ window.DAPPS = {'Upgrade': {
 }
 
 window.COLLECTIONS2 = {
-	'Monkeys': {
-		address: 'SP2A665S3H6FVMZSY4VJ17ESXX21CGS0A32984B1H', //'SP2PC9SBXTY48EF118RGF1PQAVVHVY8PESRB8PQZN',//'ST2A665S3H6FVMZSY4VJ17ESXX21CGS0A32H41WXG', //
-		ctr_name:'Punks-Army-Monkeys-NFTs', //'nft-token-extended-test',
-		hide_multiple: false,
-		hide_single_mint: false,
-		is_extended: true,
-		tkn: 'Punks-Army-Monkeys',
-		name: 'Punks Army Monkeys', 
-	   description: 'Mint Date: 27 of May',
-		// description: '50 Ultra-Badasses Bitcoin Monkeys',
+    'Upgrade': {
+		url: 'upgrade',
+		address: '',
+		ctr_name: '',
+		name: 'Punks Upgrade Laboratory',
+		description: 'Upgrade your Punks and increase his Rarity!',
+		tkn: '',
 		enabled: true,
-		logo_image: 'logomonkey.jpg',
-		main_image: 'zombiemonkey.jpg',
-		full_gallery_name: 'Monkeys',
-		has_rarity: false,
+		logo_image:  'hammer2.png',
+		main_image: 'zombupgr.gif',
+		full_gallery_name: '',
 		gallery: [
-			"ipfs://QmY1W2GTD1zV5e5xLvqELwJTVWMWVCQqtQL653f3PaLF6H/1",
-			"ipfs://QmY1W2GTD1zV5e5xLvqELwJTVWMWVCQqtQL653f3PaLF6H/2",
-		   "ipfs://QmY1W2GTD1zV5e5xLvqELwJTVWMWVCQqtQL653f3PaLF6H/3",
-		   "ipfs://QmY1W2GTD1zV5e5xLvqELwJTVWMWVCQqtQL653f3PaLF6H/4",
-			"ipfs://QmY1W2GTD1zV5e5xLvqELwJTVWMWVCQqtQL653f3PaLF6H/5",
-		   "ipfs://QmY1W2GTD1zV5e5xLvqELwJTVWMWVCQqtQL653f3PaLF6H/6",
-		   "ipfs://QmY1W2GTD1zV5e5xLvqELwJTVWMWVCQqtQL653f3PaLF6H/7",
-			"ipfs://QmY1W2GTD1zV5e5xLvqELwJTVWMWVCQqtQL653f3PaLF6H/8",
-		   "ipfs://QmY1W2GTD1zV5e5xLvqELwJTVWMWVCQqtQL653f3PaLF6H/9"
-		]
+		]	
 	}
-   
 }
