@@ -79,8 +79,9 @@ function PunkElement (props) {
 
 					        			if(attr.trait_type == 'Type' && 
 					        				!attr.value.toUpperCase().match(/girl/i) &&
-					        				!attr.value.toUpperCase().match(/man/i)) add = false;
-
+					        				!attr.value.toUpperCase().match(/man/i) &&
+					        				!attr.value.toUpperCase().match(/zombie/i) &&
+					        				!attr.value.toUpperCase().match(/ape/i)) add = false;
 					        			return attr;
 					        		})
 					        	}
