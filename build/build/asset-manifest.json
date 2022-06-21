@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "./static/css/main.7b840eb3.chunk.css",
+    "main.js": "./static/js/main.c44e95a0.chunk.js",
+    "polyfills-dom.js": "./static/js/polyfills-dom.785704d5.chunk.js",
+    "runtime-main.js": "./static/js/runtime-main.cfbc29c6.js",
+    "static/css/3.3108a0e9.chunk.css": "./static/css/3.3108a0e9.chunk.css",
+    "static/js/3.eafbf9c2.chunk.js": "./static/js/3.eafbf9c2.chunk.js",
+    "static/js/4.e97bf5ee.chunk.js": "./static/js/4.e97bf5ee.chunk.js",
+    "static/js/5.f9b3de57.chunk.js": "./static/js/5.f9b3de57.chunk.js",
+    "static/js/6.a3beb097.chunk.js": "./static/js/6.a3beb097.chunk.js",
+    "index.html": "./index.html",
+    "precache-manifest.dade7d2fbd881650d3b1d7ec4a27f294.js": "./precache-manifest.dade7d2fbd881650d3b1d7ec4a27f294.js",
+    "service-worker.js": "./service-worker.js",
+    "static/js/3.eafbf9c2.chunk.js.LICENSE.txt": "./static/js/3.eafbf9c2.chunk.js.LICENSE.txt",
+    "static/js/polyfills-dom.785704d5.chunk.js.LICENSE.txt": "./static/js/polyfills-dom.785704d5.chunk.js.LICENSE.txt",
+    "static/media/logo.svg": "./static/media/logo.06e73328.svg",
+    "static/media/notifications.css": "./static/media/notification.c0d3c94c.eot"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.cfbc29c6.js",
+    "static/css/3.3108a0e9.chunk.css",
+    "static/js/3.eafbf9c2.chunk.js",
+    "static/css/main.7b840eb3.chunk.css",
+    "static/js/main.c44e95a0.chunk.js"
+  ]
+}
